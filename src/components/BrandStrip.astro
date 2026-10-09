@@ -1,0 +1,31 @@
+---
+// Brands Vrijstroom works with (confirmed by the client). Swap the names for logo files once they are delivered.
+import Icon from './Icon.astro';
+import home from '../content/home.json';
+interface Props { tone?: 'sand' | 'sand-2' }
+const { tone = 'sand' } = Astro.props;
+const { title, badge, items } = home.brands;
+---
+<section class:list={['brands', `brands--${tone}`, 'on-sand']} aria-labelledby="brands-title">
+  <div class="container brands__inner" data-reveal>
+    <div class="brands__head">
+      <h2 id="brands-title">{title}</h2>
+      <p class="brands__badge"><Icon name="seal-check" size={20} />{badge}</p>
+    </div>
+    <ul class="brands__list">
+      {items.map((name) => <li>{name}</li>)}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .brands { padding-block: clamp(56px, 7vw, 96px); }
+  .brands--sand-2 { background: var(--sand-2); }
+  .brands__inner { display: grid; gap: 32px; }
+  .brands__head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; }
+  .brands h2 { font-size: clamp(1.375rem, 2.6vw, 2rem); }
+  .brands__badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: var(--pill); background: var(--dark); color: var(--sand); font-weight: 600; font-size: .9375rem; }
+  .brands__badge :global(svg) { color: var(--green); }
+  .brands__list { list-style: none; margin: 0; padding: 28px 0 0; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: 16px 48px; }
+  .brands__list li { font-family: var(--font-display); font-size: clamp(1.125rem, 2vw, 1.5rem); letter-spacing: -0.01em; color: var(--dark); opacity: .78; }
+</style>

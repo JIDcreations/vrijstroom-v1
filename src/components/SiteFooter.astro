@@ -27,7 +27,7 @@ const wa = `https://wa.me/${site.whatsapp.number.replace(/\D/g, '')}?text=${enco
         {site.contact.phone && <li><a href={`tel:${site.contact.phone.replace(/[^\d+]/g, '')}`}>{site.contact.phone}</a></li>}
         {site.contact.email && <li><a href={`mailto:${site.contact.email}`}>{site.contact.email}</a></li>}
         {site.contact.address && <li>{site.contact.address}</li>}
-        {site.contact.region && <li>Regio: {site.contact.region}</li>}
+        {site.contact.region && <li>{site.contact.region}</li>}
         <li><a href={wa} target="_blank" rel="noopener">WhatsApp</a></li>
         <li><a href="/contact">Contactpagina</a></li>
       </ul>

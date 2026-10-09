@@ -4,7 +4,7 @@
     {
       "id": "kennismaking-kost",
       "q": "Wat kost een kennismaking?",
-      "a": "Niets. De kennismaking en de offerte zijn gratis."
+      "a": "Niets. Het ontwerpgesprek en de offerte zijn gratis."
     },
     {
       "id": "hoeveel-stroom",
@@ -14,12 +14,17 @@
     {
       "id": "batterij-veilig",
       "q": "Een zelfgebouwde batterij, is dat veilig?",
-      "a": "We bouwen met EVE A+-cellen en een BMS (Battery Management System): een elektronische bewaker die de cellen beschermt tegen overladen, te diep ontladen en te hoge temperaturen."
+      "a": "Ja. We bouwen met EVE A+-cellen en een BMS (Battery Management System): een elektronische bewaker die de cellen beschermt tegen overladen, te diep ontladen en te hoge temperaturen. Op een batterij op maat krijg je 2 jaar garantie."
+    },
+    {
+      "id": "garantie",
+      "q": "Welke garantie krijg ik?",
+      "a": "Op een batterij op maat krijg je 2 jaar garantie. Standaardbatterijen hebben de nodige certificaten, zoals IEC 62619, UN38.3, CE en ECE R10."
     },
     {
       "id": "garantie-camper",
       "q": "Wat met de garantie van mijn camper?",
-      "a": "Een goede vraag om meteen in het kennismakingsgesprek te stellen. We bekijken samen wat de garantievoorwaarden van je voertuig zeggen, nog voor we iets inbouwen."
+      "a": "Een goede vraag om meteen in het ontwerpgesprek te stellen. We bekijken samen wat de garantievoorwaarden van je voertuig zeggen, nog voor we iets inbouwen."
     },
     {
       "id": "prijs",
@@ -29,7 +34,17 @@
     {
       "id": "doorlooptijd",
       "q": "Hoe lang staat mijn wagen bij jullie?",
-      "a": "Dat hangt af van de installatie. Een batterijwissel gaat sneller dan een volledig off-grid systeem. In je offerte staat hoe lang je wagen bij ons blijft."
+      "a": "We houden de wachttijd bewust kort. Hoe lang je wagen bij ons blijft, hangt af van de installatie: een batterijwissel gaat sneller dan een volledig off-grid systeem. Dat lees je vooraf in je offerte."
+    },
+    {
+      "id": "wanneer",
+      "q": "Wanneer plan ik best?",
+      "a": "In de winter is het drukker. Wil je in het voorjaar vertrekken, plan dan op tijd een gesprek. Dan sta je klaar als het seizoen begint."
+    },
+    {
+      "id": "waar",
+      "q": "Waar gebeurt de inbouw?",
+      "a": "In onze werkplaats in Lokeren, of ter plaatse in Antwerpen, Oost- en West-Vlaanderen. Woon je verder, dan ben je welkom in de werkplaats. Niet alles kan ter plaatse: zonnepanelen plaatsen hangt bijvoorbeeld af van het weer."
     },
     {
       "id": "zelfbouwer",
@@ -39,7 +54,7 @@
     {
       "id": "merken",
       "q": "Met welke merken werken jullie?",
-      "a": "We werken met Victron en bouwen onze lithiumbatterijen zelf met EVE A+-cellen."
+      "a": "We zijn Victron Certified Installer en werken met Victron, MaxxFan, Truma (airco), WattCycle en VanNBike (fietsdragers). Batterijen op maat bouwen we zelf met EVE A+-cellen."
     },
     {
       "id": "gereedschap",
@@ -55,6 +70,11 @@
       "id": "uitleg",
       "q": "Moet ik er zelf veel van kennen?",
       "a": "Nee. Bij de oplevering leggen we in gewone taal uit hoe alles werkt, zodat je er zelf mee overweg kan."
+    },
+    {
+      "id": "taal",
+      "q": "Spreken jullie Engels?",
+      "a": "Ja. We helpen je in het Nederlands en in het Engels."
     }
   ]
 }

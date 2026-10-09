@@ -31,13 +31,14 @@
     "href": "/#rekentool"
   },
   "contact": {
-    "phone": "",
-    "email": "",
-    "address": "",
-    "region": ""
+    "phone": "0473 67 10 31",
+    "email": "info@vrijstroom.be",
+    "address": "Werkplaats in Lokeren",
+    "region": "Ter plaatse in Antwerpen, Oost- en West-Vlaanderen",
+    "languages": "Nederlands en Engels"
   },
   "whatsapp": {
-    "number": "",
+    "number": "32473671031",
     "message": "Hallo Vrijstroom, ik stuur je een foto van mijn installatie"
   },
   "agenda": {
@@ -57,7 +58,8 @@
   },
   "seasonBar": {
     "enabled": true,
-    "text": "Klaar voor het seizoen? Plan nu je installatie."
+    "text": "Laat je camper deze winter ombouwen, dan sta je in het voorjaar klaar om te vertrekken."
   },
-  "showPlaceholderMarks": false
+  "showPlaceholderMarks": false,
+  "founderName": "Johan"
 }

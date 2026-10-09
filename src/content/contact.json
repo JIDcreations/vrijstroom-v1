@@ -5,25 +5,25 @@
   },
   "hero": {
     "title": "Vrij staan begint met een gesprek.",
-    "text": "Kies zelf een moment. De kennismaking is gratis.",
+    "text": "Plan een gratis ontwerpgesprek, of stuur ons een bericht of foto.",
     "image": "zonnepaneel-woestijn",
     "imageAlt": "Vrouw poetst een zonnepaneel op het dak van haar van, bij zonsondergang"
   },
   "agenda": {
     "title": "Kies zelf je moment",
-    "text": "In de agenda zie je wanneer we vrij zijn. Je kiest een moment en krijgt meteen een bevestiging.",
+    "text": "We bespreken hoe je reist of werkt, welke toestellen je gebruikt en wat je van je systeem verwacht. Kies zelf een moment.",
     "button": "Toon de agenda",
     "consent": "De agenda wordt geladen van een externe dienst. Die kan cookies plaatsen.",
     "missing": "Liever meteen een bericht sturen? Gebruik het formulier hieronder of stuur ons een WhatsApp."
   },
   "form": {
     "title": "Liever een bericht sturen?",
-    "text": "Laat je naam en een telefoonnummer of e-mailadres achter. We nemen zo snel mogelijk contact met je op.",
+    "text": "Laat je naam en een telefoonnummer of e-mailadres achter. We nemen zo snel mogelijk contact met je op, in het Nederlands of het Engels.",
     "vehicleOptions": [
       "Camper",
       "Van of buscamper",
       "Zelfbouw",
-      "Servicebus",
+      "Servicebus of mobiele werkplaats",
       "Food truck",
       "Paardentrailer of -camion",
       "Iets anders"

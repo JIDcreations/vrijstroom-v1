@@ -10,11 +10,15 @@ import FounderSplit from '../components/FounderSplit.astro';
 import ReviewsEmpty from '../components/ReviewsEmpty.astro';
 import FaqSection from '../components/FaqSection.astro';
 import Icon from '../components/Icon.astro';
+import TrustStrip from '../components/TrustStrip.astro';
+import BrandStrip from '../components/BrandStrip.astro';
 import Text from '../components/Text.astro';
 import c from '../content/home.json';
 ---
 <Base title={c.seo.title} description={c.seo.description} headerTone="dark">
   <VHero size="home" title={c.hero.title} text={c.hero.text} image={c.hero.image} imageAlt={c.hero.imageAlt} secondary={c.hero.secondary} />
+
+  <TrustStrip />
 
   <PitchBand title={c.offer.title} text={c.offer.text} />
 
@@ -64,6 +68,8 @@ import c from '../content/home.json';
   </section>
 
   <WhyList />
+
+  <BrandStrip tone="sand-2" />
 
   <FounderSplit
     title={c.founder.title}

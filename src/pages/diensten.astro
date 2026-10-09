@@ -8,10 +8,13 @@ import DoubtNote from '../components/DoubtNote.astro';
 import FaqSection from '../components/FaqSection.astro';
 import Icon from '../components/Icon.astro';
 import Text from '../components/Text.astro';
+import ProblemList from '../components/ProblemList.astro';
 import c from '../content/diensten.json';
 ---
 <Base title={c.seo.title} description={c.seo.description} headerTone="dark">
   <VHero title={c.hero.title} text={c.hero.text} image={c.hero.image} imageAlt={c.hero.imageAlt} secondary={{ label: 'Bereken je stroom', href: '#rekentool', icon: 'calculator' }} />
+
+  <ProblemList title={c.problems.title} intro={c.problems.intro} items={c.problems.items} />
 
   <!-- Services -->
   <section class="services on-sand" aria-labelledby="services-title">
@@ -96,6 +99,7 @@ import c from '../content/diensten.json';
           </li>
         ))}
       </ol>
+      <p class="process__note" data-reveal><Icon name="map-pin" size={22} /><span>{c.process.note}</span></p>
       <div class="process__doubt" data-reveal>
         <DoubtNote id={c.process.doubt} tone="dark" />
       </div>
@@ -106,11 +110,12 @@ import c from '../content/diensten.json';
   {c.warranty.enabled && (<section class="warranty on-sand" aria-labelledby="warranty-title">
     <div class="container">
       <div class="warranty__inner" data-reveal>
-        <Icon name="shield-check" size={40} />
-        <div>
-          <h2 id="warranty-title">{c.warranty.title}</h2>
-          <p><Text text={c.warranty.text} /></p>
-        </div>
+        <h2 id="warranty-title">{c.warranty.title}</h2>
+        <ul class="warranty__list">
+          {c.warranty.items.map((w) => (
+            <li><Icon name={w.icon} size={32} /><p><strong>{w.title}</strong> {w.text}</p></li>
+          ))}
+        </ul>
       </div>
     </div>
   </section>)}
@@ -185,7 +190,9 @@ import c from '../content/diensten.json';
   .process__steps li:last-child::after { display: none; }
   .process__steps h3 { font-size: 1.375rem; }
   .process__steps p { color: var(--muted-on-dark); }
-  .process__doubt { margin-top: clamp(40px, 5vw, 64px); max-width: 720px; }
+  .process__note { display: flex; gap: 12px; align-items: flex-start; margin-top: clamp(40px, 5vw, 64px); max-width: 720px; color: var(--muted-on-dark); }
+  .process__note :global(svg) { flex: none; color: var(--green); margin-top: 2px; }
+  .process__doubt { margin-top: 24px; max-width: 720px; }
   @media (max-width: 959px) {
     .process__steps { grid-template-columns: 1fr 1fr; }
     .process__steps li::after { display: none; }
@@ -194,7 +201,11 @@ import c from '../content/diensten.json';
 
   /* Warranty */
   .warranty { padding-top: var(--section); }
-  .warranty__inner { display: grid; grid-template-columns: auto 1fr; gap: 24px; align-items: start; padding: clamp(28px, 4vw, 48px); border-radius: var(--radius); border: 1.5px solid var(--line); }
-  .warranty h2 { font-size: clamp(1.5rem, 3vw, 2.25rem); margin-bottom: 12px; }
-  .warranty p { max-width: 60ch; }
+  .warranty__inner { display: grid; gap: 28px; padding: clamp(28px, 4vw, 48px); border-radius: var(--radius); border: 1.5px solid var(--line); }
+  .warranty h2 { font-size: clamp(1.5rem, 3vw, 2.25rem); }
+  .warranty__list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px 32px; }
+  .warranty__list li { display: grid; gap: 12px; align-content: start; }
+  .warranty__list p { color: var(--muted); }
+  .warranty__list strong { display: block; color: var(--dark); font-size: 1.125rem; }
+  @media (max-width: 859px) { .warranty__list { grid-template-columns: 1fr; } }
 </style>

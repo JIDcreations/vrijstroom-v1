@@ -65,7 +65,7 @@
         "title": "Bedrijfswagens",
         "quote": "Ik wil mijn gereedschap laden zonder aggregaat.",
         "quoteNote": "",
-        "text": "Servicebussen, food trucks en paardentrailers. Stroom waar je werkt, zonder lawaai van een aggregaat.",
+        "text": "Servicebussen, mobiele werkplaatsen, food trucks en paardentrailers. Stroom waar je werkt, zonder lawaai van een aggregaat.",
         "mood": "Je kantoor is overal.",
         "href": "/bedrijfswagens",
         "icon": "truck"
@@ -76,36 +76,36 @@
     "title": "Veilig zoals thuis, vrij zoals onderweg.",
     "items": [
       {
-        "title": "Een echte elektricien",
-        "text": "Juiste kabeldiktes, goede beveiliging, nette afwerking. Wat thuis normaal is, krijgt je wagen ook.",
-        "icon": "shield-check"
+        "icon": "shield-check",
+        "title": "Gebouwd door een elektricien",
+        "text": "We werken in een voertuig even zorgvuldig als in een woning: juiste kabeldiktes, goede beveiliging en nette afwerking."
       },
       {
-        "title": "Op maat",
-        "text": "We vertrekken van hoe jij reist of werkt, niet van een standaardpakket.",
-        "icon": "wrench"
+        "icon": "wrench",
+        "title": "Ontworpen rond jouw gebruik",
+        "text": "We beginnen niet bij een pakket, maar bij hoe jij reist of werkt. Daarop stemmen we batterij, laden en vermogen af."
       },
       {
-        "title": "Uitleg in gewone taal",
-        "text": "Je weet wat er in je wagen zit en hoe je ermee omgaat.",
-        "icon": "chat-circle-text"
+        "icon": "chat-circle-text",
+        "title": "Uitgelegd in gewone taal",
+        "text": "Je weet onderweg wat je kan verwachten, en wat je moet doen als er iets misloopt."
       },
       {
-        "title": "Gebouwd om lang mee te gaan",
-        "text": "Degelijke onderdelen en een installatie waar je op kan rekenen.",
-        "icon": "seal-check"
+        "icon": "seal-check",
+        "title": "Gemaakt om lang mee te gaan",
+        "text": "Betrouwbare onderdelen en een opbouw die je later nog kan uitbreiden."
       }
     ]
   },
   "founder": {
-    "title": "De elektricien achter Vrijstroom",
+    "title": "Johan, de elektricien achter Vrijstroom",
     "name": "",
-    "text": "Als ervaren elektricien weet hij hoe een goede installatie thuis eruitziet. Die zorg brengt hij naar de camper, de bus en de bedrijfswagen.",
+    "text": "Johan komt uit de elektrotechniek. Wat thuis vanzelfsprekend is, juiste kabeldiktes, goede beveiliging en nette afwerking, brengt hij naar de camper, de bus en de bedrijfswagen. Zijn batterijen bouwt hij zelf, op maat van de ruimte die je hebt.",
     "quote": "",
     "image": "werkplaats-elektricien",
     "imageAlt": "Elektricien in Vrijstroom-shirt sluit een batterij aan in de werkplaats",
     "link": {
-      "label": "Meer over Vrijstroom",
+      "label": "Meer over Johan",
       "href": "/over"
     }
   },
@@ -133,5 +133,35 @@
     "title": "Elke zonnestraal telt.",
     "image": "zonnepaneel-woestijn",
     "imageAlt": "Vrouw poetst een zonnepaneel op het dak van haar van, op een zandweg bij zonsondergang"
+  },
+  "trust": [
+    {
+      "icon": "seal-check",
+      "text": "Victron Certified Installer"
+    },
+    {
+      "icon": "shield-check",
+      "text": "2 jaar garantie op batterijen op maat"
+    },
+    {
+      "icon": "map-pin",
+      "text": "Werkplaats in Lokeren"
+    },
+    {
+      "icon": "lightning",
+      "text": "Gebouwd door een elektricien"
+    }
+  ],
+  "brands": {
+    "title": "Merken waarmee we werken",
+    "badge": "Victron Certified Installer",
+    "items": [
+      "Victron Energy",
+      "MaxxFan",
+      "Truma",
+      "WattCycle",
+      "EVE",
+      "VanNBike"
+    ]
   }
 }

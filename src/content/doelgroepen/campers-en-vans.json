@@ -21,7 +21,7 @@
         "quote": "Na twee dagen zonder camping is mijn batterij leeg.",
         "quoteNote": "",
         "problem": "Je oude accu houdt het niet lang vol, of je wil met laptop, koffiezet of koelkast op pad zonder elke avond een stopcontact te zoeken.",
-        "solution": "We bekijken hoe jij reist en bouwen een systeem dat daarbij past: niet te klein, niet te groot."
+        "solution": "We bekijken hoe jij reist en bouwen een systeem dat daarbij past: niet te klein, niet te groot. Je batterij bouwen we op maat van de ruimte die je hebt."
       },
       {
         "icon": "toolbox",
@@ -29,7 +29,12 @@
         "quote": "Ik heb alles gekocht, maar durf het niet zelf aan te sluiten.",
         "quoteNote": "",
         "problem": "De onderdelen liggen klaar, maar een fout in een kleine ruimte heeft grote gevolgen. Kabeldiktes, zekeringen, laders: het moet kloppen.",
-        "solution": "We controleren of je onderdelen bij elkaar passen en sluiten alles veilig aan, zodat je met een gerust gevoel vertrekt."
+        "solution": "We controleren of je onderdelen bij elkaar passen en sluiten alles veilig aan, zodat je met een gerust gevoel vertrekt.",
+        "action": {
+          "label": "Stuur een foto van je materiaal",
+          "icon": "whatsapp-logo",
+          "whatsapp": "Hallo Vrijstroom, ik bouw zelf en stuur je een foto van mijn materiaal"
+        }
       }
     ]
   },
@@ -71,6 +76,6 @@
     "zelfbouwer",
     "garantie-camper",
     "batterij-veilig",
-    "doorlooptijd"
+    "wanneer"
   ]
 }

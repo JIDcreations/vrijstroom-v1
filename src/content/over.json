@@ -1,7 +1,7 @@
 {
   "seo": {
     "title": "Over Vrijstroom | Een ervaren elektricien voor je camper of bedrijfswagen",
-    "description": "Vrijstroom brengt de zorg van een goede installatie thuis naar de camper, de bus en de bedrijfswagen. Maak kennis met de elektricien achter Vrijstroom."
+    "description": "Johan brengt de zorg van een goede installatie thuis naar de camper, de bus en de bedrijfswagen. Maak kennis met de elektricien achter Vrijstroom, met werkplaats in Lokeren."
   },
   "hero": {
     "title": "Veilig zoals thuis, vrij zoals onderweg.",
@@ -14,10 +14,12 @@
     "text": "Wij geven je de vrijheid om te staan waar je wil, met een energiesysteem op maat van hoe jij reist of werkt, gebouwd met de zorg van een ervaren elektricien en zo uitgelegd dat je er zelf mee overweg kan."
   },
   "founder": {
-    "title": "De elektricien achter Vrijstroom",
+    "title": "Johan, de elektricien achter Vrijstroom",
     "name": "",
     "paragraphs": [
-      "Als ervaren elektricien weet hij hoe een goede installatie thuis eruitziet: juiste kabeldiktes, goede beveiliging, nette afwerking. Die zorg brengt hij naar de camper, de bus en de bedrijfswagen."
+      "Johan komt uit de elektrotechniek. Hij werkt in een voertuig even zorgvuldig als in een woning: juiste kabeldiktes, goede beveiliging en nette afwerking.",
+      "Zijn batterijen bouwt hij zelf, op maat van de ruimte die je hebt. En hij legt alles uit in gewone taal, zodat je onderweg weet wat je kan verwachten.",
+      "Je vindt hem in de werkplaats in Lokeren, of bij jou ter plaatse in Antwerpen, Oost- en West-Vlaanderen."
     ],
     "quote": "",
     "image": "werkplaats-elektricien",
@@ -35,7 +37,7 @@
   },
   "brands": {
     "_uitleg": "Zet enabled op true zodra merklogo's en certificaten bevestigd zijn. Logo's horen in public/brand/partners.",
-    "enabled": false,
+    "enabled": true,
     "title": "Merken en certificaten",
     "items": [
       {
@@ -47,6 +49,7 @@
   "faq": [
     "uitleg",
     "merken",
-    "doorlooptijd"
+    "garantie",
+    "taal"
   ]
 }

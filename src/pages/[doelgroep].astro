@@ -8,6 +8,8 @@ import FaqSection from '../components/FaqSection.astro';
 import Icon from '../components/Icon.astro';
 import Text from '../components/Text.astro';
 import diensten from '../content/diensten.json';
+import site from '../config/site.json';
+const wa = (msg: string) => `https://wa.me/${site.whatsapp.number.replace(/\D/g, '')}?text=${encodeURIComponent(msg)}`;
 
 export function getStaticPaths() {
   const files = import.meta.glob('../content/doelgroepen/*.json', { eager: true, import: 'default' });
@@ -49,6 +51,11 @@ const services = c.services.ids.map((id: string) => {
                 <p class="segment__label">Wat wij doen</p>
                 <p>{s.solution}</p>
               </div>
+              {s.action && (
+                <a class="btn btn--ghost segment__action" href={wa(s.action.whatsapp)} target="_blank" rel="noopener">
+                  <Icon name={s.action.icon} size={20} />{s.action.label}
+                </a>
+              )}
             </div>
           </article>
         ))}
@@ -117,6 +124,7 @@ const services = c.services.ids.map((id: string) => {
   .segment__solution { padding: 20px 22px; border-radius: var(--radius-sm); background: var(--dark); color: var(--sand); }
   .segment__solution p:not(.segment__label) { color: var(--muted-on-dark); }
   .segment__solution .segment__label { color: var(--green); }
+  .segment__action { justify-self: start; margin-top: 4px; }
   @media (max-width: 859px) { .segment { grid-template-columns: 1fr; } }
 
   /* Benefits */

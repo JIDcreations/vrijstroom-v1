@@ -55,8 +55,9 @@ const wa = `https://wa.me/${site.whatsapp.number.replace(/\D/g, '')}?text=${enco
           {site.contact.phone && <li><Icon name="phone" size={22} /><a href={`tel:${site.contact.phone.replace(/[^\d+]/g, '')}`}>{site.contact.phone}</a></li>}
           {site.contact.email && <li><Icon name="envelope-simple" size={22} /><a href={`mailto:${site.contact.email}`}>{site.contact.email}</a></li>}
           {(site.contact.address || site.contact.region) && (
-            <li><Icon name="map-pin" size={22} /><span>{site.contact.address}{site.contact.address && site.contact.region && <br />}{site.contact.region && `Regio: ${site.contact.region}`}</span></li>
+            <li><Icon name="map-pin" size={22} /><span>{site.contact.address}{site.contact.address && site.contact.region && <br />}{site.contact.region}</span></li>
           )}
+          {site.contact.languages && <li><Icon name="translate" size={22} /><span>We spreken {site.contact.languages}</span></li>}
           {c.direct.hours && <li><Icon name="clock" size={22} /><span>{c.direct.hours}</span></li>}
         </ul>
       </aside>

@@ -1,0 +1,45 @@
+---
+// "Het werkt. Tot het niet meer werkt." Symptom -> cause -> fix, in the voice of an electrician.
+import Icon from './Icon.astro';
+interface Props { title: string; intro: string; items: { symptom: string; cause: string; fix: string }[] }
+const { title, intro, items } = Astro.props;
+---
+<section class="problems on-sand" aria-labelledby="problems-title">
+  <div class="container">
+    <div class="problems__head" data-reveal>
+      <h2 id="problems-title">{title}</h2>
+      <p>{intro}</p>
+    </div>
+    <ol class="problems__list">
+      {items.map((p) => (
+        <li class="problem" data-reveal>
+          <p class="problem__symptom">“{p.symptom}”</p>
+          <div class="problem__cause">
+            <span class="problem__label">Oorzaak</span>
+            <p>{p.cause}</p>
+          </div>
+          <div class="problem__fix">
+            <span class="problem__label"><Icon name="check-circle" size={18} />Zo lossen we het op</span>
+            <p>{p.fix}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .problems { padding-block: var(--section); background: var(--sand-2); }
+  .problems__head { display: grid; gap: 16px; max-width: 720px; }
+  .problems h2 { font-size: clamp(1.75rem, 3.6vw, 3rem); }
+  .problems__head p { color: var(--muted); font-size: 1.125rem; max-width: 56ch; }
+  .problems__list { list-style: none; margin: clamp(32px, 4vw, 56px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .problem { display: grid; grid-template-rows: auto auto 1fr; gap: 16px; padding: clamp(24px, 3vw, 32px); border-radius: var(--radius); background: var(--sand); }
+  .problem__symptom { font-family: var(--font-display); font-size: 1.25rem; line-height: 1.25; letter-spacing: -0.01em; }
+  .problem__label { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; font-size: .875rem; margin-bottom: 4px; }
+  .problem__cause p { color: var(--muted); }
+  .problem__fix { align-self: end; padding: 16px 18px; border-radius: var(--radius-sm); background: var(--dark); color: var(--sand); }
+  .problem__fix .problem__label { color: var(--green); }
+  .problem__fix p { color: var(--muted-on-dark); font-size: .9375rem; }
+  @media (max-width: 959px) { .problems__list { grid-template-columns: 1fr; } }
+</style>

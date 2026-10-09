@@ -1,0 +1,19 @@
+---
+// Short facts right under the hero. Only confirmed facts: src/content/home.json -> trust
+import Icon from './Icon.astro';
+import home from '../content/home.json';
+---
+<section class="trust" aria-label="Waarom Vrijstroom">
+  <ul class="container trust__list">
+    {home.trust.map((t) => <li><Icon name={t.icon} size={22} /><span>{t.text}</span></li>)}
+  </ul>
+</section>
+
+<style>
+  .trust { background: var(--dark); color: var(--sand); border-top: 1px solid var(--line-on-dark); }
+  .trust__list { list-style: none; margin-block: 0; display: grid; grid-template-columns: repeat(4, auto); justify-content: space-between; gap: 12px 32px; padding-block: 22px; }
+  .trust li { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: .9375rem; }
+  .trust li :global(svg) { flex: none; color: var(--green); }
+  @media (max-width: 1023px) { .trust__list { grid-template-columns: 1fr 1fr; justify-content: stretch; } }
+  @media (max-width: 480px) { .trust__list { grid-template-columns: 1fr; gap: 12px; } }
+</style>

@@ -17,8 +17,8 @@
         "id": "lithiumbatterij",
         "icon": "battery-charging",
         "title": "Lithiumbatterij op maat",
-        "benefit": "Meer bruikbare stroom, in minder plaats en minder gewicht.",
-        "text": "We bouwen je batterij zelf, met EVE A+-cellen. Zo krijg je precies de capaciteit die past bij je gebruik en bij de plek die je hebt. Capaciteit drukken we uit in Ah (ampère-uur): hoe meer Ah, hoe langer je stroom hebt. Een BMS (Battery Management System) bewaakt elke cel.",
+        "benefit": "Meer bruikbare stroom, in de plek die je hebt. Met 2 jaar garantie.",
+        "text": "We bouwen je batterij zelf, met EVE A+-cellen, op maat van de ruimte die je hebt: onder een zitbank, rond een wielkast of tussen je rekken. Capaciteit drukken we uit in Ah (ampère-uur): hoe meer Ah, hoe langer je stroom hebt. Een BMS (Battery Management System) bewaakt elke cel.",
         "price": "",
         "doubt": "batterij-veilig"
       },
@@ -27,7 +27,7 @@
         "icon": "battery-plus",
         "title": "Lithium-upgrade",
         "benefit": "Je oude loodaccu eruit, een lichtere batterij die je bijna helemaal kan gebruiken.",
-        "text": "Een loodaccu mag je maar voor een deel ontladen. Een lithiumbatterij (LiFePO4) kan je bijna volledig gebruiken, laadt sneller op en weegt minder. We kijken meteen of je laders en bekabeling erbij passen.",
+        "text": "Een loodaccu mag je maar voor een deel ontladen. Een lithiumbatterij (LiFePO4) kan je bijna volledig gebruiken, laadt sneller op en weegt minder. Je lader, DC/DC-lader en zonneregelaar moeten mee: we bekijken alles als één systeem. Kies je een standaardbatterij, dan heeft die de nodige certificaten (IEC 62619, UN38.3, CE).",
         "price": ""
       },
       {
@@ -51,7 +51,7 @@
         "icon": "plugs-connected",
         "title": "Complete off-grid systemen",
         "benefit": "Batterij, laden en beveiliging als één geheel, zonder verrassingen.",
-        "text": "Batterij, zonnepanelen, omvormer, zekeringen en een DC/DC-lader, ontworpen als één systeem. Die DC/DC-lader laadt je batterij op terwijl je rijdt, zonder je startaccu leeg te trekken. We werken met Victron.",
+        "text": "Batterij, zonnepanelen, omvormer, zekeringen en een DC/DC-lader, ontworpen als één systeem. Die DC/DC-lader laadt je batterij op terwijl je rijdt, zonder je startaccu leeg te trekken. We zijn Victron Certified Installer, en je systeem kan je later nog uitbreiden.",
         "price": ""
       },
       {
@@ -59,7 +59,7 @@
         "icon": "fan",
         "title": "Ventilatie en airco",
         "benefit": "Fris slapen en werken, ook midden in de zomer.",
-        "text": "Dakventilatie en airco, aangesloten op een systeem dat het verbruik aankan. Een airco vraagt veel stroom. We rekenen eerlijk uit wat haalbaar is met jouw batterij.",
+        "text": "Dakventilatie van MaxxFan en airco van Truma, aangesloten op een systeem dat het verbruik aankan. Een airco vraagt veel stroom. We rekenen eerlijk uit wat haalbaar is met jouw batterij.",
         "price": ""
       },
       {
@@ -67,7 +67,7 @@
         "icon": "bicycle",
         "title": "Fietsdragers",
         "benefit": "Je fietsen mee, stevig en veilig vast.",
-        "text": "We monteren je fietsdrager netjes op je camper of van.",
+        "text": "We monteren fietsdragers van VanNBike netjes en stevig op je camper of van.",
         "price": ""
       },
       {
@@ -75,7 +75,7 @@
         "icon": "truck",
         "title": "Systemen voor bedrijfswagens",
         "benefit": "Stroom voor je werk, zonder aggregaat.",
-        "text": "Voor servicebussen, food trucks en paardentrailers of -camions. We bouwen het systeem rond je gereedschap en toestellen.",
+        "text": "Voor servicebussen, mobiele werkplaatsen, technische installaties, opslagmodules, displayvoertuigen, food trucks en paardentrailers. We bouwen het systeem rond je gereedschap en toestellen.",
         "price": "Prijs op maat",
         "link": {
           "label": "Meer over bedrijfswagens",
@@ -122,7 +122,7 @@
         "title": "Gratis",
         "icon": "hand-coins",
         "items": [
-          "De kennismaking",
+          "Het ontwerpgesprek",
           "Je offerte"
         ]
       },
@@ -131,14 +131,14 @@
         "icon": "receipt",
         "items": [
           "Elke installatie is op maat, dus ook de prijs",
-          "Je offerte toont wat je precies betaalt, voor je beslist"
+          "Een duidelijke offerte zonder verrassingen, voor je beslist"
         ]
       },
       {
         "title": "Wat wordt verrekend",
         "icon": "car-profile",
         "items": [
-          "Eventuele verplaatsing, vooraf afgesproken in je offerte"
+          "Eventuele verplaatsing als we ter plaatse komen, vooraf afgesproken in je offerte"
         ]
       }
     ]
@@ -147,33 +147,71 @@
     "title": "Zo werken we",
     "steps": [
       {
-        "title": "Gesprek",
-        "text": "We bekijken samen hoe je reist of werkt, welke toestellen je gebruikt en wat er nu in je wagen zit. Gratis."
+        "title": "Ontwerpgesprek",
+        "text": "We bespreken hoe je reist of werkt, welke toestellen je gebruikt en wat je van je systeem verwacht. Gratis."
       },
       {
-        "title": "Offerte",
-        "text": "Je krijgt een duidelijke offerte: wat we inbouwen en waarom. Ook gratis."
+        "title": "Ontwerp en offerte",
+        "text": "Je krijgt een voorstel op maat, met een duidelijke offerte zonder verrassingen. Ook gratis."
       },
       {
         "title": "Inbouw",
-        "text": "We bouwen alles in met de zorg van een installatie thuis: juiste kabeldiktes, goede beveiliging, nette afwerking."
+        "text": "We bouwen je systeem veilig en netjes in, in de werkplaats in Lokeren of bij jou ter plaatse."
       },
       {
-        "title": "Oplevering",
-        "text": "We leggen in gewone taal uit hoe alles werkt, zodat je er zelf mee overweg kan."
+        "title": "Oplevering met uitleg",
+        "text": "We overlopen samen hoe alles werkt, zodat je zorgeloos vertrekt."
       }
     ],
+    "note": "Ter plaatse komen we in Antwerpen, Oost- en West-Vlaanderen. Woon je verder, dan ben je welkom in de werkplaats. Niet alles kan ter plaatse: zonnepanelen plaatsen hangt bijvoorbeeld af van het weer.",
     "doubt": "garantie-camper"
   },
   "warranty": {
-    "title": "Garantie",
-    "text": "Op je batterij krijg je [TE BEVESTIGEN: aantal] jaar garantie, op de installatie [TE BEVESTIGEN: aantal] jaar. [TE BEVESTIGEN: voorwaarden garantie]",
-    "enabled": false
+    "enabled": true,
+    "title": "Garantie en certificaten",
+    "items": [
+      {
+        "icon": "shield-check",
+        "title": "2 jaar garantie",
+        "text": "op elke batterij die we op maat bouwen."
+      },
+      {
+        "icon": "seal-check",
+        "title": "Victron Certified Installer",
+        "text": "erkend door Victron Energy voor de installatie van hun systemen."
+      },
+      {
+        "icon": "certificate",
+        "title": "Gecertificeerde standaardbatterijen",
+        "text": "IEC 62619, UN38.3, CE (EMC, RoHS, Battery) en ECE R10."
+      }
+    ]
   },
   "faq": [
     "hoeveel-stroom",
     "prijs",
     "doorlooptijd",
-    "zelfbouwer"
-  ]
+    "waar"
+  ],
+  "problems": {
+    "title": "Het werkt. Tot het niet meer werkt.",
+    "intro": "Veel installaties zien er van buiten in orde uit. Dit loopt het vaakst mis, en zo pakken we het aan.",
+    "items": [
+      {
+        "symptom": "Mijn batterij laadt veel trager dan beloofd.",
+        "cause": "Lader, DC/DC-lader of zonneregelaar staat niet goed afgesteld op lithium.",
+        "fix": "We bekijken het hele laadcircuit als één systeem, zodat je batterij volledig laadt en niet sneller slijt."
+      },
+      {
+        "symptom": "Alles werkt, maar de kabels worden warm.",
+        "cause": "Te dunne kabels, of lijnen zonder zekering.",
+        "fix": "Kabeldiktes berekend op jouw installatie en elke lijn afgezekerd, zoals in een woning."
+      },
+      {
+        "symptom": "Ik weet niet wat het gaat kosten, of hoe lang het duurt.",
+        "cause": "Bij een dealer wacht je vaak lang, zonder duidelijke prijs.",
+        "fix": "Na het ontwerpgesprek krijg je een duidelijke offerte zonder verrassingen. En we houden de wachttijd bewust kort."
+      }
+    ]
+  }
 }

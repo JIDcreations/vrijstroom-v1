@@ -8,6 +8,7 @@ import WhyList from '../components/WhyList.astro';
 import FaqSection from '../components/FaqSection.astro';
 import Spark from '../components/Spark.astro';
 import Text from '../components/Text.astro';
+import BrandStrip from '../components/BrandStrip.astro';
 import c from '../content/over.json';
 
 type Project = { title: string; start: string; approach: string; result: string };
@@ -57,16 +58,7 @@ const projects = c.projects.items as Project[];
     </div>
   </section>
 
-  {c.brands.enabled && (
-    <section class="brands on-sand" aria-labelledby="brands-title">
-      <div class="container">
-        <h2 id="brands-title">{c.brands.title}</h2>
-        <ul class="brands__list">
-          {c.brands.items.map((b) => <li><img src={b.logo} alt={b.name} height="48" loading="lazy" /></li>)}
-        </ul>
-      </div>
-    </section>
-  )}
+  {c.brands.enabled && <BrandStrip tone="sand-2" />}
 
   <FaqSection ids={c.faq} />
 </Base>
