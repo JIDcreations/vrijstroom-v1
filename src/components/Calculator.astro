@@ -1,149 +1,247 @@
 ---
 // "Hoeveel stroom heb ik nodig?" Small, indicative calculator. All numbers live in src/content/calculator.json.
+// One panel: choices on the left (sand), the result on the right (dark), so cause and effect sit side by side.
 import calc from '../content/calculator.json';
 import site from '../config/site.json';
 import Icon from './Icon.astro';
 
-interface Props { tone?: 'dark' | 'sand'; id?: string }
-const { tone = 'dark', id = 'rekentool' } = Astro.props;
+interface Props { id?: string }
+const { id = 'rekentool' } = Astro.props;
 const settings = {
   voltage: calc.batteryVoltage,
   usable: calc.usableShare,
   roundTo: calc.roundTo,
+  gaugeMax: calc.gaugeMax,
   devices: Object.fromEntries(calc.devices.map((d) => [d.id, d.wh])),
 };
+const days = Array.from({ length: calc.daysMax - calc.daysMin + 1 }, (_, i) => calc.daysMin + i);
+const fmt = (n: number) => n.toLocaleString('nl-BE');
 ---
-<section class:list={['calc', `calc--${tone}`, tone === 'dark' ? 'on-dark' : 'on-sand']} id={id} aria-labelledby={`${id}-title`}>
-  <div class="container calc__grid" data-calc={JSON.stringify(settings)}>
-    <div class="calc__input">
+<section class="calc on-dark" id={id} aria-labelledby={`${id}-title`}>
+  <div class="container">
+    <div class="calc__head">
       <h2 id={`${id}-title`}>{calc.title}</h2>
-      <p class="calc__intro">{calc.intro}</p>
-
-      <fieldset class="calc__devices">
-        <legend class="sr-only">Welke toestellen gebruik je?</legend>
-        {calc.devices.map((d) => (
-          <label class="chip">
-            <input type="checkbox" name="device" value={d.id} checked={d.default} />
-            <span class="chip__box">
-              <Icon name={d.icon} size={24} />
-              <span class="chip__text">
-                <span class="chip__label">{d.label}</span>
-                <span class="chip__detail">{d.detail}</span>
-              </span>
-              <Icon name="check" size={18} class="chip__check" />
-            </span>
-          </label>
-        ))}
-      </fieldset>
-
-      <div class="calc__days">
-        <label for={`${id}-days`}>{calc.daysLabel}</label>
-        <div class="calc__range">
-          <input type="range" id={`${id}-days`} name="days" min={calc.daysMin} max={calc.daysMax} value={calc.daysDefault} step="1" />
-          <output for={`${id}-days`} class="calc__days-out">{calc.daysDefault} dagen</output>
-        </div>
-      </div>
+      <p>{calc.intro}</p>
     </div>
 
-    <div class="calc__result" aria-live="polite">
-      <p class="calc__result-label">Indicatieve batterij</p>
-      <p class="calc__big"><span data-out="ah">…</span> <span class="calc__unit">Ah</span></p>
-      <dl class="calc__facts">
-        <div><dt>Verbruik per dag</dt><dd data-out="daily">…</dd></div>
-        <div><dt>Totaal voor <span data-out="days">…</span></dt><dd data-out="total">…</dd></div>
-      </dl>
-      <p class="calc__empty" data-out="empty" hidden>Kies minstens één toestel.</p>
-      <p class="calc__note">{calc.note}</p>
-      <a class="btn btn--primary calc__cta" href={site.cta.href}>{site.cta.label}</a>
+    <div class="calc__panel" data-calc={JSON.stringify(settings)}>
+      <div class="calc__input on-sand">
+        <fieldset class="calc__step">
+          <legend><span class="calc__num" aria-hidden="true">1</span>{calc.devicesLabel}</legend>
+          <div class="calc__pills">
+            {calc.devices.map((d) => (
+              <label class="pill" title={d.detail}>
+                <input type="checkbox" name="device" value={d.id} checked={d.default} />
+                <span class="pill__box">
+                  <Icon name={d.icon} size={20} />
+                  <span>{d.label}</span>
+                  <Icon name="check" size={16} class="pill__check" />
+                </span>
+              </label>
+            ))}
+          </div>
+        </fieldset>
+
+        <fieldset class="calc__step">
+          <legend><span class="calc__num" aria-hidden="true">2</span>{calc.daysLabel}</legend>
+          <div class="calc__days">
+            {days.map((n) => (
+              <label class="day">
+                <input type="radio" name="days" value={n} checked={n === calc.daysDefault} />
+                <span class="day__box">{n}<span class="sr-only"> {n === 1 ? 'dag' : 'dagen'}</span></span>
+              </label>
+            ))}
+            <span class="calc__days-unit" aria-hidden="true">dagen</span>
+          </div>
+        </fieldset>
+
+        <details class="calc__basis">
+          <summary>Waarmee rekenen we?<Icon name="caret-down" size={18} /></summary>
+          <p>{calc.basisIntro}</p>
+          <ul>
+            {calc.devices.map((d) => <li><span>{d.label}, {d.detail}</span><span>{fmt(d.wh)} Wh</span></li>)}
+          </ul>
+        </details>
+
+        <!-- Compact live result for small screens, so you see the effect of each tap -->
+        <p class="calc__mini" aria-hidden="true">
+          <span>Batterij</span> <strong data-out="ah-mini">…</strong>
+        </p>
+      </div>
+
+      <div class="calc__result" aria-live="polite" aria-atomic="true">
+        <p class="calc__result-label">{calc.resultLabel}</p>
+        <p class="calc__big"><span data-out="ah">…</span><span class="calc__unit">Ah</span></p>
+        <div class="gauge" aria-hidden="true">
+          <div class="gauge__body">
+            {Array.from({ length: 10 }, () => <span class="gauge__cell"></span>)}
+          </div>
+          <span class="gauge__tip"></span>
+        </div>
+        <dl class="calc__facts">
+          <div><dt>Verbruik per dag</dt><dd data-out="daily">…</dd></div>
+          <div><dt>Totaal voor <span data-out="days">…</span></dt><dd data-out="total">…</dd></div>
+        </dl>
+        <p class="calc__empty" data-out="empty" hidden>Kies minstens één toestel.</p>
+        <p class="calc__note">{calc.note}</p>
+        <a class="btn btn--primary btn--lg calc__cta" href={site.cta.href}>{site.cta.label}</a>
+      </div>
     </div>
   </div>
 </section>
 
 <script>
   const fmt = (n: number, d = 0) => n.toLocaleString('nl-BE', { maximumFractionDigits: d, minimumFractionDigits: d });
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   document.querySelectorAll<HTMLElement>('[data-calc]').forEach((root) => {
     const s = JSON.parse(root.dataset.calc!);
-    const days = root.querySelector<HTMLInputElement>('input[name="days"]')!;
     const out = (k: string) => root.querySelector<HTMLElement>(`[data-out="${k}"]`)!;
-    const daysOut = root.querySelector<HTMLOutputElement>('.calc__days-out')!;
+    const cells = [...root.querySelectorAll<HTMLElement>('.gauge__cell')];
     const dayLabel = (n: number) => `${n} ${n === 1 ? 'dag' : 'dagen'}`;
+    let shown = 0;
+    let raf = 0;
+
+    // Count the big number to its new value: the change itself is the feedback.
+    const countTo = (target: number) => {
+      cancelAnimationFrame(raf);
+      const label = (v: number) => (target ? `± ${fmt(v)}` : '0');
+      if (reduce || shown === target) { shown = target; out('ah').textContent = label(target); return; }
+      const from = shown, start = performance.now(), dur = 450;
+      const step = (t: number) => {
+        const k = Math.min(1, (t - start) / dur);
+        const v = Math.round((from + (target - from) * (1 - Math.pow(1 - k, 3))) / 10) * 10;
+        out('ah').textContent = label(k === 1 ? target : v);
+        if (k < 1) raf = requestAnimationFrame(step); else shown = target;
+      };
+      raf = requestAnimationFrame(step);
+    };
 
     const update = () => {
       const chosen = [...root.querySelectorAll<HTMLInputElement>('input[name="device"]:checked')];
       const daily = chosen.reduce((sum, el) => sum + (s.devices[el.value] ?? 0), 0);
-      const n = Number(days.value);
+      const n = Number(root.querySelector<HTMLInputElement>('input[name="days"]:checked')?.value ?? 1);
       const total = daily * n;
-      const ah = total / (s.voltage * s.usable);
-      const rounded = daily ? Math.max(s.roundTo, Math.ceil(ah / s.roundTo) * s.roundTo) : 0;
-      daysOut.textContent = dayLabel(n);
-      out('ah').textContent = daily ? `± ${fmt(rounded)}` : '0';
+      const ah = daily ? Math.max(s.roundTo, Math.ceil(total / (s.voltage * s.usable) / s.roundTo) * s.roundTo) : 0;
+
+      countTo(ah);
+      out('ah-mini').textContent = daily ? `± ${fmt(ah)} Ah` : '0 Ah';
       out('daily').textContent = `${fmt(daily)} Wh`;
       out('days').textContent = dayLabel(n);
       out('total').textContent = total >= 1000 ? `${fmt(total / 1000, 1)} kWh` : `${fmt(total)} Wh`;
       out('empty').hidden = daily > 0;
-      days.style.setProperty('--fill', `${((n - Number(days.min)) / (Number(days.max) - Number(days.min))) * 100}%`);
+      const filled = ah ? Math.max(1, Math.min(cells.length, Math.round((ah / s.gaugeMax) * cells.length))) : 0;
+      cells.forEach((c, i) => c.classList.toggle('is-on', i < filled));
+      root.classList.toggle('is-over', ah > s.gaugeMax);
     };
-    root.addEventListener('input', update);
+    root.addEventListener('change', update);
     update();
   });
 </script>
 
 <style>
-  .calc { padding-block: var(--section); scroll-margin-top: calc(96px - var(--section)); }
-  .calc--dark { background: var(--dark); color: var(--sand); --chip-bg: var(--dark-80); --chip-line: var(--line-on-dark); --chip-muted: var(--muted-on-dark); }
-  .calc--sand { background: var(--sand-2); color: var(--dark); --chip-bg: var(--sand); --chip-line: var(--line); --chip-muted: var(--muted); }
-  .calc__grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: start; }
-  .calc h2 { font-size: clamp(1.75rem, 3.6vw, 3rem); max-width: 16ch; }
-  .calc__intro { margin-top: 16px; max-width: 52ch; color: var(--chip-muted); font-size: 1.125rem; }
+  .calc { padding-block: var(--section); background: var(--dark); color: var(--sand); scroll-margin-top: calc(96px - var(--section)); }
+  .calc__head { display: grid; gap: 16px; max-width: 760px; }
+  .calc h2 { font-size: clamp(1.75rem, 3.6vw, 3rem); }
+  .calc__head p { color: var(--muted-on-dark); font-size: 1.125rem; max-width: 52ch; }
 
-  .calc__devices { border: 0; padding: 0; margin: 36px 0 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 10px; }
-  .chip { position: relative; display: block; cursor: pointer; }
-  .chip input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
-  .chip__box {
-    display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 12px;
-    min-height: 64px; padding: 12px 14px; border-radius: var(--radius-sm);
-    background: var(--chip-bg); border: 1.5px solid var(--chip-line);
-    transition: background-color .2s var(--ease), border-color .2s var(--ease), transform .15s var(--ease);
+  .calc__panel {
+    display: grid; grid-template-columns: 1.45fr 1fr;
+    margin-top: clamp(32px, 4vw, 56px);
+    border-radius: 28px; overflow: clip; background: var(--sand);
   }
-  .chip:active .chip__box { transform: scale(.98); }
-  .chip__text { display: grid; line-height: 1.25; }
-  .chip__label { font-weight: 600; }
-  .chip__detail { font-size: .875rem; color: var(--chip-muted); }
-  .chip__box :global(.chip__check) { opacity: 0; transition: opacity .2s var(--ease); }
-  .chip input:checked + .chip__box { border-color: var(--green); box-shadow: inset 0 0 0 1px var(--green); }
-  .chip input:checked + .chip__box :global(.chip__check) { opacity: 1; color: var(--green); }
-  .calc--sand .chip input:checked + .chip__box { border-color: var(--dark); box-shadow: inset 0 0 0 1px var(--dark); }
-  .calc--sand .chip input:checked + .chip__box :global(.chip__check) { color: var(--dark); }
-  .chip input:focus-visible + .chip__box { outline: 3px solid var(--green); outline-offset: 2px; }
-  .calc--sand .chip input:focus-visible + .chip__box { outline-color: var(--dark); }
 
-  .calc__days { margin-top: 32px; display: grid; gap: 10px; }
-  .calc__days label { font-weight: 600; }
-  .calc__range { display: flex; align-items: center; gap: 16px; }
-  .calc__range input { flex: 1; height: 44px; accent-color: var(--green); cursor: pointer; }
-  .calc--sand .calc__range input { accent-color: var(--dark); }
-  .calc__days-out { min-width: 5.5em; font-family: var(--font-display); font-size: 1.125rem; }
+  /* Inputs */
+  .calc__input { position: relative; display: grid; gap: 36px; align-content: start; padding: clamp(24px, 4vw, 48px); color: var(--dark); }
+  .calc__step { border: 0; margin: 0; padding: 0; min-width: 0; }
+  .calc__step legend { display: flex; align-items: center; gap: 12px; padding: 0; margin-bottom: 18px; font-family: var(--font-display); font-size: 1.125rem; letter-spacing: -0.01em; }
+  .calc__num { flex: none; display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--dark); color: var(--green); font: 600 .875rem/1 var(--font-body); }
 
-  .calc__result {
-    position: sticky; top: 104px; display: grid; gap: 16px; align-content: start;
-    padding: clamp(28px, 3vw, 40px); border-radius: var(--radius);
-    background: var(--sand); color: var(--dark);
+  .calc__pills { display: flex; flex-wrap: wrap; gap: 8px; }
+  .pill, .day { position: relative; cursor: pointer; }
+  .pill input, .day input { position: absolute; inset: 0; opacity: 0; margin: 0; cursor: pointer; }
+  .pill__box {
+    display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 8px 16px 8px 14px;
+    border-radius: var(--pill); border: 1.5px solid rgb(0 46 43 / .22); background: transparent;
+    font-weight: 600; font-size: .9375rem; white-space: nowrap;
+    transition: background-color .2s var(--ease), color .2s var(--ease), border-color .2s var(--ease), transform .15s var(--ease);
   }
-  .calc__result-label { font-weight: 600; }
-  .calc__big { font-family: var(--font-display); font-size: clamp(3rem, 6vw, 4.5rem); line-height: 1; letter-spacing: -0.03em; }
-  .calc__unit { font-size: .45em; letter-spacing: 0; }
-  .calc__facts { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 0; padding-top: 16px; border-top: 1px solid var(--line); }
-  .calc__facts dt { font-size: .875rem; color: var(--muted); }
-  .calc__facts dd { margin: 0; font-weight: 600; font-size: 1.125rem; }
-  .calc__note { font-size: .9375rem; color: var(--muted); }
-  .calc__empty { font-weight: 600; }
-  .calc__cta { justify-self: start; border-color: var(--dark); }
+  .pill:hover .pill__box { border-color: var(--dark); }
+  .pill:active .pill__box, .day:active .day__box { transform: scale(.97); }
+  .pill__box :global(.pill__check) { width: 0; opacity: 0; margin-left: -8px; transition: width .2s var(--ease), opacity .2s var(--ease), margin .2s var(--ease); }
+  .pill input:checked + .pill__box { background: var(--dark); border-color: var(--dark); color: var(--sand); }
+  .pill input:checked + .pill__box :global(svg:first-child) { color: var(--green); }
+  .pill input:checked + .pill__box :global(.pill__check) { width: 16px; opacity: 1; margin-left: 0; color: var(--green); }
+  .pill input:focus-visible + .pill__box, .day input:focus-visible + .day__box { outline: 3px solid var(--dark); outline-offset: 2px; }
+
+  .calc__days { display: grid; grid-template-columns: repeat(7, minmax(0, 52px)) auto; align-items: center; gap: 8px; }
+  .day__box {
+    display: grid; place-items: center; width: 100%; height: 52px; border-radius: var(--pill);
+    border: 1.5px solid rgb(0 46 43 / .22); font-family: var(--font-display); font-size: 1.0625rem;
+    transition: background-color .2s var(--ease), color .2s var(--ease), border-color .2s var(--ease), transform .15s var(--ease);
+  }
+  .day:hover .day__box { border-color: var(--dark); }
+  .day input:checked + .day__box { background: var(--dark); border-color: var(--dark); color: var(--green); }
+  .calc__days-unit { margin-left: 6px; font-weight: 600; color: var(--muted); }
+
+  .calc__basis { border-top: 1px solid var(--line); padding-top: 16px; }
+  .calc__basis summary { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; font-weight: 600; cursor: pointer; list-style: none; }
+  .calc__basis summary::-webkit-details-marker { display: none; }
+  .calc__basis summary :global(svg) { transition: transform .25s var(--ease); }
+  .calc__basis[open] summary :global(svg) { transform: rotate(180deg); }
+  .calc__basis p { margin: 4px 0 12px; color: var(--muted); font-size: .9375rem; }
+  .calc__basis ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 6px 32px; font-size: .9375rem; }
+  .calc__basis li { display: flex; justify-content: space-between; gap: 12px; color: var(--muted); }
+  .calc__basis li span:last-child { color: var(--dark); font-weight: 600; white-space: nowrap; }
+
+  .calc__mini { display: none; }
+
+  /* Result */
+  .calc__result { display: grid; gap: 20px; align-content: start; padding: clamp(24px, 4vw, 48px); background: var(--dark-80); color: var(--sand); }
+  .calc__result-label { font-weight: 600; color: var(--muted-on-dark); }
+  .calc__big { display: flex; align-items: baseline; gap: 10px; font-family: var(--font-display); font-size: clamp(3.25rem, 6vw, 5rem); line-height: 1; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+  .calc__unit { font-size: .4em; letter-spacing: 0; color: var(--green); }
+
+  .gauge { display: flex; align-items: center; gap: 4px; }
+  .gauge__body { flex: 1; display: grid; grid-template-columns: repeat(10, 1fr); gap: 4px; padding: 5px; border: 2px solid rgb(255 249 231 / .35); border-radius: 10px; }
+  .gauge__cell { height: 22px; border-radius: 3px; background: rgb(255 249 231 / .08); transition: background-color .3s var(--ease); }
+  .gauge__cell.is-on { background: var(--green); }
+  .gauge__tip { width: 6px; height: 16px; border-radius: 0 3px 3px 0; background: rgb(255 249 231 / .35); }
+  .is-over .gauge__tip { background: var(--green); }
+  .gauge__cell:nth-child(2) { transition-delay: .02s; } .gauge__cell:nth-child(3) { transition-delay: .04s; }
+  .gauge__cell:nth-child(4) { transition-delay: .06s; } .gauge__cell:nth-child(5) { transition-delay: .08s; }
+  .gauge__cell:nth-child(6) { transition-delay: .1s; } .gauge__cell:nth-child(7) { transition-delay: .12s; }
+  .gauge__cell:nth-child(8) { transition-delay: .14s; } .gauge__cell:nth-child(9) { transition-delay: .16s; }
+  .gauge__cell:nth-child(10) { transition-delay: .18s; }
+
+  .calc__facts { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 0; padding-top: 20px; border-top: 1px solid var(--line-on-dark); }
+  .calc__facts dt { font-size: .875rem; color: var(--muted-on-dark); }
+  .calc__facts dd { margin: 4px 0 0; font-weight: 600; font-size: 1.1875rem; }
+  .calc__empty { font-weight: 600; color: var(--green); }
+  .calc__note { font-size: .9375rem; color: var(--muted-on-dark); }
+  .calc__cta { justify-self: start; margin-top: 4px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .gauge__cell { transition: none; }
+  }
 
   @media (max-width: 959px) {
-    .calc__grid { grid-template-columns: 1fr; }
-    .calc__result { position: static; }
+    .calc__panel { grid-template-columns: 1fr; }
+    .calc__mini {
+      position: sticky; bottom: 16px; z-index: 2;
+      display: inline-flex; align-items: center; gap: 10px; justify-self: start;
+      margin-top: -12px; padding: 10px 18px; border-radius: var(--pill);
+      background: var(--dark); color: var(--sand); box-shadow: 0 8px 24px rgb(0 46 43 / .3);
+    }
+    .calc__mini span { color: var(--muted-on-dark); font-size: .875rem; font-weight: 600; }
+    .calc__mini strong { font-family: var(--font-display); font-weight: 600; color: var(--green); }
   }
-  @media (max-width: 480px) {
-    .calc__devices { grid-template-columns: 1fr; }
+  @media (max-width: 560px) {
+    .calc__panel { border-radius: var(--radius); margin-inline: calc(var(--gutter) * -0.5); }
+    .calc__basis ul { grid-template-columns: 1fr; }
+    .calc__input { padding: 24px 20px; }
+    .calc__days { grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px; }
+    .day__box { height: 48px; }
+    .calc__days-unit { display: none; }
   }
 </style>

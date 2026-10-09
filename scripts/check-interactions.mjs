@@ -8,11 +8,11 @@ p.on('pageerror', (e) => errors.push(e.message));
 p.on('console', (m) => m.type() === 'error' && errors.push(m.text()));
 
 await p.goto(base + '/');
-const ah = () => p.textContent('[data-out="ah"]');
+const ah = async () => { await p.waitForTimeout(600); return p.textContent('[data-out="ah"]'); };
 console.log('rekentool start:', await ah());
-await p.click('label.chip:has-text("Laptop")');
+await p.click('label.pill:has-text("Laptop")');
 console.log('rekentool + laptop:', await ah());
-await p.fill('input[name="days"]', '7');
+await p.click('label.day:has-text("7")');
 console.log('rekentool 7 dagen:', await ah(), '|', await p.textContent('[data-out="total"]'));
 for (const el of await p.$$('input[name="device"]:checked')) await el.click({ force: true });
 console.log('rekentool leeg:', await ah(), '| melding zichtbaar:', await p.isVisible('[data-out="empty"]'));
