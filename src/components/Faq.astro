@@ -1,0 +1,38 @@
+---
+// FAQ list with FAQPage structured data.
+import Text from './Text.astro';
+import Icon from './Icon.astro';
+interface Props { items: { q: string; a: string }[]; schema?: boolean }
+const { items, schema = true } = Astro.props;
+const ld = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: items.map((i) => ({ '@type': 'Question', name: i.q, acceptedAnswer: { '@type': 'Answer', text: i.a } })),
+};
+---
+<div class="faq">
+  {items.map((item) => (
+    <details>
+      <summary>
+        <span>{item.q}</span>
+        <Icon name="plus" size={22} class="faq__icon" />
+      </summary>
+      <p><Text text={item.a} /></p>
+    </details>
+  ))}
+</div>
+{schema && <script type="application/ld+json" set:html={JSON.stringify(ld)} />}
+
+<style>
+  .faq { border-top: 1px solid currentColor; border-color: var(--faq-line, var(--line)); }
+  details { border-bottom: 1px solid var(--faq-line, var(--line)); }
+  summary {
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    min-height: 64px; padding-block: 16px; cursor: pointer; list-style: none;
+    font-weight: 600; font-size: 1.125rem;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary :global(.faq__icon) { flex: none; transition: transform .3s var(--ease); }
+  details[open] summary :global(.faq__icon) { transform: rotate(45deg); }
+  details p { padding-bottom: 24px; max-width: 62ch; color: var(--faq-muted, var(--muted)); }
+</style>

@@ -1,0 +1,23 @@
+---
+import site from '../config/site.json';
+import Icon from './Icon.astro';
+const { number, message } = site.whatsapp;
+const href = `https://wa.me/${number.replace(/\D/g, '')}?text=${encodeURIComponent(message)}`;
+---
+<a class="fab" href={href} target="_blank" rel="noopener" aria-label="Stuur ons een foto via WhatsApp (opent in een nieuw venster)">
+  <Icon name="whatsapp-logo" size={28} />
+</a>
+
+<style>
+  .fab {
+    position: fixed; right: max(16px, env(safe-area-inset-right)); bottom: max(16px, env(safe-area-inset-bottom));
+    z-index: var(--z-fab);
+    display: grid; place-items: center; width: 56px; height: 56px; border-radius: 50%;
+    background: var(--dark); color: var(--sand);
+    box-shadow: 0 0 0 2px rgb(255 249 231 / .7), 0 8px 24px rgb(0 46 43 / .28);
+    transition: transform .2s var(--ease);
+  }
+  .fab:hover { transform: translateY(-2px); }
+  .fab:active { transform: scale(.96); }
+  .fab:focus-visible { outline: 3px solid var(--green); outline-offset: 3px; }
+</style>

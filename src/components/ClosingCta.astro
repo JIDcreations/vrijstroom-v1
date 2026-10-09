@@ -1,0 +1,23 @@
+---
+// Closing block right above the footer, on every page.
+import site from '../config/site.json';
+import Spark from './Spark.astro';
+---
+<section class="closing on-dark" aria-labelledby="closing-title">
+  <Spark class="closing__spark" />
+  <div class="container closing__inner" data-reveal>
+    <h2 id="closing-title">Vrij staan begint bij goede stroom</h2>
+    <a class="btn btn--primary closing__btn" href={site.cta.href}>{site.cta.label}</a>
+  </div>
+</section>
+
+<style>
+  .closing { position: relative; overflow: hidden; background: var(--dark); color: var(--sand); padding-block: clamp(80px, 11vw, 160px); }
+  .closing__inner { position: relative; z-index: 1; display: grid; gap: 32px; justify-items: start; }
+  .closing h2 { font-size: clamp(2rem, 5.4vw, 4.25rem); max-width: 14ch; line-height: 1.05; }
+  .closing__btn { min-height: 56px; font-size: 1.0625rem; padding-inline: 1.8em; }
+  .closing__spark { position: absolute; width: clamp(320px, 48vw, 680px); right: -10%; top: 50%; translate: 0 -50%; color: var(--green); opacity: .1; pointer-events: none; }
+  @media (max-width: 640px) {
+    .closing__spark { right: -45%; top: 75%; }
+  }
+</style>

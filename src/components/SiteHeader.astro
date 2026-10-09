@@ -1,0 +1,130 @@
+---
+import site from '../config/site.json';
+import Icon from './Icon.astro';
+import Spark from './Spark.astro';
+interface Props { tone?: 'sand' | 'dark' }
+const { tone = 'sand' } = Astro.props;
+const path = Astro.url.pathname.replace(/\/$/, '');
+const logo = tone === 'dark' ? '/brand/logo-horizontaal-negatief.svg' : '/brand/logo-horizontaal-positief.svg';
+---
+<header class:list={['header', `header--${tone}`, tone === 'dark' ? 'on-dark' : 'on-sand']}>
+  <div class="container header__inner">
+    <a href="/" class="header__logo" aria-label="Vrijstroom, naar de homepagina">
+      <img class="logo-full" src={logo} alt="" width="160" height="34" />
+      <Spark class="logo-icon" />
+    </a>
+
+    <nav class="header__nav" aria-label="Hoofdmenu">
+      <ul>
+        {site.nav.map((item) => (
+          <li><a href={item.href} aria-current={path === item.href ? 'page' : undefined}>{item.label}</a></li>
+        ))}
+      </ul>
+    </nav>
+
+    <div class="header__actions">
+      <a class="btn btn--primary header__cta" href={site.cta.href}>{site.cta.label}</a>
+      <button type="button" class="header__menu-btn" aria-haspopup="dialog" aria-controls="mobile-menu" data-menu-open>
+        <Icon name="list" size={28} />
+        <span class="sr-only">Menu openen</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<dialog id="mobile-menu" class="menu on-dark" aria-label="Menu">
+  <div class="container menu__top">
+    <a href="/" class="header__logo" aria-label="Vrijstroom, naar de homepagina">
+      <img src="/brand/logo-horizontaal-negatief.svg" alt="" width="160" height="34" />
+    </a>
+    <button type="button" class="header__menu-btn" data-menu-close>
+      <Icon name="x" size={28} />
+      <span class="sr-only">Menu sluiten</span>
+    </button>
+  </div>
+  <nav class="container menu__nav" aria-label="Hoofdmenu mobiel">
+    <ul>
+      <li><a href="/">Home</a></li>
+      {site.nav.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+  </nav>
+  <div class="container menu__bottom">
+    <a class="btn btn--primary menu__cta" href={site.cta.href}>{site.cta.label}</a>
+  </div>
+  <Spark class="menu__spark" />
+</dialog>
+
+<script>
+  const menu = document.getElementById('mobile-menu') as HTMLDialogElement | null;
+  document.querySelector('[data-menu-open]')?.addEventListener('click', () => menu?.showModal());
+  menu?.querySelector('[data-menu-close]')?.addEventListener('click', () => menu.close());
+  menu?.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => menu.close()));
+</script>
+
+<style>
+  .header { position: sticky; top: 0; z-index: var(--z-header); }
+  .header--sand { background: rgb(255 249 231 / .92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+  .header--dark { background: var(--dark); color: var(--sand); border-bottom: 1px solid var(--line-on-dark); }
+  .header__inner { display: flex; align-items: center; gap: 24px; height: 72px; }
+  .header__logo { display: flex; align-items: center; flex: none; min-height: 44px; }
+  .header__logo img { width: 156px; height: auto; }
+  .logo-icon { display: none; width: 36px; height: 36px; color: var(--green); }
+  .header--sand .logo-icon { color: var(--dark); }
+
+  .header__nav { margin-left: auto; }
+  .header__nav ul { display: flex; gap: 4px; list-style: none; margin: 0; padding: 0; }
+  .header__nav a {
+    display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px;
+    font-weight: 600; font-size: .9375rem; text-decoration: none; border-radius: var(--pill);
+    transition: background-color .2s var(--ease);
+  }
+  .header--sand .header__nav a:hover { background: var(--sand-2); }
+  .header--dark .header__nav a:hover { background: var(--dark-80); }
+  .header__nav a[aria-current='page'] { text-decoration: underline; text-underline-offset: .35em; }
+
+  .header__actions { display: flex; align-items: center; gap: 8px; }
+  .header__cta { min-height: 44px; font-size: .9375rem; padding: .6em 1.2em; }
+  .header__menu-btn {
+    display: none; place-items: center; width: 48px; height: 48px; margin-right: -8px;
+    background: none; border: 0; cursor: pointer; border-radius: 50%;
+  }
+
+  @media (max-width: 1023px) {
+    .header__nav { display: none; }
+    .header__actions { margin-left: auto; }
+    .header__menu-btn { display: grid; }
+  }
+  @media (max-width: 459px) {
+    .header__inner { gap: 8px; height: 64px; }
+    .logo-full { display: none; }
+    .logo-icon { display: block; }
+    .header__cta { font-size: .875rem; padding: .55em 1em; }
+  }
+
+  /* Full-screen mobile menu */
+  .menu {
+    width: 100%; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 0; border: 0;
+    background: var(--dark); color: var(--sand); overflow: hidden auto;
+    flex-direction: column;
+  }
+  .menu[open] { display: flex; }
+  .menu::backdrop { background: var(--dark); }
+  .menu__top { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+  .menu__top img { width: 156px; }
+  .menu .header__menu-btn { display: grid; color: var(--sand); }
+  .menu__nav { flex: 1; padding-block: 24px; position: relative; z-index: 1; }
+  .menu__nav ul { list-style: none; margin: 0; padding: 0; }
+  .menu__nav a {
+    display: flex; align-items: center; min-height: 64px;
+    font-family: var(--font-display); font-size: clamp(1.5rem, 7vw, 2.25rem); text-decoration: none;
+    border-bottom: 1px solid var(--line-on-dark);
+  }
+  .menu__bottom { padding-block: 24px max(24px, env(safe-area-inset-bottom)); position: relative; z-index: 1; }
+  .menu__cta { width: 100%; min-height: 56px; }
+  .menu__spark { position: absolute; right: -30%; bottom: -10%; width: 90%; color: var(--green); opacity: .08; pointer-events: none; }
+  @media (prefers-reduced-motion: no-preference) {
+    .menu[open] { animation: menu-in .35s var(--ease); }
+  }
+  @keyframes menu-in { from { opacity: 0; transform: translateY(-8px); } }
+</style>

@@ -1,0 +1,66 @@
+---
+import '../styles/global.css';
+import site from '../config/site.json';
+import SeasonBar from '../components/SeasonBar.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import ClosingCta from '../components/ClosingCta.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import WhatsAppFab from '../components/WhatsAppFab.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  headerTone?: 'sand' | 'dark';
+  noindex?: boolean;
+  bodyClass?: string;
+}
+const { title, description, headerTone = 'sand', noindex = false, bodyClass } = Astro.props;
+const canonical = new URL(Astro.url.pathname, site.url).href;
+---
+<!doctype html>
+<html lang="nl-BE">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <meta name="theme-color" content="#002e2b" />
+    <link rel="icon" type="image/svg+xml" href="/brand/icoon-diep.svg" />
+    <link rel="preload" href="/fonts/unbounded-600-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/figtree-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="nl_BE" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <script is:inline>document.documentElement.classList.add('js')</script>
+  </head>
+  <body class:list={[bodyClass, { 'show-placeholders': site.showPlaceholderMarks }]}>
+    <a class="skip-link" href="#inhoud">Naar de inhoud</a>
+    <SeasonBar />
+    <SiteHeader tone={headerTone} />
+    <main id="inhoud">
+      <slot />
+    </main>
+    <ClosingCta />
+    <SiteFooter />
+    <WhatsAppFab />
+
+    <script>
+      const els = document.querySelectorAll('[data-reveal]');
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+          });
+        }, { rootMargin: '0px 0px -10% 0px' });
+        els.forEach((el) => io.observe(el));
+      } else {
+        els.forEach((el) => el.classList.add('is-in'));
+      }
+    </script>
+  </body>
+</html>

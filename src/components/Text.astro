@@ -1,0 +1,5 @@
+---
+import { rich } from '../lib/text';
+interface Props { text: string }
+---
+<Fragment set:html={rich(Astro.props.text)} />

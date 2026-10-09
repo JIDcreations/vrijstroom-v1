@@ -1,0 +1,145 @@
+{
+  "seo": {
+    "title": "Vrijstroom | Off-grid stroom op maat voor campers, vans en bedrijfswagens",
+    "description": "Staan waar je wil, zonder walstroom. Vrijstroom bouwt lithiumbatterijen, zonnepanelen en complete off-grid systemen op maat, met de zorg van een ervaren elektricien."
+  },
+  "hero": {
+    "title": "Vrijheid begint bij goede stroom.",
+    "text": "Staan waar je wil, zonder walstroom. Een energiesysteem op maat, gebouwd met de zorg van een ervaren elektricien.",
+    "secondary": {
+      "label": "Bekijk onze diensten",
+      "href": "/diensten"
+    },
+    "image": "ochtend-zee-van",
+    "imageAlt": "Uitzicht vanuit het bed achterin een van, met blote voeten onder het dekbed en de zon die opkomt boven zee"
+  },
+  "offer": {
+    "title": "Niet te klein. Niet te groot. Precies de stroom die jij nodig hebt.",
+    "text": "Te klein en je valt halverwege zonder stroom. Te groot en je betaalt voor wat je nooit gebruikt. En vooral veilig, want een fout in een kleine ruimte heeft grote gevolgen.",
+    "items": [
+      {
+        "title": "Lithiumbatterij op maat",
+        "text": "Zelf gebouwd met EVE A+-cellen, afgestemd op hoe jij reist of werkt.",
+        "icon": "battery-charging"
+      },
+      {
+        "title": "Zonnepanelen",
+        "text": "Elke zonnestraal telt. Je laadt bij, ook als je dagen stilstaat.",
+        "icon": "solar-panel"
+      },
+      {
+        "title": "230V onderweg",
+        "text": "Een omvormer, zodat je laptop, koffiezet of gereedschap gewoon werkt.",
+        "icon": "plug"
+      },
+      {
+        "title": "Complete off-grid systemen",
+        "text": "Batterij, laders en beveiliging als één doordacht geheel, met Victron.",
+        "icon": "plugs-connected"
+      },
+      {
+        "title": "Comfort aan boord",
+        "text": "Ventilatie, airco en fietsdragers, netjes ingebouwd.",
+        "icon": "fan"
+      }
+    ],
+    "link": {
+      "label": "Alle diensten en prijzen",
+      "href": "/diensten"
+    }
+  },
+  "audiences": {
+    "title": "Voor wie reist en voor wie werkt",
+    "items": [
+      {
+        "title": "Campers & vans",
+        "quote": "Ik heb alles gekocht, maar durf het niet zelf aan te sluiten.",
+        "quoteNote": "[TE BEVESTIGEN: klantzin reizen]",
+        "text": "Voor je bestaande camper of van, en voor zelfbouwers die het aansluiten liever aan een vakman overlaten.",
+        "mood": "Koffie aan het meer. Laptop in de bergen. Geen camping nodig.",
+        "href": "/campers-en-vans",
+        "icon": "van"
+      },
+      {
+        "title": "Bedrijfswagens",
+        "quote": "Ik wil mijn gereedschap laden zonder aggregaat.",
+        "quoteNote": "[TE BEVESTIGEN: klantzin werken]",
+        "text": "Servicebussen, food trucks en paardentrailers. Stroom waar je werkt, zonder lawaai van een aggregaat.",
+        "mood": "Je kantoor is overal.",
+        "href": "/bedrijfswagens",
+        "icon": "truck"
+      }
+    ]
+  },
+  "why": {
+    "title": "Veilig zoals thuis, vrij zoals onderweg.",
+    "items": [
+      {
+        "title": "Een echte elektricien",
+        "text": "Juiste kabeldiktes, goede beveiliging, nette afwerking. Wat thuis normaal is, krijgt je wagen ook.",
+        "icon": "shield-check"
+      },
+      {
+        "title": "Op maat",
+        "text": "We vertrekken van hoe jij reist of werkt, niet van een standaardpakket.",
+        "icon": "wrench"
+      },
+      {
+        "title": "Uitleg in gewone taal",
+        "text": "Je weet wat er in je wagen zit en hoe je ermee omgaat.",
+        "icon": "chat-circle-text"
+      },
+      {
+        "title": "Gebouwd om lang mee te gaan",
+        "text": "Degelijke onderdelen en een installatie waar je op kan rekenen.",
+        "icon": "seal-check"
+      }
+    ]
+  },
+  "founder": {
+    "title": "De elektricien achter Vrijstroom",
+    "name": "[TE BEVESTIGEN: naam ondernemer]",
+    "text": "Als ervaren elektricien weet hij hoe een goede installatie thuis eruitziet. Die zorg brengt hij naar de camper, de bus en de bedrijfswagen.",
+    "quote": "[TE BEVESTIGEN: citaat ondernemer, bv. ik gebruik het zelf elke dag]",
+    "image": "werkplaats-elektricien",
+    "imageAlt": "Elektricien in Vrijstroom-shirt sluit een batterij aan in de werkplaats",
+    "link": {
+      "label": "Meer over Vrijstroom",
+      "href": "/over"
+    }
+  },
+  "reviews": {
+    "title": "Wat klanten zeggen",
+    "empty": "Hier komen binnenkort echte Google-reviews van klanten.",
+    "note": "[TE BEVESTIGEN: link naar Google-bedrijfsprofiel]"
+  },
+  "faq": {
+    "title": "Vragen die vaak terugkomen",
+    "items": [
+      {
+        "q": "Een zelfgebouwde batterij, is dat veilig?",
+        "a": "We bouwen met EVE A+-cellen en een BMS (Battery Management System): een elektronische bewaker die de cellen beschermt tegen overladen, te diep ontladen en te hoge temperaturen. [TE BEVESTIGEN: keuring en garantie op de batterij]"
+      },
+      {
+        "q": "Wat kost een kennismaking?",
+        "a": "Niets. De kennismaking en de offerte zijn gratis. Je krijgt je offerte binnen [TE BEVESTIGEN: aantal] werkdagen."
+      },
+      {
+        "q": "Wat met de garantie van mijn camper?",
+        "a": "[TE BEVESTIGEN: hoe Vrijstroom omgaat met de fabrieksgarantie van het voertuig]"
+      }
+    ],
+    "link": {
+      "label": "Alle vragen",
+      "href": "/contact#vragen"
+    }
+  },
+  "closing": {
+    "title": "Vrij staan begint bij goede stroom"
+  },
+  "mood": {
+    "title": "Elke zonnestraal telt.",
+    "image": "zonnepaneel-woestijn",
+    "imageAlt": "Vrouw poetst een zonnepaneel op het dak van haar van, op een zandweg bij zonsondergang"
+  }
+}

@@ -1,0 +1,67 @@
+---
+import site from '../config/site.json';
+import Text from './Text.astro';
+const year = new Date().getFullYear();
+---
+<footer class="footer on-dark">
+  <div class="container footer__grid">
+    <div class="footer__brand">
+      <img src="/brand/logo-horizontaal-negatief.svg" alt="Vrijstroom" width="180" height="38" loading="lazy" />
+      <p>{site.description}</p>
+      <p class="footer__line">{site.closingLine}</p>
+    </div>
+
+    <nav aria-label="Footer">
+      <h2 class="footer__h">Pagina's</h2>
+      <ul>
+        <li><a href="/">Home</a></li>
+        {site.nav.map((i) => <li><a href={i.href}>{i.label}</a></li>)}
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div>
+      <h2 class="footer__h">Contact</h2>
+      <ul>
+        <li><Text text={site.contact.phone} /></li>
+        <li><Text text={site.contact.email} /></li>
+        <li><Text text={site.contact.address} /></li>
+        <li><span>Regio: <Text text={site.contact.region} /></span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container footer__bottom">
+    <p>© {year} Vrijstroom</p>
+    <ul>
+      <li><a href="/privacy">Privacy</a></li>
+      <li><a href="/cookies">Cookies</a></li>
+    </ul>
+    <p>Website door <a href="https://wizarts.be" rel="noopener">Wizarts</a></p>
+  </div>
+</footer>
+
+<style>
+  .footer { background: var(--dark); color: var(--sand); border-top: 1px solid var(--line-on-dark); padding-top: 64px; padding-bottom: 96px; font-size: .9375rem; }
+  .footer__grid { display: grid; gap: 40px; grid-template-columns: 1.4fr 1fr 1fr; }
+  .footer__brand { display: grid; gap: 16px; align-content: start; max-width: 36ch; }
+  .footer__brand img { width: 180px; }
+  .footer__brand p { color: var(--muted-on-dark); }
+  .footer__line { font-family: var(--font-display); color: var(--green) !important; font-size: 1rem; }
+  .footer__h { font-family: var(--font-body); font-size: .9375rem; font-weight: 600; margin-bottom: 12px; color: var(--muted-on-dark); letter-spacing: 0; }
+  .footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+  .footer nav a, .footer__bottom a { display: inline-flex; align-items: center; min-height: 44px; text-decoration: none; }
+  .footer nav a:hover, .footer__bottom a:hover { text-decoration: underline; text-underline-offset: .3em; }
+  .footer li { min-height: 32px; display: flex; align-items: center; }
+  .footer__bottom { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 24px; margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--line-on-dark); color: var(--muted-on-dark); font-size: .875rem; }
+  .footer__bottom ul { display: flex; gap: 20px; }
+  .footer__bottom a { color: var(--sand); }
+  @media (max-width: 860px) {
+    .footer__grid { grid-template-columns: 1fr 1fr; }
+    .footer__brand { grid-column: 1 / -1; }
+  }
+  @media (max-width: 480px) {
+    .footer__grid { grid-template-columns: 1fr; }
+    .footer__bottom { flex-direction: column; align-items: flex-start; }
+  }
+</style>
