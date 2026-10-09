@@ -4,13 +4,15 @@
 import paths from '../lib/spark-paths.json';
 interface Props {
   class?: string;
-  animate?: boolean;
+  animate?: boolean;   // fan out on page load, then turn slowly
+  inview?: boolean;    // fan out when scrolled into view, then turn slowly
   decorative?: boolean;
 }
-const { class: cls, animate = false, decorative = true } = Astro.props;
+const { class: cls, animate = false, inview = false, decorative = true } = Astro.props;
 ---
 <svg
-  class:list={['spark', cls, { 'spark--anim': animate }]}
+  class:list={['spark', cls, { 'spark--anim': animate, 'spark--inview': inview }]}
+  data-inview={inview ? '' : undefined}
   viewBox="0 0 328.72 321.22"
   aria-hidden={decorative ? 'true' : undefined}
   role={decorative ? undefined : 'img'}
@@ -33,6 +35,14 @@ const { class: cls, animate = false, decorative = true } = Astro.props;
       animation-delay: calc(.25s + var(--k) * .09s);
     }
     .spark--anim .spark__turn { animation: slow-turn 90s linear 2.4s infinite; }
+
+    /* In view: the V's wait stacked until the block scrolls in, then fan out and keep turning */
+    :global(.js) .spark--inview:not(.is-in) path { transform: rotate(calc(var(--k) * 51.4286deg)); }
+    .spark--inview.is-in path {
+      animation: fan-out 1.5s cubic-bezier(.65, 0, .25, 1) both;
+      animation-delay: calc(.1s + var(--k) * .09s);
+    }
+    .spark--inview .spark__turn { animation: slow-turn 60s linear infinite; }
   }
   @keyframes fan-out {
     from { transform: rotate(calc(var(--k) * 51.4286deg)); }

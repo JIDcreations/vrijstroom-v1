@@ -4,7 +4,7 @@ import site from '../config/site.json';
 import Spark from './Spark.astro';
 ---
 <section class="closing on-dark" aria-labelledby="closing-title">
-  <Spark class="closing__spark" />
+  <Spark class="closing__spark" inview />
   <div class="container closing__inner" data-reveal>
     <h2 id="closing-title">Vrij staan begint bij goede stroom</h2>
     <a class="btn btn--primary closing__btn" href={site.cta.href}>{site.cta.label}</a>

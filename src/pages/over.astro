@@ -38,7 +38,7 @@ const projects = c.projects.items as Project[];
       <p class="projects__intro" data-reveal>{c.projects.intro}</p>
       {projects.length === 0 ? (
         <div class="projects__empty" data-reveal>
-          <Spark class="projects__spark" />
+          <Spark class="projects__spark" inview />
           <p>{c.projects.empty}</p>
         </div>
       ) : (

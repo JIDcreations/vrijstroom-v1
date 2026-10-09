@@ -50,7 +50,7 @@ const canonical = new URL(Astro.url.pathname, site.url).href;
     <WhatsAppFab />
 
     <script>
-      const els = document.querySelectorAll('[data-reveal]');
+      const els = document.querySelectorAll('[data-reveal], [data-inview]');
       if ('IntersectionObserver' in window) {
         const io = new IntersectionObserver((entries) => {
           entries.forEach((e) => {
