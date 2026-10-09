@@ -48,6 +48,10 @@ const logo = tone === 'dark' ? '/brand/logo-horizontaal-negatief.svg' : '/brand/
       {site.nav.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
       <li><a href="/contact">Contact</a></li>
     </ul>
+    <a class="menu__calc" href={site.calculatorLink.href}>
+      <Icon name="calculator" size={28} />
+      <span>{site.calculatorLink.label}<small>Weet in 30 seconden hoeveel stroom je nodig hebt</small></span>
+    </a>
   </nav>
   <div class="container menu__bottom">
     <a class="btn btn--primary menu__cta" href={site.cta.href}>{site.cta.label}</a>
@@ -120,6 +124,16 @@ const logo = tone === 'dark' ? '/brand/logo-horizontaal-negatief.svg' : '/brand/
     font-family: var(--font-display); font-size: clamp(1.5rem, 7vw, 2.25rem); text-decoration: none;
     border-bottom: 1px solid var(--line-on-dark);
   }
+  .menu__nav .menu__calc {
+    font-family: var(--font-body); font-size: 1rem;
+    display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 14px;
+    margin-top: 24px; padding: 16px 18px; min-height: 64px; border-radius: var(--radius-sm);
+    background: var(--dark-80); border: 1.5px solid var(--green); color: var(--sand); text-decoration: none;
+    font-family: var(--font-body);
+  }
+  .menu__calc :global(svg) { color: var(--green); }
+  .menu__calc span { display: grid; font-weight: 600; font-size: 1.125rem; line-height: 1.3; }
+  .menu__calc small { font-weight: 400; font-size: .875rem; color: var(--muted-on-dark); }
   .menu__bottom { padding-block: 24px max(24px, env(safe-area-inset-bottom)); position: relative; z-index: 1; }
   .menu__cta { width: 100%; min-height: 56px; }
   .menu__spark { position: absolute; right: -30%; bottom: -10%; width: 90%; color: var(--green); opacity: .08; pointer-events: none; }

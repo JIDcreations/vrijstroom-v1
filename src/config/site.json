@@ -26,6 +26,10 @@
       "href": "/over"
     }
   ],
+  "calculatorLink": {
+    "label": "Bereken je stroom",
+    "href": "/#rekentool"
+  },
   "contact": {
     "phone": "",
     "email": "",

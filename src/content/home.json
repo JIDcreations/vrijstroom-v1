@@ -7,8 +7,9 @@
     "title": "Vrijheid begint bij goede stroom.",
     "text": "Staan waar je wil, zonder walstroom. Een energiesysteem op maat, gebouwd met de zorg van een ervaren elektricien.",
     "secondary": {
-      "label": "Bekijk onze diensten",
-      "href": "/diensten"
+      "label": "Bereken je stroom",
+      "href": "#rekentool",
+      "icon": "calculator"
     },
     "image": "ochtend-zee-van",
     "imageAlt": "Uitzicht vanuit het bed achterin een van, met blote voeten onder het dekbed en de zon die opkomt boven zee"

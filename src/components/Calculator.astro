@@ -89,7 +89,7 @@ const settings = {
 </script>
 
 <style>
-  .calc { padding-block: var(--section); }
+  .calc { padding-block: var(--section); scroll-margin-top: calc(96px - var(--section)); }
   .calc--dark { background: var(--dark); color: var(--sand); --chip-bg: var(--dark-80); --chip-line: var(--line-on-dark); --chip-muted: var(--muted-on-dark); }
   .calc--sand { background: var(--sand-2); color: var(--dark); --chip-bg: var(--sand); --chip-line: var(--line); --chip-muted: var(--muted); }
   .calc__grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: start; }

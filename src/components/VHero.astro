@@ -2,6 +2,7 @@
 // Page hero for direction B: a feeling first. The photo is cut out in the V of the logo.
 import { Picture } from 'astro:assets';
 import Spark from './Spark.astro';
+import Icon from './Icon.astro';
 import site from '../config/site.json';
 import { photo } from '../lib/images';
 
@@ -12,7 +13,7 @@ interface Props {
   imageAlt: string;
   imageNote?: string;
   size?: 'home' | 'page';
-  secondary?: { label: string; href: string };
+  secondary?: { label: string; href: string; icon?: string };
   showCta?: boolean;
   ctaHref?: string;
 }
@@ -27,7 +28,7 @@ const { title, text, image, imageAlt, imageNote = 'Sfeerbeeld (stock)', size = '
       {showCta && (
         <div class="vhero__actions">
           <a class="btn btn--primary btn--lg" href={ctaHref}>{site.cta.label}</a>
-          {secondary && <a class="btn btn--ghost btn--lg" href={secondary.href}>{secondary.label}</a>}
+          {secondary && <a class="btn btn--ghost btn--lg" href={secondary.href}>{secondary.icon && <Icon name={secondary.icon} size={22} />}{secondary.label}</a>}
         </div>
       )}
     </div>

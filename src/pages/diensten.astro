@@ -11,7 +11,7 @@ import Text from '../components/Text.astro';
 import c from '../content/diensten.json';
 ---
 <Base title={c.seo.title} description={c.seo.description} headerTone="dark">
-  <VHero title={c.hero.title} text={c.hero.text} image={c.hero.image} imageAlt={c.hero.imageAlt} secondary={{ label: 'Bereken je stroom', href: '#rekentool' }} />
+  <VHero title={c.hero.title} text={c.hero.text} image={c.hero.image} imageAlt={c.hero.imageAlt} secondary={{ label: 'Bereken je stroom', href: '#rekentool', icon: 'calculator' }} />
 
   <!-- Services -->
   <section class="services on-sand" aria-labelledby="services-title">
@@ -22,6 +22,7 @@ import c from '../content/diensten.json';
         <nav aria-label="Diensten op deze pagina" class="services__toc">
           <ul>
             {c.services.items.map((s) => <li><a href={`#${s.id}`}>{s.title}</a></li>)}
+            <li><a href="#rekentool" class="services__toc-calc"><Icon name="calculator" size={20} />Hoeveel stroom heb ik nodig?</a></li>
           </ul>
         </nav>
       </div>
@@ -127,6 +128,7 @@ import c from '../content/diensten.json';
   .services__toc ul { list-style: none; margin: 28px 0 0; padding: 0; display: grid; }
   .services__toc a { display: flex; align-items: center; min-height: 40px; font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--line); }
   .services__toc a:hover { text-decoration: underline; text-underline-offset: .3em; }
+  .services__toc .services__toc-calc { gap: 8px; margin-top: 12px; border-bottom: 0; }
   .services__list { display: grid; gap: 0; }
   .service { display: grid; gap: 12px; justify-items: start; padding-block: 40px; border-top: 1px solid var(--line); scroll-margin-top: 96px; }
   .service:first-child { border-top: 0; padding-top: 0; }

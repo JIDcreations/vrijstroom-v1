@@ -25,7 +25,7 @@ const services = c.services.ids.map((id: string) => {
 });
 ---
 <Base title={c.seo.title} description={c.seo.description} headerTone="dark">
-  <VHero title={c.hero.title} text={c.hero.text} image={c.hero.image} imageAlt={c.hero.imageAlt} imageNote={c.hero.imageNote} />
+  <VHero title={c.hero.title} text={c.hero.text} image={c.hero.image} imageAlt={c.hero.imageAlt} imageNote={c.hero.imageNote} secondary={c.calculator ? { label: 'Bereken je stroom', href: '#rekentool', icon: 'calculator' } : undefined} />
 
   <!-- Problem -> solution, starting with what the customer says -->
   <section class="segments on-sand" aria-labelledby="segments-title">
@@ -55,6 +55,8 @@ const services = c.services.ids.map((id: string) => {
       </div>
     </div>
   </section>
+
+  {c.calculator && <Calculator />}
 
   <!-- What you notice -->
   <section class="benefits" aria-labelledby="benefits-title">
@@ -94,7 +96,6 @@ const services = c.services.ids.map((id: string) => {
     </div>
   </section>
 
-  {c.calculator && <Calculator />}
 
   <FaqSection ids={c.faq} />
 </Base>

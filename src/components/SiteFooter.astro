@@ -17,6 +17,7 @@ const wa = `https://wa.me/${site.whatsapp.number.replace(/\D/g, '')}?text=${enco
         <li><a href="/">Home</a></li>
         {site.nav.map((i) => <li><a href={i.href}>{i.label}</a></li>)}
         <li><a href="/contact">Contact</a></li>
+        <li><a href={site.calculatorLink.href}>Rekentool</a></li>
       </ul>
     </nav>
 
