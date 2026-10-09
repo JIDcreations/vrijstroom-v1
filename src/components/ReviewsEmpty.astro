@@ -1,0 +1,25 @@
+---
+// Place for real Google reviews. Never fill with invented quotes.
+import Icon from './Icon.astro';
+import Text from './Text.astro';
+import home from '../content/home.json';
+const { title, empty, note } = home.reviews;
+---
+<section class="reviews on-sand" aria-labelledby="reviews-title">
+  <div class="container reviews__inner" data-reveal>
+    <h2 id="reviews-title">{title}</h2>
+    <div class="reviews__empty">
+      <Icon name="quotes" size={40} />
+      <p class="reviews__lead">{empty}</p>
+      <p><Text text={note} /></p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .reviews { padding-top: var(--section); }
+  .reviews__inner { display: grid; gap: 28px; }
+  .reviews h2 { font-size: clamp(1.5rem, 3vw, 2.25rem); }
+  .reviews__empty { display: grid; gap: 10px; justify-items: start; padding: clamp(28px, 4vw, 40px); border-radius: var(--radius); background: var(--sand-2); }
+  .reviews__lead { font-size: 1.125rem; font-weight: 600; }
+</style>

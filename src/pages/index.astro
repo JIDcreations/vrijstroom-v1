@@ -1,36 +1,119 @@
 ---
-// Fase 1: keuzepagina tussen twee designrichtingen. Wordt in fase 2 de echte homepage.
-import '../styles/global.css';
-import Spark from '../components/Spark.astro';
+// Homepage (direction B). Texts: src/content/home.json
+import Base from '../layouts/Base.astro';
+import VHero from '../components/VHero.astro';
+import PitchBand from '../components/PitchBand.astro';
+import Calculator from '../components/Calculator.astro';
+import MoodImage from '../components/MoodImage.astro';
+import WhyList from '../components/WhyList.astro';
+import FounderSplit from '../components/FounderSplit.astro';
+import ReviewsEmpty from '../components/ReviewsEmpty.astro';
+import FaqSection from '../components/FaqSection.astro';
+import Icon from '../components/Icon.astro';
+import Text from '../components/Text.astro';
+import c from '../content/home.json';
 ---
-<!doctype html>
-<html lang="nl-BE">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="robots" content="noindex, nofollow" />
-    <title>Vrijstroom | Kies een designrichting</title>
-    <link rel="icon" type="image/svg+xml" href="/brand/icoon-diep.svg" />
-  </head>
-  <body class="pick on-dark">
-    <main class="container">
-      <Spark class="pick__spark" animate />
-      <h1>Vrijstroom homepage: twee richtingen</h1>
-      <ul>
-        <li><a href="/ontwerp-a"><strong>A. Rustig en ruim</strong><span>Veel Soft sand, het icoon als subtiel beeldelement.</span></a></li>
-        <li><a href="/ontwerp-b"><strong>B. Krachtig</strong><span>Meer Dark nature, de V als groot uitgesneden kader rond beeld.</span></a></li>
+<Base title={c.seo.title} description={c.seo.description} headerTone="dark">
+  <VHero size="home" title={c.hero.title} text={c.hero.text} image={c.hero.image} imageAlt={c.hero.imageAlt} secondary={c.hero.secondary} />
+
+  <PitchBand title={c.offer.title} text={c.offer.text} />
+
+  <Calculator />
+
+  <!-- Short offer -->
+  <section class="offer on-sand" aria-labelledby="offer-title">
+    <div class="container">
+      <h2 id="offer-title" data-reveal>Wat we inbouwen</h2>
+      <ul class="offer__list">
+        {c.offer.items.map((item) => (
+          <li data-reveal>
+            <span class="offer__icon"><Icon name={item.icon} size={28} /></span>
+            <div>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </div>
+          </li>
+        ))}
+        <li class="offer__more" data-reveal>
+          <a class="link-arrow" href={c.offer.link.href}>{c.offer.link.label}<Icon name="arrow-right" size={20} /></a>
+        </li>
       </ul>
-    </main>
-    <style>
-      .pick { background: var(--dark); color: var(--sand); min-height: 100dvh; display: grid; place-items: center; }
-      .pick main { max-width: 760px; padding-block: 64px; }
-      .pick__spark { width: 72px; color: var(--green); margin-bottom: 32px; }
-      h1 { font-size: clamp(1.75rem, 4vw, 2.75rem); }
-      ul { list-style: none; padding: 0; margin: 40px 0 0; display: grid; gap: 16px; }
-      a { display: grid; gap: 6px; padding: 28px; border: 1px solid var(--line-on-dark); border-radius: var(--radius); text-decoration: none; transition: background-color .2s; }
-      a:hover { background: var(--dark-80); }
-      strong { font-family: var(--font-display); font-weight: 600; font-size: 1.25rem; color: var(--green); }
-      span { color: var(--muted-on-dark); }
-    </style>
-  </body>
-</html>
+    </div>
+  </section>
+
+  <MoodImage line={c.mood.title} image={c.mood.image} imageAlt={c.mood.imageAlt} />
+
+  <!-- For whom -->
+  <section class="who on-dark" aria-labelledby="who-title">
+    <div class="container">
+      <h2 id="who-title" class="who__title" data-reveal>{c.audiences.title}</h2>
+      <div class="who__grid">
+        {c.audiences.items.map((a) => (
+          <article class="who__col" data-reveal>
+            <Icon name={a.icon} size={36} class="who__icon" />
+            <p class="who__quote">“{a.quote}”</p>
+            <p><Text text={a.quoteNote} /></p>
+            <h3>{a.title}</h3>
+            <p class="who__text">{a.text}</p>
+            <p class="who__mood">{a.mood}</p>
+            <a class="btn btn--ghost" href={a.href}>Meer over {a.title.toLowerCase()}</a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <WhyList />
+
+  <FounderSplit
+    title={c.founder.title}
+    name={c.founder.name}
+    paragraphs={[c.founder.text]}
+    quote={c.founder.quote}
+    image={c.founder.image}
+    imageAlt={c.founder.imageAlt}
+    link={c.founder.link}
+  />
+
+  <ReviewsEmpty />
+
+  <FaqSection ids={c.faq.ids} title={c.faq.title} />
+</Base>
+
+<style>
+  /* Offer */
+  .offer { padding-block: var(--section); }
+  .offer h2 { font-size: clamp(1.75rem, 3.6vw, 3rem); }
+  .offer__list { list-style: none; margin: clamp(40px, 5vw, 64px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .offer__list li { display: grid; gap: 20px; align-content: start; padding: 28px; border-radius: var(--radius); background: var(--sand-2); }
+  .offer__list li:first-child { grid-row: span 2; background: var(--dark); color: var(--sand); align-content: end; }
+  .offer__list li:first-child h3 { font-size: clamp(1.5rem, 2.4vw, 2rem); }
+  .offer__list li:first-child p { color: var(--muted-on-dark); font-size: 1.125rem; }
+  .offer__list li:first-child .offer__icon { background: var(--green); color: var(--dark); }
+  .offer__icon { display: grid; place-items: center; width: 56px; height: 56px; border-radius: 50%; background: var(--sand); }
+  .offer__list h3 { font-size: 1.1875rem; }
+  .offer__list p { margin-top: 8px; color: var(--muted); }
+  .offer__list .offer__more { background: transparent; border: 1.5px solid var(--line); align-content: center; }
+  @media (max-width: 859px) {
+    .offer__list { grid-template-columns: 1fr 1fr; }
+    .offer__list li:first-child { grid-row: auto; grid-column: 1 / -1; }
+  }
+  @media (max-width: 560px) { .offer__list { grid-template-columns: 1fr; } }
+
+  /* Who */
+  .who { background: var(--dark); color: var(--sand); padding-block: clamp(56px, 7vw, 96px) var(--section); }
+  .who__title { font-size: clamp(1.75rem, 3.6vw, 3rem); max-width: 18ch; }
+  .who__grid { display: grid; grid-template-columns: 1fr 1fr; margin-top: clamp(40px, 5vw, 72px); border-top: 1px solid var(--line-on-dark); }
+  .who__col { display: grid; gap: 14px; align-content: start; justify-items: start; padding: clamp(32px, 4vw, 56px) clamp(0px, 4vw, 56px) 0 0; }
+  .who__col + .who__col { border-left: 1px solid var(--line-on-dark); padding-left: clamp(24px, 4vw, 56px); }
+  .who__col .who__icon { color: var(--green); }
+  .who__quote { font-family: var(--font-display); color: var(--green); font-size: clamp(1.375rem, 2.4vw, 2rem); line-height: 1.2; }
+  .who__col h3 { font-size: 1.25rem; margin-top: 16px; }
+  .who__text { color: var(--muted-on-dark); max-width: 44ch; }
+  .who__mood { font-style: italic; margin-bottom: 12px; }
+  @media (max-width: 859px) {
+    .who__grid { grid-template-columns: 1fr; }
+    .who__col { padding-right: 0; }
+    .who__col + .who__col { border-left: 0; border-top: 1px solid var(--line-on-dark); padding-left: 0; margin-top: 40px; }
+  }
+</style>

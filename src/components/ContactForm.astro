@@ -1,0 +1,183 @@
+---
+// Short contact form. Sends to the endpoint in src/config/site.json (form.endpoint).
+// Required: name + phone or e-mail. Spam protection: honeypot field.
+import site from '../config/site.json';
+import c from '../content/contact.json';
+import Text from './Text.astro';
+import Icon from './Icon.astro';
+const f = c.form;
+---
+<div class="cform" data-endpoint={site.form.endpoint} data-key={site.form.accessKey} data-error={f.error}>
+  <form novalidate aria-describedby="cform-required">
+    <p id="cform-required" class="cform__required">Velden met * zijn verplicht. Een telefoonnummer of e-mailadres is genoeg.</p>
+
+    <div class="field">
+      <label for="cf-name">Naam *</label>
+      <input id="cf-name" name="naam" type="text" autocomplete="name" required aria-describedby="cf-name-err" />
+      <p class="field__error" id="cf-name-err" hidden>Vul je naam in.</p>
+    </div>
+
+    <div class="field-row">
+      <div class="field">
+        <label for="cf-phone">Telefoon</label>
+        <input id="cf-phone" name="telefoon" type="tel" autocomplete="tel" inputmode="tel" aria-describedby="cf-contact-err" />
+      </div>
+      <div class="field">
+        <label for="cf-email">E-mail</label>
+        <input id="cf-email" name="email" type="email" autocomplete="email" aria-describedby="cf-contact-err cf-email-err" />
+        <p class="field__error" id="cf-email-err" hidden>Dit e-mailadres lijkt niet te kloppen.</p>
+      </div>
+    </div>
+    <p class="field__error" id="cf-contact-err" hidden>Laat een telefoonnummer of e-mailadres achter, zodat we je kunnen bereiken.</p>
+
+    <div class="field-row">
+      <div class="field">
+        <label for="cf-vehicle">Type voertuig</label>
+        <select id="cf-vehicle" name="voertuig">
+          <option value="">Maak een keuze</option>
+          {f.vehicleOptions.map((o) => <option>{o}</option>)}
+        </select>
+      </div>
+      <div class="field">
+        <label for="cf-wish">Wat wil je?</label>
+        <select id="cf-wish" name="wens">
+          <option value="">Maak een keuze</option>
+          {f.wishOptions.map((o) => <option>{o}</option>)}
+        </select>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="cf-budget">Budget</label>
+      <select id="cf-budget" name="budget" aria-describedby="cf-budget-note">
+        <option value="">Maak een keuze</option>
+        {f.budgetOptions.map((o) => <option>{o}</option>)}
+      </select>
+      <p class="field__help" id="cf-budget-note"><Text text={f.budgetNote} /></p>
+    </div>
+
+    <div class="field">
+      <label for="cf-photo">Foto van je wagen of installatie (optioneel)</label>
+      <input id="cf-photo" name="foto" type="file" accept="image/*" />
+    </div>
+
+    <div class="field">
+      <label for="cf-message">Bericht</label>
+      <textarea id="cf-message" name="bericht" rows="5"></textarea>
+    </div>
+
+    <!-- Honeypot: humans never see or fill this -->
+    <div class="cform__hp" aria-hidden="true">
+      <label for="cf-website">Laat dit veld leeg</label>
+      <input id="cf-website" name="website" type="text" tabindex="-1" autocomplete="off" />
+    </div>
+
+    <p class="cform__privacy">We gebruiken je gegevens alleen om je te antwoorden. Lees ons <a href="/privacy">privacybeleid</a>.</p>
+
+    <button type="submit" class="btn btn--dark btn--lg">
+      <span class="cform__label">Verstuur je bericht</span>
+      <Icon name="paper-plane-tilt" size={20} />
+    </button>
+    <p class="cform__status" role="alert" hidden></p>
+  </form>
+
+  <div class="cform__done" tabindex="-1" hidden>
+    <Icon name="check-circle" size={40} />
+    <p>{f.success}</p>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.cform').forEach((root) => {
+    const form = root.querySelector('form')!;
+    const done = root.querySelector<HTMLElement>('.cform__done')!;
+    const status = root.querySelector<HTMLElement>('.cform__status')!;
+    const button = form.querySelector<HTMLButtonElement>('button[type="submit"]')!;
+    const label = button.querySelector<HTMLElement>('.cform__label')!;
+    const el = (id: string) => form.querySelector<HTMLInputElement>('#' + id)!;
+    const show = (id: string, on: boolean, field?: HTMLElement) => {
+      form.querySelector<HTMLElement>('#' + id)!.hidden = !on;
+      field?.setAttribute('aria-invalid', String(on));
+    };
+    const endpoint = root.dataset.endpoint ?? '';
+    const key = root.dataset.key ?? '';
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      status.hidden = true;
+      const name = el('cf-name'), phone = el('cf-phone'), email = el('cf-email');
+      const nameBad = !name.value.trim();
+      const contactBad = !phone.value.trim() && !email.value.trim();
+      const emailBad = !!email.value.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim());
+      show('cf-name-err', nameBad, name);
+      show('cf-contact-err', contactBad, phone);
+      email.setAttribute('aria-invalid', String(contactBad || emailBad));
+      show('cf-email-err', emailBad);
+      if (nameBad || contactBad || emailBad) {
+        (nameBad ? name : contactBad ? phone : email).focus();
+        return;
+      }
+
+      // Bots fill the honeypot: pretend everything went fine.
+      if (el('cf-website').value) { form.hidden = true; done.hidden = false; return; }
+
+      if (!endpoint) {
+        status.textContent = 'Het formulier is nog niet gekoppeld. [TE BEVESTIGEN: formulier-endpoint]';
+        status.hidden = false;
+        return;
+      }
+
+      const data = new FormData(form);
+      data.delete('website');
+      if (key) data.append('access_key', key);
+      data.append('subject', 'Nieuwe aanvraag via vrijstroom.be');
+      button.disabled = true;
+      label.textContent = 'Bezig met versturen…';
+      try {
+        const res = await fetch(endpoint, { method: 'POST', body: data, headers: { Accept: 'application/json' } });
+        if (!res.ok) throw new Error(String(res.status));
+        form.hidden = true;
+        done.hidden = false;
+        done.focus();
+      } catch {
+        status.textContent = root.dataset.error ?? 'Er ging iets mis bij het versturen.';
+        status.hidden = false;
+      } finally {
+        button.disabled = false;
+        label.textContent = 'Verstuur je bericht';
+      }
+    });
+  });
+</script>
+
+<style>
+  .cform form { display: grid; gap: 20px; }
+  .cform__required { font-size: .9375rem; color: var(--muted); }
+  .field { display: grid; gap: 8px; }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .field label { font-weight: 600; }
+  .field input:not([type='file']), .field select, .field textarea {
+    width: 100%; min-height: 52px; padding: 12px 14px;
+    font: inherit; color: var(--dark); background: #fffdf5;
+    border: 1.5px solid rgb(0 46 43 / .45); border-radius: var(--radius-sm);
+    transition: border-color .2s var(--ease), box-shadow .2s var(--ease);
+  }
+  .field textarea { resize: vertical; min-height: 140px; }
+  .field select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 256 256'%3E%3Cpath fill='%23002e2b' d='M213.66 101.66l-80 80a8 8 0 0 1-11.32 0l-80-80a8 8 0 0 1 11.32-11.32L128 164.69l74.34-74.35a8 8 0 0 1 11.32 11.32Z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 44px; }
+  .field input:focus-visible, .field select:focus-visible, .field textarea:focus-visible { outline: 3px solid var(--dark); outline-offset: 1px; border-color: var(--dark); }
+  .field [aria-invalid='true'] { border-color: #a4161a; }
+  .field input[type='file'] { min-height: 44px; font: inherit; }
+  .field input[type='file']::file-selector-button { font: 600 .9375rem var(--font-body); margin-right: 12px; padding: 10px 16px; border-radius: var(--pill); border: 1.5px solid var(--dark); background: transparent; color: var(--dark); cursor: pointer; }
+  .field__error { color: #a4161a; font-weight: 600; font-size: .9375rem; }
+  .field__help { font-size: .875rem; color: var(--muted); }
+  .cform__hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+  .cform__privacy { font-size: .9375rem; color: var(--muted); }
+  .cform button { justify-self: start; }
+  .cform button:disabled { opacity: .7; cursor: progress; }
+  .cform__status { padding: 14px 16px; border-radius: var(--radius-sm); background: #fde8e8; color: #7a1012; font-weight: 600; }
+  .cform__done { display: grid; gap: 12px; justify-items: start; padding: 32px; border-radius: var(--radius); background: var(--dark); color: var(--sand); }
+  .cform__done :global(svg) { color: var(--green); }
+  .cform__done p { font-family: var(--font-display); font-size: 1.375rem; line-height: 1.3; }
+  .cform__done:focus-visible { outline: 3px solid var(--dark); outline-offset: 3px; }
+  @media (max-width: 640px) { .field-row { grid-template-columns: 1fr; } }
+</style>

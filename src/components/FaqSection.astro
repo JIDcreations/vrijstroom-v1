@@ -1,0 +1,24 @@
+---
+// A short FAQ block. Questions come from src/content/faq.json by id.
+import Faq from './Faq.astro';
+import Icon from './Icon.astro';
+import { faqByIds } from '../lib/faq';
+interface Props { ids: string[]; title?: string; showAllLink?: boolean; id?: string }
+const { ids, title = 'Vragen die vaak terugkomen', showAllLink = true, id = 'faq-title' } = Astro.props;
+---
+<section class="faqs on-sand" aria-labelledby={id}>
+  <div class="container faqs__grid">
+    <div class="faqs__head">
+      <h2 id={id}>{title}</h2>
+      {showAllLink && <a class="link-arrow" href="/contact#vragen">Alle vragen<Icon name="arrow-right" size={20} /></a>}
+    </div>
+    <Faq items={faqByIds(ids)} />
+  </div>
+</section>
+
+<style>
+  .faqs { padding-block: var(--section); }
+  .faqs__grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: clamp(32px, 6vw, 96px); align-items: start; }
+  .faqs h2 { font-size: clamp(1.5rem, 3vw, 2.25rem); margin-bottom: 16px; }
+  @media (max-width: 859px) { .faqs__grid { grid-template-columns: 1fr; } }
+</style>

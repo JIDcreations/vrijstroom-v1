@@ -115,19 +115,10 @@
   },
   "faq": {
     "title": "Vragen die vaak terugkomen",
-    "items": [
-      {
-        "q": "Een zelfgebouwde batterij, is dat veilig?",
-        "a": "We bouwen met EVE A+-cellen en een BMS (Battery Management System): een elektronische bewaker die de cellen beschermt tegen overladen, te diep ontladen en te hoge temperaturen. [TE BEVESTIGEN: keuring en garantie op de batterij]"
-      },
-      {
-        "q": "Wat kost een kennismaking?",
-        "a": "Niets. De kennismaking en de offerte zijn gratis. Je krijgt je offerte binnen [TE BEVESTIGEN: aantal] werkdagen."
-      },
-      {
-        "q": "Wat met de garantie van mijn camper?",
-        "a": "[TE BEVESTIGEN: hoe Vrijstroom omgaat met de fabrieksgarantie van het voertuig]"
-      }
+    "ids": [
+      "batterij-veilig",
+      "kennismaking-kost",
+      "garantie-camper"
     ],
     "link": {
       "label": "Alle vragen",

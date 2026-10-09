@@ -1,0 +1,19 @@
+---
+// Green statement band. Dark nature on Bright green.
+interface Props { title: string; text?: string; id?: string }
+const { title, text, id = 'pitch-title' } = Astro.props;
+---
+<section class="pitch" aria-labelledby={id}>
+  <div class="container pitch__inner" data-reveal>
+    <h2 id={id}>{title}</h2>
+    {text && <p>{text}</p>}
+  </div>
+</section>
+
+<style>
+  .pitch { background: var(--green); color: var(--dark); padding-block: clamp(72px, 9vw, 128px); }
+  .pitch__inner { display: grid; gap: 28px; }
+  .pitch h2 { font-size: clamp(1.875rem, 4.6vw, 4rem); line-height: 1.06; max-width: 17ch; }
+  .pitch p { font-size: clamp(1.0625rem, 1.5vw, 1.25rem); max-width: 56ch; }
+  .pitch :focus-visible { outline-color: var(--dark); }
+</style>

@@ -1,0 +1,27 @@
+---
+// Answers a doubt right where it comes up (question + answer from src/content/faq.json).
+import Icon from './Icon.astro';
+import Text from './Text.astro';
+import { faqByIds } from '../lib/faq';
+interface Props { id: string; tone?: 'sand' | 'dark' }
+const { id, tone = 'sand' } = Astro.props;
+const [item] = faqByIds([id]);
+---
+<aside class:list={['doubt', `doubt--${tone}`]}>
+  <Icon name="seal-question" size={28} class="doubt__icon" />
+  <div>
+    <p class="doubt__q">{item.q}</p>
+    <p class="doubt__a"><Text text={item.a} /></p>
+  </div>
+</aside>
+
+<style>
+  .doubt { display: grid; grid-template-columns: auto 1fr; gap: 14px; padding: 20px 22px; border-radius: var(--radius-sm); }
+  .doubt--sand { background: var(--sand-2); }
+  .doubt--dark { background: var(--dark-80); }
+  .doubt--dark .doubt__icon { color: var(--green); }
+  .doubt__q { font-weight: 600; font-size: 1.0625rem; }
+  .doubt__a { margin-top: 6px; font-size: .9375rem; }
+  .doubt--sand .doubt__a { color: var(--muted); }
+  .doubt--dark .doubt__a { color: var(--muted-on-dark); }
+</style>

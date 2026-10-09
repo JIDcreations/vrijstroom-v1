@@ -1,0 +1,27 @@
+{
+  "_uitleg": "Verbruik per toestel in wattuur (Wh) per dag, inclusief verlies van de omvormer waar nodig. Pas de getallen aan als de klant andere vuistregels gebruikt.",
+  "title": "Hoeveel stroom heb ik nodig?",
+  "intro": "Kies wat je meeneemt en hoe lang je los van het net wil staan. Je krijgt meteen een indicatie.",
+  "daysLabel": "Aantal dagen zonder bijladen",
+  "daysMin": 1,
+  "daysMax": 7,
+  "daysDefault": 3,
+  "batteryVoltage": 12.8,
+  "usableShare": 0.9,
+  "roundTo": 50,
+  "note": "Dit is een indicatie. Zonnepanelen en laden tijdens het rijden kunnen je batterij kleiner maken. In het gesprek bepalen we samen het exacte systeem.",
+  "devices": [
+    { "id": "koelkast", "label": "Koelkast", "detail": "compressor, hele dag aan", "wh": 400, "default": true, "icon": "snowflake" },
+    { "id": "verlichting", "label": "Verlichting", "detail": "led, een avond", "wh": 50, "default": true, "icon": "lightbulb" },
+    { "id": "gsm", "label": "Smartphones laden", "detail": "twee toestellen", "wh": 30, "default": true, "icon": "device-mobile" },
+    { "id": "waterpomp", "label": "Waterpomp", "detail": "douche en afwas", "wh": 15, "default": false, "icon": "drop" },
+    { "id": "laptop", "label": "Laptop", "detail": "4 uur werken", "wh": 260, "default": false, "icon": "laptop" },
+    { "id": "kachel", "label": "Standkachel", "detail": "diesel, een nacht", "wh": 200, "default": false, "icon": "thermometer-hot" },
+    { "id": "ventilator", "label": "Dakventilator", "detail": "een nacht", "wh": 90, "default": false, "icon": "fan" },
+    { "id": "tv", "label": "Tv of beamer", "detail": "een avond", "wh": 130, "default": false, "icon": "television" },
+    { "id": "koffie", "label": "Koffiezet", "detail": "via 230V, 's ochtends", "wh": 170, "default": false, "icon": "coffee" },
+    { "id": "inductie", "label": "Elektrisch koken", "detail": "inductie, een maaltijd", "wh": 800, "default": false, "icon": "cooking-pot" },
+    { "id": "gereedschap", "label": "Gereedschapsaccu's laden", "detail": "een werkdag", "wh": 300, "default": false, "icon": "wrench" },
+    { "id": "airco", "label": "Airco", "detail": "4 uur", "wh": 2400, "default": false, "icon": "wind" }
+  ]
+}

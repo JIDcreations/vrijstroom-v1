@@ -9,6 +9,7 @@ import Faq from '../components/Faq.astro';
 import site from '../config/site.json';
 import c from '../content/home.json';
 import { photo } from '../lib/images';
+import { faqByIds } from '../lib/faq';
 ---
 <Base title={c.seo.title} description={c.seo.description} headerTone="dark" noindex bodyClass="dir-b">
   <!-- Hero: photo inside a giant V -->
@@ -151,7 +152,7 @@ import { photo } from '../lib/images';
       </div>
       <div>
         <h2 id="faq-title" class="faq__title">{c.faq.title}</h2>
-        <Faq items={c.faq.items} />
+        <Faq items={faqByIds(c.faq.ids)} />
         <a class="link-arrow faq__more" href={c.faq.link.href}>{c.faq.link.label}<Icon name="arrow-right" size={20} /></a>
       </div>
     </div>

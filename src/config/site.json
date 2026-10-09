@@ -4,35 +4,56 @@
   "tagline": "Vrijheid begint bij goede stroom.",
   "closingLine": "Altijd stroom, overal vrij.",
   "description": "Vrijstroom ontwerpt en bouwt off-grid energiesystemen op maat voor campers, vans en bedrijfswagens.",
-
   "cta": {
     "label": "Plan je gratis kennismaking",
     "href": "/contact"
   },
-
   "nav": [
-    { "label": "Diensten", "href": "/diensten" },
-    { "label": "Campers & vans", "href": "/campers-en-vans" },
-    { "label": "Bedrijfswagens", "href": "/bedrijfswagens" },
-    { "label": "Over", "href": "/over" }
+    {
+      "label": "Diensten",
+      "href": "/diensten"
+    },
+    {
+      "label": "Campers & vans",
+      "href": "/campers-en-vans"
+    },
+    {
+      "label": "Bedrijfswagens",
+      "href": "/bedrijfswagens"
+    },
+    {
+      "label": "Over",
+      "href": "/over"
+    }
   ],
-
   "contact": {
     "phone": "[TE BEVESTIGEN: telefoonnummer]",
     "email": "[TE BEVESTIGEN: e-mailadres]",
     "address": "[TE BEVESTIGEN: adres werkplaats]",
     "region": "[TE BEVESTIGEN: regio waar Vrijstroom werkt]"
   },
-
   "whatsapp": {
     "number": "",
     "message": "Hallo Vrijstroom, ik stuur je een foto van mijn installatie"
   },
-
+  "agenda": {
+    "_uitleg": "Link naar de online agenda (bv. https://calendly.com/vrijstroom/kennismaking). Leeg = placeholder.",
+    "url": ""
+  },
+  "form": {
+    "_uitleg": "Waar het contactformulier naartoe gaat. Bv. Web3Forms: endpoint https://api.web3forms.com/submit + accessKey. Of Formspree: endpoint https://formspree.io/f/xxxx (accessKey leeg).",
+    "endpoint": "",
+    "accessKey": ""
+  },
+  "analytics": {
+    "_uitleg": "Laadt pas na toestemming (fase 3).",
+    "ga4Id": "",
+    "plausibleDomain": "",
+    "searchConsoleVerification": ""
+  },
   "seasonBar": {
     "enabled": true,
     "text": "Klaar voor het seizoen? Nu nog een plekje vrij in [TE BEVESTIGEN: maand]."
   },
-
   "showPlaceholderMarks": true
 }

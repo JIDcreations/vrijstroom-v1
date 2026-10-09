@@ -1,0 +1,97 @@
+---
+// Page hero for direction B: a feeling first. The photo is cut out in the V of the logo.
+import { Picture } from 'astro:assets';
+import Spark from './Spark.astro';
+import site from '../config/site.json';
+import { photo } from '../lib/images';
+
+interface Props {
+  title: string;
+  text: string;
+  image: string;
+  imageAlt: string;
+  imageNote?: string;
+  size?: 'home' | 'page';
+  secondary?: { label: string; href: string };
+  showCta?: boolean;
+  ctaHref?: string;
+}
+const { title, text, image, imageAlt, imageNote = 'Sfeerbeeld (stock)', size = 'page', secondary, showCta = true, ctaHref = site.cta.href } = Astro.props;
+---
+<section class:list={['vhero', `vhero--${size}`, 'on-dark']}>
+  <div class="container vhero__grid">
+    <div class="vhero__copy">
+      <Spark class="vhero__mark" animate />
+      <h1>{title}</h1>
+      <p class="vhero__text">{text}</p>
+      {showCta && (
+        <div class="vhero__actions">
+          <a class="btn btn--primary btn--lg" href={ctaHref}>{site.cta.label}</a>
+          {secondary && <a class="btn btn--ghost btn--lg" href={secondary.href}>{secondary.label}</a>}
+        </div>
+      )}
+    </div>
+  </div>
+  <figure class="vhero__v" data-placeholder={imageNote}>
+    <div class="vhero__mask">
+    <Picture
+      src={photo(image)}
+      alt={imageAlt}
+      formats={['avif', 'webp']}
+      widths={[480, 720, 960, 1280, 1600]}
+      sizes="(min-width: 1024px) 60vw, 100vw"
+      loading="eager"
+      fetchpriority="high"
+    />
+    </div>
+  </figure>
+</section>
+
+<style>
+  .vhero { position: relative; overflow: hidden; background: var(--dark); color: var(--sand); display: flex; align-items: center; }
+  .vhero--home { min-height: min(820px, calc(100dvh - 116px)); padding-block: clamp(40px, 6vw, 88px); }
+  .vhero--page { min-height: min(640px, calc(100dvh - 116px)); padding-block: clamp(40px, 5vw, 72px); }
+  .vhero__grid { position: relative; z-index: 2; width: 100%; }
+  .vhero__copy { max-width: 600px; }
+  .vhero__mark { width: 56px; color: var(--green); margin-bottom: 28px; }
+  .vhero h1 { line-height: 1.03; max-width: 11ch; }
+  .vhero--home h1 { font-size: clamp(2.5rem, 5.4vw, 4.75rem); }
+  .vhero--page h1 { font-size: clamp(2.25rem, 4.6vw, 4rem); max-width: 12ch; }
+  .vhero__text { margin-top: 24px; font-size: clamp(1.125rem, 1.5vw, 1.25rem); max-width: 36ch; color: var(--muted-on-dark); }
+  .vhero__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 36px; }
+
+  .vhero__v {
+    position: absolute; z-index: 1; margin: 0;
+    right: -6vw; top: 50%; translate: 0 -50%;
+    aspect-ratio: 374.75 / 294.95;
+  }
+  .vhero__mask {
+    position: absolute; inset: 0;
+    -webkit-mask: url('/brand/v-vorm.svg') center / contain no-repeat;
+            mask: url('/brand/v-vorm.svg') center / contain no-repeat;
+  }
+  .vhero--home .vhero__v { width: min(62vw, 980px); }
+  .vhero--page .vhero__v { width: min(54vw, 820px); right: -4vw; }
+  .vhero__mask :global(picture) { height: 100%; }
+  .vhero__v :global(img) { width: 100%; height: 100%; object-fit: cover; object-position: 50% 55%; }
+  .vhero__v[data-placeholder]::after { left: auto; right: 12%; bottom: auto; top: 2%; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .vhero__copy > * { animation: vh-rise .9s var(--ease) both; }
+    .vhero__copy > :nth-child(2) { animation-delay: .1s; }
+    .vhero__copy > :nth-child(3) { animation-delay: .18s; }
+    .vhero__copy > :nth-child(4) { animation-delay: .26s; }
+    .vhero__v { animation: vh-in 1.4s var(--ease) .2s both; }
+  }
+  @keyframes vh-rise { from { opacity: 0; transform: translateY(18px); } }
+  @keyframes vh-in { from { opacity: 0; transform: translateY(40px) scale(.96); } }
+
+  @media (max-width: 1023px) {
+    .vhero { flex-direction: column; align-items: stretch; min-height: 0 !important; padding-bottom: 0 !important; }
+    .vhero .vhero__v { position: relative; right: auto; top: auto; translate: none; width: 108vw; margin: 40px 0 40px -4vw; }
+    .vhero__v[data-placeholder]::after { right: 8%; top: 0; }
+  }
+  @media (max-width: 480px) {
+    .vhero__mark { width: 44px; margin-bottom: 20px; }
+  }
+</style>

@@ -9,6 +9,7 @@ import Faq from '../components/Faq.astro';
 import site from '../config/site.json';
 import c from '../content/home.json';
 import { photo } from '../lib/images';
+import { faqByIds } from '../lib/faq';
 ---
 <Base title={c.seo.title} description={c.seo.description} noindex bodyClass="dir-a">
   <!-- Hero: a feeling, not an explanation -->
@@ -147,7 +148,7 @@ import { photo } from '../lib/images';
         <h2 id="faq-title">{c.faq.title}</h2>
         <a class="link-arrow" href={c.faq.link.href}>{c.faq.link.label}<Icon name="arrow-right" size={20} /></a>
       </div>
-      <Faq items={c.faq.items} />
+      <Faq items={faqByIds(c.faq.ids)} />
     </div>
   </section>
 </Base>

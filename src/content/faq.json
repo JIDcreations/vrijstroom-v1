@@ -1,0 +1,65 @@
+{
+  "_uitleg": "Alle vragen staan hier één keer. Pagina's verwijzen naar een vraag via haar id. De volledige lijst staat op Contact, in deze volgorde.",
+  "items": [
+    {
+      "id": "kennismaking-kost",
+      "q": "Wat kost een kennismaking?",
+      "a": "Niets. De kennismaking en de offerte zijn gratis. Je krijgt je offerte binnen [TE BEVESTIGEN: aantal] werkdagen."
+    },
+    {
+      "id": "hoeveel-stroom",
+      "q": "Hoeveel stroom heb ik nodig?",
+      "a": "Dat hangt af van je toestellen en van hoe lang je los van het net wil staan. Met de rekentool op de pagina Diensten krijg je een eerste indicatie. In het gesprek bepalen we samen het exacte systeem."
+    },
+    {
+      "id": "batterij-veilig",
+      "q": "Een zelfgebouwde batterij, is dat veilig?",
+      "a": "We bouwen met EVE A+-cellen en een BMS (Battery Management System): een elektronische bewaker die de cellen beschermt tegen overladen, te diep ontladen en te hoge temperaturen. [TE BEVESTIGEN: keuring en garantie op de batterij]"
+    },
+    {
+      "id": "garantie-camper",
+      "q": "Wat met de garantie van mijn camper?",
+      "a": "[TE BEVESTIGEN: hoe Vrijstroom omgaat met de fabrieksgarantie van het voertuig]"
+    },
+    {
+      "id": "prijs",
+      "q": "Wat kost een installatie?",
+      "a": "Dat hangt af van wat je nodig hebt. Op de pagina Diensten zie je per dienst een vanaf-prijs en wat gratis is. Je offerte is gratis."
+    },
+    {
+      "id": "doorlooptijd",
+      "q": "Hoe lang staat mijn wagen bij jullie?",
+      "a": "Dat hangt af van de installatie. Een batterijwissel duurt [TE BEVESTIGEN: doorlooptijd batterijwissel], een volledig off-grid systeem [TE BEVESTIGEN: doorlooptijd volledig systeem]."
+    },
+    {
+      "id": "zelfbouwer",
+      "q": "Ik heb de onderdelen al gekocht. Kunnen jullie die aansluiten?",
+      "a": "Daar zijn zelfbouwers net voor bij ons. We kijken eerst of je onderdelen bij elkaar passen en veilig zijn, en sluiten ze dan aan. [TE BEVESTIGEN: voorwaarden en garantie bij eigen onderdelen]"
+    },
+    {
+      "id": "merken",
+      "q": "Met welke merken werken jullie?",
+      "a": "We werken met Victron en bouwen onze lithiumbatterijen zelf met EVE A+-cellen. [TE BEVESTIGEN: andere merken waarmee Vrijstroom werkt]"
+    },
+    {
+      "id": "waar",
+      "q": "Waar gebeurt de inbouw?",
+      "a": "[TE BEVESTIGEN: inbouw in de werkplaats of ter plaatse, en in welke regio]"
+    },
+    {
+      "id": "gereedschap",
+      "q": "Kan ik mijn gereedschap laden zonder aggregaat?",
+      "a": "Ja. Met een lithiumbatterij, een DC/DC-lader (die je batterij oplaadt terwijl je rijdt) en een omvormer naar 230V laad je je accu's onderweg en op de werf. Hoeveel je kan laden, hangt af van wat je gebruikt. Dat rekenen we samen uit."
+    },
+    {
+      "id": "foodtruck",
+      "q": "Werkt dit ook voor een food truck op een event?",
+      "a": "Ja, we bouwen systemen voor food trucks. Wat haalbaar is, hangt sterk af van je toestellen: een koelkast vraagt veel minder dan een frietketel. [TE BEVESTIGEN: grenzen voor food trucks]"
+    },
+    {
+      "id": "uitleg",
+      "q": "Moet ik er zelf veel van kennen?",
+      "a": "Nee. Bij de oplevering leggen we in gewone taal uit hoe alles werkt, zodat je er zelf mee overweg kan."
+    }
+  ]
+}

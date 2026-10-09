@@ -1,0 +1,149 @@
+---
+// "Hoeveel stroom heb ik nodig?" Small, indicative calculator. All numbers live in src/content/calculator.json.
+import calc from '../content/calculator.json';
+import site from '../config/site.json';
+import Icon from './Icon.astro';
+
+interface Props { tone?: 'dark' | 'sand'; id?: string }
+const { tone = 'dark', id = 'rekentool' } = Astro.props;
+const settings = {
+  voltage: calc.batteryVoltage,
+  usable: calc.usableShare,
+  roundTo: calc.roundTo,
+  devices: Object.fromEntries(calc.devices.map((d) => [d.id, d.wh])),
+};
+---
+<section class:list={['calc', `calc--${tone}`, tone === 'dark' ? 'on-dark' : 'on-sand']} id={id} aria-labelledby={`${id}-title`}>
+  <div class="container calc__grid" data-calc={JSON.stringify(settings)}>
+    <div class="calc__input">
+      <h2 id={`${id}-title`}>{calc.title}</h2>
+      <p class="calc__intro">{calc.intro}</p>
+
+      <fieldset class="calc__devices">
+        <legend class="sr-only">Welke toestellen gebruik je?</legend>
+        {calc.devices.map((d) => (
+          <label class="chip">
+            <input type="checkbox" name="device" value={d.id} checked={d.default} />
+            <span class="chip__box">
+              <Icon name={d.icon} size={24} />
+              <span class="chip__text">
+                <span class="chip__label">{d.label}</span>
+                <span class="chip__detail">{d.detail}</span>
+              </span>
+              <Icon name="check" size={18} class="chip__check" />
+            </span>
+          </label>
+        ))}
+      </fieldset>
+
+      <div class="calc__days">
+        <label for={`${id}-days`}>{calc.daysLabel}</label>
+        <div class="calc__range">
+          <input type="range" id={`${id}-days`} name="days" min={calc.daysMin} max={calc.daysMax} value={calc.daysDefault} step="1" />
+          <output for={`${id}-days`} class="calc__days-out">{calc.daysDefault} dagen</output>
+        </div>
+      </div>
+    </div>
+
+    <div class="calc__result" aria-live="polite">
+      <p class="calc__result-label">Indicatieve batterij</p>
+      <p class="calc__big"><span data-out="ah">…</span> <span class="calc__unit">Ah</span></p>
+      <dl class="calc__facts">
+        <div><dt>Verbruik per dag</dt><dd data-out="daily">…</dd></div>
+        <div><dt>Totaal voor <span data-out="days">…</span></dt><dd data-out="total">…</dd></div>
+      </dl>
+      <p class="calc__empty" data-out="empty" hidden>Kies minstens één toestel.</p>
+      <p class="calc__note">{calc.note}</p>
+      <a class="btn btn--primary calc__cta" href={site.cta.href}>{site.cta.label}</a>
+    </div>
+  </div>
+</section>
+
+<script>
+  const fmt = (n: number, d = 0) => n.toLocaleString('nl-BE', { maximumFractionDigits: d, minimumFractionDigits: d });
+  document.querySelectorAll<HTMLElement>('[data-calc]').forEach((root) => {
+    const s = JSON.parse(root.dataset.calc!);
+    const days = root.querySelector<HTMLInputElement>('input[name="days"]')!;
+    const out = (k: string) => root.querySelector<HTMLElement>(`[data-out="${k}"]`)!;
+    const daysOut = root.querySelector<HTMLOutputElement>('.calc__days-out')!;
+    const dayLabel = (n: number) => `${n} ${n === 1 ? 'dag' : 'dagen'}`;
+
+    const update = () => {
+      const chosen = [...root.querySelectorAll<HTMLInputElement>('input[name="device"]:checked')];
+      const daily = chosen.reduce((sum, el) => sum + (s.devices[el.value] ?? 0), 0);
+      const n = Number(days.value);
+      const total = daily * n;
+      const ah = total / (s.voltage * s.usable);
+      const rounded = daily ? Math.max(s.roundTo, Math.ceil(ah / s.roundTo) * s.roundTo) : 0;
+      daysOut.textContent = dayLabel(n);
+      out('ah').textContent = daily ? `± ${fmt(rounded)}` : '0';
+      out('daily').textContent = `${fmt(daily)} Wh`;
+      out('days').textContent = dayLabel(n);
+      out('total').textContent = total >= 1000 ? `${fmt(total / 1000, 1)} kWh` : `${fmt(total)} Wh`;
+      out('empty').hidden = daily > 0;
+      days.style.setProperty('--fill', `${((n - Number(days.min)) / (Number(days.max) - Number(days.min))) * 100}%`);
+    };
+    root.addEventListener('input', update);
+    update();
+  });
+</script>
+
+<style>
+  .calc { padding-block: var(--section); }
+  .calc--dark { background: var(--dark); color: var(--sand); --chip-bg: var(--dark-80); --chip-line: var(--line-on-dark); --chip-muted: var(--muted-on-dark); }
+  .calc--sand { background: var(--sand-2); color: var(--dark); --chip-bg: var(--sand); --chip-line: var(--line); --chip-muted: var(--muted); }
+  .calc__grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: start; }
+  .calc h2 { font-size: clamp(1.75rem, 3.6vw, 3rem); max-width: 16ch; }
+  .calc__intro { margin-top: 16px; max-width: 52ch; color: var(--chip-muted); font-size: 1.125rem; }
+
+  .calc__devices { border: 0; padding: 0; margin: 36px 0 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 10px; }
+  .chip { position: relative; display: block; cursor: pointer; }
+  .chip input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+  .chip__box {
+    display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 12px;
+    min-height: 64px; padding: 12px 14px; border-radius: var(--radius-sm);
+    background: var(--chip-bg); border: 1.5px solid var(--chip-line);
+    transition: background-color .2s var(--ease), border-color .2s var(--ease), transform .15s var(--ease);
+  }
+  .chip:active .chip__box { transform: scale(.98); }
+  .chip__text { display: grid; line-height: 1.25; }
+  .chip__label { font-weight: 600; }
+  .chip__detail { font-size: .875rem; color: var(--chip-muted); }
+  .chip__box :global(.chip__check) { opacity: 0; transition: opacity .2s var(--ease); }
+  .chip input:checked + .chip__box { border-color: var(--green); box-shadow: inset 0 0 0 1px var(--green); }
+  .chip input:checked + .chip__box :global(.chip__check) { opacity: 1; color: var(--green); }
+  .calc--sand .chip input:checked + .chip__box { border-color: var(--dark); box-shadow: inset 0 0 0 1px var(--dark); }
+  .calc--sand .chip input:checked + .chip__box :global(.chip__check) { color: var(--dark); }
+  .chip input:focus-visible + .chip__box { outline: 3px solid var(--green); outline-offset: 2px; }
+  .calc--sand .chip input:focus-visible + .chip__box { outline-color: var(--dark); }
+
+  .calc__days { margin-top: 32px; display: grid; gap: 10px; }
+  .calc__days label { font-weight: 600; }
+  .calc__range { display: flex; align-items: center; gap: 16px; }
+  .calc__range input { flex: 1; height: 44px; accent-color: var(--green); cursor: pointer; }
+  .calc--sand .calc__range input { accent-color: var(--dark); }
+  .calc__days-out { min-width: 5.5em; font-family: var(--font-display); font-size: 1.125rem; }
+
+  .calc__result {
+    position: sticky; top: 104px; display: grid; gap: 16px; align-content: start;
+    padding: clamp(28px, 3vw, 40px); border-radius: var(--radius);
+    background: var(--sand); color: var(--dark);
+  }
+  .calc__result-label { font-weight: 600; }
+  .calc__big { font-family: var(--font-display); font-size: clamp(3rem, 6vw, 4.5rem); line-height: 1; letter-spacing: -0.03em; }
+  .calc__unit { font-size: .45em; letter-spacing: 0; }
+  .calc__facts { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 0; padding-top: 16px; border-top: 1px solid var(--line); }
+  .calc__facts dt { font-size: .875rem; color: var(--muted); }
+  .calc__facts dd { margin: 0; font-weight: 600; font-size: 1.125rem; }
+  .calc__note { font-size: .9375rem; color: var(--muted); }
+  .calc__empty { font-weight: 600; }
+  .calc__cta { justify-self: start; border-color: var(--dark); }
+
+  @media (max-width: 959px) {
+    .calc__grid { grid-template-columns: 1fr; }
+    .calc__result { position: static; }
+  }
+  @media (max-width: 480px) {
+    .calc__devices { grid-template-columns: 1fr; }
+  }
+</style>

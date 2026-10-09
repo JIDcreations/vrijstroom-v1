@@ -1,0 +1,117 @@
+---
+// Contact: agenda first, form as alternative, direct contact, full FAQ. Texts: src/content/contact.json
+import Base from '../layouts/Base.astro';
+import VHero from '../components/VHero.astro';
+import ContactForm from '../components/ContactForm.astro';
+import Faq from '../components/Faq.astro';
+import Icon from '../components/Icon.astro';
+import Text from '../components/Text.astro';
+import site from '../config/site.json';
+import c from '../content/contact.json';
+import { allFaq } from '../lib/faq';
+
+const wa = `https://wa.me/${site.whatsapp.number.replace(/\D/g, '')}?text=${encodeURIComponent(site.whatsapp.message)}`;
+---
+<Base title={c.seo.title} description={c.seo.description} headerTone="dark">
+  <VHero title={c.hero.title} text={c.hero.text} image={c.hero.image} imageAlt={c.hero.imageAlt} ctaHref="#agenda" />
+
+  <!-- Agenda: loads only after a click, so no third-party request before consent -->
+  <section class="agenda on-sand" id="agenda" aria-labelledby="agenda-title">
+    <div class="container">
+      <div class="agenda__box" data-agenda-url={site.agenda.url}>
+        <div class="agenda__intro">
+          <Icon name="calendar-check" size={40} />
+          <h2 id="agenda-title">{c.agenda.title}</h2>
+          <p>{c.agenda.text}</p>
+          {site.agenda.url ? (
+            <>
+              <button type="button" class="btn btn--primary btn--lg" data-agenda-load>{c.agenda.button}</button>
+              <p class="agenda__consent"><Text text={c.agenda.consent} /></p>
+            </>
+          ) : (
+            <p><Text text={c.agenda.missing} /></p>
+          )}
+        </div>
+        <div class="agenda__frame" hidden></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Form + direct contact -->
+  <section class="reach on-sand" aria-labelledby="form-title">
+    <div class="container reach__grid">
+      <div>
+        <h2 id="form-title">{c.form.title}</h2>
+        <p class="reach__text"><Text text={c.form.text} /></p>
+        <ContactForm />
+      </div>
+
+      <aside class="direct on-dark" aria-labelledby="direct-title">
+        <h2 id="direct-title">{c.direct.title}</h2>
+        <a class="btn btn--ghost direct__wa" href={wa} target="_blank" rel="noopener">
+          <Icon name="whatsapp-logo" size={22} />{c.direct.whatsapp}
+        </a>
+        <ul class="direct__list">
+          <li><Icon name="phone" size={22} /><span><Text text={site.contact.phone} /></span></li>
+          <li><Icon name="envelope-simple" size={22} /><span><Text text={site.contact.email} /></span></li>
+          <li><Icon name="map-pin" size={22} /><span><Text text={site.contact.address} /><br />Regio: <Text text={site.contact.region} /></span></li>
+          <li><Icon name="clock" size={22} /><span><Text text={c.direct.hours} /></span></li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Full FAQ -->
+  <section class="allfaq on-sand" id="vragen" aria-labelledby="vragen-title">
+    <div class="container allfaq__grid">
+      <h2 id="vragen-title">{c.faqTitle}</h2>
+      <Faq items={allFaq} />
+    </div>
+  </section>
+</Base>
+
+<script>
+  const box = document.querySelector<HTMLElement>('[data-agenda-url]');
+  box?.querySelector('[data-agenda-load]')?.addEventListener('click', () => {
+    const url = box.dataset.agendaUrl!;
+    const frame = box.querySelector<HTMLElement>('.agenda__frame')!;
+    const iframe = document.createElement('iframe');
+    iframe.src = url;
+    iframe.title = 'Online agenda: kies een moment voor je kennismaking';
+    iframe.loading = 'lazy';
+    frame.append(iframe);
+    frame.hidden = false;
+    box.querySelector<HTMLElement>('.agenda__intro')!.hidden = true;
+    iframe.focus();
+  });
+</script>
+
+<style>
+  .agenda { padding-top: var(--section); }
+  .agenda__box { border-radius: var(--radius); background: var(--sand-2); overflow: hidden; }
+  .agenda__intro { display: grid; gap: 16px; justify-items: start; padding: clamp(32px, 5vw, 64px); }
+  .agenda h2 { font-size: clamp(1.75rem, 3.6vw, 3rem); }
+  .agenda__intro > p { max-width: 52ch; color: var(--muted); }
+  .agenda__consent { font-size: .875rem; }
+  .agenda__frame iframe { display: block; width: 100%; height: 720px; border: 0; background: #fff; }
+
+  .reach { padding-block: var(--section); }
+  .reach__grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: clamp(40px, 6vw, 96px); align-items: start; }
+  .reach h2 { font-size: clamp(1.5rem, 3vw, 2.25rem); }
+  .reach__text { margin: 12px 0 28px; color: var(--muted); max-width: 52ch; }
+  .direct { position: sticky; top: 104px; display: grid; gap: 24px; padding: clamp(28px, 3vw, 40px); border-radius: var(--radius); background: var(--dark); color: var(--sand); }
+  .direct h2 { font-size: 1.375rem; }
+  .direct__wa { justify-self: start; white-space: normal; text-align: left; }
+  .direct__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; }
+  .direct__list li { display: grid; grid-template-columns: auto 1fr; gap: 14px; align-items: start; }
+  .direct__list :global(svg) { color: var(--green); margin-top: 2px; }
+  @media (max-width: 959px) {
+    .reach__grid { grid-template-columns: 1fr; }
+    .direct { position: static; }
+  }
+
+  .allfaq { padding-bottom: var(--section); scroll-margin-top: 80px; }
+  .allfaq__grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: clamp(32px, 6vw, 96px); align-items: start; }
+  .allfaq h2 { font-size: clamp(1.5rem, 3vw, 2.25rem); }
+  @media (max-width: 859px) { .allfaq__grid { grid-template-columns: 1fr; } }
+</style>

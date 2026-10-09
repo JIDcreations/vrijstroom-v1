@@ -1,0 +1,147 @@
+---
+// One template for every audience landing page.
+// Each file in src/content/doelgroepen/ becomes a page: bedrijfswagens.json -> /bedrijfswagens
+import Base from '../layouts/Base.astro';
+import VHero from '../components/VHero.astro';
+import Calculator from '../components/Calculator.astro';
+import FaqSection from '../components/FaqSection.astro';
+import Icon from '../components/Icon.astro';
+import Text from '../components/Text.astro';
+import diensten from '../content/diensten.json';
+
+export function getStaticPaths() {
+  const files = import.meta.glob('../content/doelgroepen/*.json', { eager: true, import: 'default' });
+  return Object.entries(files).map(([path, data]) => ({
+    params: { doelgroep: path.split('/').pop()!.replace('.json', '') },
+    props: { page: data },
+  }));
+}
+
+const { page: c } = Astro.props as { page: any };
+const services = c.services.ids.map((id: string) => {
+  const s = diensten.services.items.find((item) => item.id === id);
+  if (!s) throw new Error(`Dienst "${id}" niet gevonden in src/content/diensten.json`);
+  return s;
+});
+---
+<Base title={c.seo.title} description={c.seo.description} headerTone="dark">
+  <VHero title={c.hero.title} text={c.hero.text} image={c.hero.image} imageAlt={c.hero.imageAlt} imageNote={c.hero.imageNote} />
+
+  <!-- Problem -> solution, starting with what the customer says -->
+  <section class="segments on-sand" aria-labelledby="segments-title">
+    <div class="container">
+      <h2 id="segments-title" data-reveal>{c.segments.title}</h2>
+      <div class="segments__list">
+        {c.segments.items.map((s: any) => (
+          <article class="segment" data-reveal>
+            <div class="segment__who">
+              <p class="segment__quote">“<Text text={s.quote} />”</p>
+              {s.quoteNote && <p><Text text={s.quoteNote} /></p>}
+              <h3><span class="segment__icon"><Icon name={s.icon} size={24} /></span>{s.title}</h3>
+            </div>
+            <div class="segment__flow">
+              <div>
+                <p class="segment__label">Waar je tegenaan loopt</p>
+                <p>{s.problem}</p>
+              </div>
+              <Icon name="arrow-down" size={24} class="segment__arrow" />
+              <div class="segment__solution">
+                <p class="segment__label">Wat wij doen</p>
+                <p>{s.solution}</p>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- What you notice -->
+  <section class="benefits" aria-labelledby="benefits-title">
+    <div class="container">
+      <p class="benefits__mood" data-reveal>{c.mood}</p>
+      <h2 id="benefits-title" class="sr-only">{c.benefits.title}</h2>
+      <ul class="benefits__list">
+        {c.benefits.items.map((b: any) => (
+          <li data-reveal>
+            <Icon name={b.icon} size={32} />
+            <h3>{b.title}</h3>
+            <p>{b.text}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Relevant services -->
+  <section class="svc on-sand" aria-labelledby="svc-title">
+    <div class="container">
+      <h2 id="svc-title" data-reveal>{c.services.title}</h2>
+      <ul class="svc__list">
+        {services.map((s: any) => (
+          <li data-reveal>
+            <a href={`/diensten#${s.id}`}>
+              <span class="svc__icon"><Icon name={s.icon} size={26} /></span>
+              <span class="svc__body">
+                <span class="svc__title">{s.title}</span>
+                <span class="svc__benefit">{s.benefit}</span>
+              </span>
+              <Icon name="arrow-right" size={22} class="svc__arrow" />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  {c.calculator && <Calculator />}
+
+  <FaqSection ids={c.faq} />
+</Base>
+
+<style>
+  /* Segments */
+  .segments { padding-block: var(--section); }
+  .segments h2 { font-size: clamp(1.75rem, 3.6vw, 3rem); }
+  .segments__list { display: grid; margin-top: clamp(32px, 4vw, 56px); }
+  .segment { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 5vw, 80px); padding-block: clamp(36px, 4vw, 56px); border-top: 1px solid var(--line); }
+  .segment__who { display: grid; gap: 14px; align-content: start; justify-items: start; }
+  .segment__icon { flex: none; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: var(--dark); color: var(--green); }
+  .segment h3 { display: flex; align-items: center; gap: 12px; font-size: 1.25rem; margin-top: 10px; }
+  .segment__quote { font-family: var(--font-display); font-size: clamp(1.375rem, 2.4vw, 2rem); line-height: 1.2; letter-spacing: -0.01em; }
+  .segment__flow { display: grid; gap: 14px; align-content: start; }
+  .segment__label { font-weight: 600; margin-bottom: 4px; }
+  .segment__flow p:not(.segment__label) { color: var(--muted); }
+  .segment__flow .segment__arrow { color: var(--dark); }
+  .segment__solution { padding: 20px 22px; border-radius: var(--radius-sm); background: var(--dark); color: var(--sand); }
+  .segment__solution p:not(.segment__label) { color: var(--muted-on-dark); }
+  .segment__solution .segment__label { color: var(--green); }
+  @media (max-width: 859px) { .segment { grid-template-columns: 1fr; } }
+
+  /* Benefits */
+  .benefits { padding-block: clamp(72px, 9vw, 128px); background: var(--green); color: var(--dark); }
+  .benefits__mood { font-family: var(--font-display); font-size: clamp(1.875rem, 4.4vw, 3.75rem); line-height: 1.06; max-width: 18ch; text-wrap: balance; }
+  .benefits__list { list-style: none; margin: clamp(40px, 5vw, 64px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  .benefits__list li { display: grid; gap: 10px; align-content: start; padding-top: 24px; border-top: 3px solid var(--dark); }
+  .benefits__list h3 { font-size: 1.25rem; }
+  @media (max-width: 859px) { .benefits__list { grid-template-columns: 1fr; } }
+
+  /* Services */
+  .svc { padding-block: var(--section); background: var(--sand-2); }
+  .svc h2 { font-size: clamp(1.75rem, 3.6vw, 3rem); }
+  .svc__list { list-style: none; margin: clamp(32px, 4vw, 56px) 0 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .svc__list a {
+    display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 18px;
+    min-height: 88px; padding: 18px 22px; border-radius: var(--radius-sm); background: var(--sand); text-decoration: none;
+    transition: transform .2s var(--ease), background-color .2s var(--ease);
+  }
+  .svc__list a:hover { background: #fffdf5; }
+  .svc__list a:hover .svc__arrow { transform: translateX(4px); }
+  .svc__list a:active { transform: scale(.99); }
+  .svc__icon { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%; background: var(--dark); color: var(--green); }
+  .svc__body { display: grid; gap: 2px; }
+  .svc__title { font-weight: 600; font-size: 1.125rem; }
+  .svc__benefit { color: var(--muted); font-size: .9375rem; }
+  .svc__arrow { transition: transform .2s var(--ease); }
+  @media (max-width: 760px) { .svc__list { grid-template-columns: 1fr; } }
+</style>

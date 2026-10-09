@@ -1,0 +1,67 @@
+{
+  "order": 2,
+  "navLabel": "Bedrijfswagens",
+
+  "seo": {
+    "title": "Stroom voor servicebussen, food trucks en paardentrailers | Vrijstroom",
+    "description": "Gereedschap laden zonder aggregaat, stroom op events, licht en koeling in je trailer. Vrijstroom bouwt off-grid systemen op maat voor bedrijfswagens."
+  },
+
+  "hero": {
+    "title": "Je kantoor is overal.",
+    "text": "Stroom waar je werkt, zonder het lawaai van een aggregaat.",
+    "image": "werkplaats-elektricien",
+    "imageAlt": "Elektricien in Vrijstroom-shirt sluit een batterij aan in de werkplaats",
+    "imageNote": "Voorbeeldbeeld, geen foto van de ondernemer"
+  },
+
+  "segments": {
+    "title": "Voor wie onderweg werkt",
+    "items": [
+      {
+        "icon": "wrench",
+        "title": "Servicebussen",
+        "quote": "Ik wil mijn gereedschap laden zonder aggregaat.",
+        "quoteNote": "[TE BEVESTIGEN: klantzin servicebus]",
+        "problem": "Een aggregaat maakt lawaai, stinkt en moet je meeslepen.",
+        "solution": "Een lithiumbatterij die oplaadt terwijl je rijdt, met een omvormer naar 230V. Je laadt je accu's gewoon in de bus."
+      },
+      {
+        "icon": "hamburger",
+        "title": "Food trucks",
+        "quote": "[TE BEVESTIGEN: klantzin food truck]",
+        "quoteNote": "",
+        "problem": "Op een event is er niet altijd stroom, of je deelt een overbelaste kabel met tien andere standen.",
+        "solution": "We berekenen wat je toestellen vragen en bouwen een systeem dat je koeling en kassa draaiende houdt."
+      },
+      {
+        "icon": "horse",
+        "title": "Paardentrailers en -camions",
+        "quote": "[TE BEVESTIGEN: klantzin paardentrailer]",
+        "quoteNote": "",
+        "problem": "Licht, water en een koelkast in je camion of woongedeelte, ook op een wedstrijdterrein zonder aansluiting.",
+        "solution": "Een stil, veilig systeem op maat van wat je meeneemt, zodat jij en je paarden comfortabel staan."
+      }
+    ]
+  },
+
+  "benefits": {
+    "title": "Wat je ervan merkt",
+    "items": [
+      { "icon": "lightning", "title": "Stroom waar je werkt", "text": "Op de werf, op het event of op het wedstrijdterrein." },
+      { "icon": "speaker-slash", "title": "Geen aggregaat", "text": "Stil, zonder brandstof en zonder uitlaatgassen." },
+      { "icon": "shield-check", "title": "Veilig en degelijk", "text": "Gebouwd door een elektricien, voor dagelijks gebruik." }
+    ]
+  },
+
+  "services": {
+    "title": "Wat we voor bedrijfswagens doen",
+    "ids": ["lithiumbatterij", "zonnepanelen", "omvormer", "off-grid", "comfort"]
+  },
+
+  "mood": "Elke werkdag stroom, zonder gedoe.",
+
+  "calculator": true,
+
+  "faq": ["gereedschap", "foodtruck", "doorlooptijd", "waar"]
+}
