@@ -49,11 +49,11 @@ const f = c.form;
 
     <div class="field">
       <label for="cf-budget">Budget</label>
-      <select id="cf-budget" name="budget" aria-describedby="cf-budget-note">
+      <select id="cf-budget" name="budget" aria-describedby={f.budgetNote ? "cf-budget-note" : undefined}>
         <option value="">Maak een keuze</option>
         {f.budgetOptions.map((o) => <option>{o}</option>)}
       </select>
-      <p class="field__help" id="cf-budget-note"><Text text={f.budgetNote} /></p>
+      {f.budgetNote && <p class="field__help" id="cf-budget-note"><Text text={f.budgetNote} /></p>}
     </div>
 
     <div class="field">
@@ -122,7 +122,7 @@ const f = c.form;
       if (el('cf-website').value) { form.hidden = true; done.hidden = false; return; }
 
       if (!endpoint) {
-        status.textContent = 'Het formulier is nog niet gekoppeld. [TE BEVESTIGEN: formulier-endpoint]';
+        status.textContent = 'Het formulier is nog niet gekoppeld. Stuur ons intussen een bericht via WhatsApp.';
         status.hidden = false;
         return;
       }

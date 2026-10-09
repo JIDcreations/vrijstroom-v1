@@ -52,7 +52,7 @@ import c from '../content/home.json';
           <article class="who__col" data-reveal>
             <Icon name={a.icon} size={36} class="who__icon" />
             <p class="who__quote">“{a.quote}”</p>
-            <p><Text text={a.quoteNote} /></p>
+            {a.quoteNote && <p><Text text={a.quoteNote} /></p>}
             <h3>{a.title}</h3>
             <p class="who__text">{a.text}</p>
             <p class="who__mood">{a.mood}</p>

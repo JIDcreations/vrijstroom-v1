@@ -27,10 +27,10 @@
     }
   ],
   "contact": {
-    "phone": "[TE BEVESTIGEN: telefoonnummer]",
-    "email": "[TE BEVESTIGEN: e-mailadres]",
-    "address": "[TE BEVESTIGEN: adres werkplaats]",
-    "region": "[TE BEVESTIGEN: regio waar Vrijstroom werkt]"
+    "phone": "",
+    "email": "",
+    "address": "",
+    "region": ""
   },
   "whatsapp": {
     "number": "",
@@ -53,7 +53,7 @@
   },
   "seasonBar": {
     "enabled": true,
-    "text": "Klaar voor het seizoen? Nu nog een plekje vrij in [TE BEVESTIGEN: maand]."
+    "text": "Klaar voor het seizoen? Plan nu je installatie."
   },
-  "showPlaceholderMarks": true
+  "showPlaceholderMarks": false
 }

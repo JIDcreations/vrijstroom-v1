@@ -2,19 +2,16 @@
   "_uitleg": "Elke doelgroeppagina is één bestand in deze map. De bestandsnaam wordt de URL (campers-en-vans.json wordt /campers-en-vans). Kopieer dit bestand om een nieuwe landingspagina te maken.",
   "order": 1,
   "navLabel": "Campers & vans",
-
   "seo": {
     "title": "Off-grid stroom voor je camper of van | Vrijstroom",
     "description": "Een lithiumbatterij, zonnepanelen of een volledig off-grid systeem voor je camper of van. Ook voor zelfbouwers die het aansluiten liever aan een elektricien overlaten."
   },
-
   "hero": {
     "title": "Wakker worden waar je wil.",
     "text": "Koffie aan het meer. Laptop in de bergen. Geen camping nodig.",
     "image": "ochtend-zee-van",
     "imageAlt": "Uitzicht vanuit het bed achterin een van, met blote voeten onder het dekbed en de zon die opkomt boven zee"
   },
-
   "segments": {
     "title": "Herken je jezelf?",
     "items": [
@@ -22,7 +19,7 @@
         "icon": "van",
         "title": "Je hebt een camper of van",
         "quote": "Na twee dagen zonder camping is mijn batterij leeg.",
-        "quoteNote": "[TE BEVESTIGEN: klantzin camperaar]",
+        "quoteNote": "",
         "problem": "Je oude accu houdt het niet lang vol, of je wil met laptop, koffiezet of koelkast op pad zonder elke avond een stopcontact te zoeken.",
         "solution": "We bekijken hoe jij reist en bouwen een systeem dat daarbij past: niet te klein, niet te groot."
       },
@@ -30,30 +27,50 @@
         "icon": "toolbox",
         "title": "Je bouwt zelf",
         "quote": "Ik heb alles gekocht, maar durf het niet zelf aan te sluiten.",
-        "quoteNote": "[TE BEVESTIGEN: klantzin zelfbouwer]",
+        "quoteNote": "",
         "problem": "De onderdelen liggen klaar, maar een fout in een kleine ruimte heeft grote gevolgen. Kabeldiktes, zekeringen, laders: het moet kloppen.",
         "solution": "We controleren of je onderdelen bij elkaar passen en sluiten alles veilig aan, zodat je met een gerust gevoel vertrekt."
       }
     ]
   },
-
   "benefits": {
     "title": "Wat je ervan merkt",
     "items": [
-      { "icon": "sun-horizon", "title": "Dagen vrij staan", "text": "Staan waar je wil, zonder walstroom en zonder camping." },
-      { "icon": "coffee", "title": "Thuiscomfort onderweg", "text": "Koffie, koelkast, laptop en licht werken gewoon." },
-      { "icon": "shield-check", "title": "Een gerust gevoel", "text": "Veilig gebouwd door een elektricien, zoals een goede installatie thuis." }
+      {
+        "icon": "sun-horizon",
+        "title": "Dagen vrij staan",
+        "text": "Staan waar je wil, zonder walstroom en zonder camping."
+      },
+      {
+        "icon": "coffee",
+        "title": "Thuiscomfort onderweg",
+        "text": "Koffie, koelkast, laptop en licht werken gewoon."
+      },
+      {
+        "icon": "shield-check",
+        "title": "Een gerust gevoel",
+        "text": "Veilig gebouwd door een elektricien, zoals een goede installatie thuis."
+      }
     ]
   },
-
   "services": {
     "title": "Wat we voor campers en vans doen",
-    "ids": ["lithiumbatterij", "lithium-upgrade", "zonnepanelen", "omvormer", "off-grid", "comfort", "fietsdragers"]
+    "ids": [
+      "lithiumbatterij",
+      "lithium-upgrade",
+      "zonnepanelen",
+      "omvormer",
+      "off-grid",
+      "comfort",
+      "fietsdragers"
+    ]
   },
-
   "mood": "Stroom die je niet hoort. Vrijheid die je wel voelt.",
-
   "calculator": true,
-
-  "faq": ["zelfbouwer", "garantie-camper", "batterij-veilig", "doorlooptijd"]
+  "faq": [
+    "zelfbouwer",
+    "garantie-camper",
+    "batterij-veilig",
+    "doorlooptijd"
+  ]
 }

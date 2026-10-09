@@ -3,14 +3,12 @@
     "title": "Diensten en prijzen | Vrijstroom",
     "description": "Lithiumbatterijen op maat, zonnepanelen, omvormers en complete off-grid systemen voor campers, vans en bedrijfswagens. Met eerlijke prijsinfo en een rekentool."
   },
-
   "hero": {
     "title": "Elke zonnestraal telt.",
     "text": "Alles wat je nodig hebt om vrij te staan, uitgelegd in gewone taal.",
     "image": "zonnepaneel-woestijn",
     "imageAlt": "Vrouw poetst een zonnepaneel op het dak van haar van, op een zandweg bij zonsondergang"
   },
-
   "services": {
     "title": "Wat we inbouwen",
     "intro": "Elke installatie is op maat. Hieronder lees je wat elk onderdeel doet en wat jij eraan hebt.",
@@ -21,7 +19,7 @@
         "title": "Lithiumbatterij op maat",
         "benefit": "Meer bruikbare stroom, in minder plaats en minder gewicht.",
         "text": "We bouwen je batterij zelf, met EVE A+-cellen. Zo krijg je precies de capaciteit die past bij je gebruik en bij de plek die je hebt. Capaciteit drukken we uit in Ah (ampère-uur): hoe meer Ah, hoe langer je stroom hebt. Een BMS (Battery Management System) bewaakt elke cel.",
-        "price": "Vanaf € [TE BEVESTIGEN: vanaf-prijs batterij]",
+        "price": "",
         "doubt": "batterij-veilig"
       },
       {
@@ -30,7 +28,7 @@
         "title": "Lithium-upgrade",
         "benefit": "Je oude loodaccu eruit, een lichtere batterij die je bijna helemaal kan gebruiken.",
         "text": "Een loodaccu mag je maar voor een deel ontladen. Een lithiumbatterij (LiFePO4) kan je bijna volledig gebruiken, laadt sneller op en weegt minder. We kijken meteen of je laders en bekabeling erbij passen.",
-        "price": "Vanaf € [TE BEVESTIGEN: vanaf-prijs upgrade]"
+        "price": ""
       },
       {
         "id": "zonnepanelen",
@@ -38,7 +36,7 @@
         "title": "Zonnepanelen",
         "benefit": "Bijladen terwijl je stilstaat, zonder stopcontact.",
         "text": "Panelen op je dak, met een MPPT-regelaar. Die regelaar haalt het maximum uit je panelen, ook als de zon minder fel schijnt, en laadt je batterij veilig op.",
-        "price": "Vanaf € [TE BEVESTIGEN: vanaf-prijs zonnepanelen]"
+        "price": ""
       },
       {
         "id": "omvormer",
@@ -46,7 +44,7 @@
         "title": "Omvormer 230V",
         "benefit": "Je laptop, koffiezet of gereedschap werkt gewoon, zoals thuis.",
         "text": "Een omvormer zet de 12V van je batterij om naar 230V, de spanning van een gewoon stopcontact. We kiezen het vermogen op basis van je zwaarste toestel en bouwen hem in met de juiste beveiliging.",
-        "price": "Vanaf € [TE BEVESTIGEN: vanaf-prijs omvormer]"
+        "price": ""
       },
       {
         "id": "off-grid",
@@ -54,7 +52,7 @@
         "title": "Complete off-grid systemen",
         "benefit": "Batterij, laden en beveiliging als één geheel, zonder verrassingen.",
         "text": "Batterij, zonnepanelen, omvormer, zekeringen en een DC/DC-lader, ontworpen als één systeem. Die DC/DC-lader laadt je batterij op terwijl je rijdt, zonder je startaccu leeg te trekken. We werken met Victron.",
-        "price": "Vanaf € [TE BEVESTIGEN: vanaf-prijs volledig systeem]"
+        "price": ""
       },
       {
         "id": "comfort",
@@ -62,15 +60,15 @@
         "title": "Ventilatie en airco",
         "benefit": "Fris slapen en werken, ook midden in de zomer.",
         "text": "Dakventilatie en airco, aangesloten op een systeem dat het verbruik aankan. Een airco vraagt veel stroom. We rekenen eerlijk uit wat haalbaar is met jouw batterij.",
-        "price": "Vanaf € [TE BEVESTIGEN: vanaf-prijs ventilatie en airco]"
+        "price": ""
       },
       {
         "id": "fietsdragers",
         "icon": "bicycle",
         "title": "Fietsdragers",
         "benefit": "Je fietsen mee, stevig en veilig vast.",
-        "text": "We monteren je fietsdrager netjes op je camper of van. [TE BEVESTIGEN: welke types of merken fietsdragers]",
-        "price": "Vanaf € [TE BEVESTIGEN: vanaf-prijs fietsdrager]"
+        "text": "We monteren je fietsdrager netjes op je camper of van.",
+        "price": ""
       },
       {
         "id": "bedrijfswagens",
@@ -79,58 +77,103 @@
         "benefit": "Stroom voor je werk, zonder aggregaat.",
         "text": "Voor servicebussen, food trucks en paardentrailers of -camions. We bouwen het systeem rond je gereedschap en toestellen.",
         "price": "Prijs op maat",
-        "link": { "label": "Meer over bedrijfswagens", "href": "/bedrijfswagens" }
+        "link": {
+          "label": "Meer over bedrijfswagens",
+          "href": "/bedrijfswagens"
+        }
       }
     ]
   },
-
   "packages": {
-    "enabled": true,
+    "enabled": false,
     "title": "Pakketten",
     "intro": "Een vertrekpunt voor wie snel wil weten waar hij ongeveer uitkomt. We stemmen elk pakket af op jouw wagen.",
     "items": [
-      { "name": "[TE BEVESTIGEN: naam pakket 1]", "for": "[TE BEVESTIGEN: voor wie is dit pakket]", "contents": ["[TE BEVESTIGEN: inhoud pakket 1]"], "price": "Vanaf € [TE BEVESTIGEN: prijs]" },
-      { "name": "[TE BEVESTIGEN: naam pakket 2]", "for": "[TE BEVESTIGEN: voor wie is dit pakket]", "contents": ["[TE BEVESTIGEN: inhoud pakket 2]"], "price": "Vanaf € [TE BEVESTIGEN: prijs]" },
-      { "name": "[TE BEVESTIGEN: naam pakket 3]", "for": "[TE BEVESTIGEN: voor wie is dit pakket]", "contents": ["[TE BEVESTIGEN: inhoud pakket 3]"], "price": "Vanaf € [TE BEVESTIGEN: prijs]" }
+      {
+        "name": "[TE BEVESTIGEN: naam pakket 1]",
+        "for": "[TE BEVESTIGEN: voor wie is dit pakket]",
+        "contents": [
+          "[TE BEVESTIGEN: inhoud pakket 1]"
+        ],
+        "price": "Vanaf € [TE BEVESTIGEN: prijs]"
+      },
+      {
+        "name": "[TE BEVESTIGEN: naam pakket 2]",
+        "for": "[TE BEVESTIGEN: voor wie is dit pakket]",
+        "contents": [
+          "[TE BEVESTIGEN: inhoud pakket 2]"
+        ],
+        "price": "Vanaf € [TE BEVESTIGEN: prijs]"
+      },
+      {
+        "name": "[TE BEVESTIGEN: naam pakket 3]",
+        "for": "[TE BEVESTIGEN: voor wie is dit pakket]",
+        "contents": [
+          "[TE BEVESTIGEN: inhoud pakket 3]"
+        ],
+        "price": "Vanaf € [TE BEVESTIGEN: prijs]"
+      }
     ]
   },
-
   "pricing": {
     "title": "Wat is gratis, wat kost wat, wat wordt verrekend",
     "columns": [
       {
         "title": "Gratis",
         "icon": "hand-coins",
-        "items": ["De kennismaking", "Je offerte, binnen [TE BEVESTIGEN: aantal] werkdagen"]
+        "items": [
+          "De kennismaking",
+          "Je offerte"
+        ]
       },
       {
         "title": "Wat kost wat",
         "icon": "receipt",
-        "items": ["Per dienst zie je hierboven een vanaf-prijs", "Je offerte toont wat je precies betaalt, voor je beslist"]
+        "items": [
+          "Elke installatie is op maat, dus ook de prijs",
+          "Je offerte toont wat je precies betaalt, voor je beslist"
+        ]
       },
       {
         "title": "Wat wordt verrekend",
         "icon": "car-profile",
-        "items": ["Verplaatsing: [TE BEVESTIGEN: verplaatsingskost en vanaf welke afstand]"]
+        "items": [
+          "Eventuele verplaatsing, vooraf afgesproken in je offerte"
+        ]
       }
     ]
   },
-
   "process": {
     "title": "Zo werken we",
     "steps": [
-      { "title": "Gesprek", "text": "We bekijken samen hoe je reist of werkt, welke toestellen je gebruikt en wat er nu in je wagen zit. Gratis. [TE BEVESTIGEN: in de werkplaats, ter plaatse of online]" },
-      { "title": "Offerte", "text": "Binnen [TE BEVESTIGEN: aantal] werkdagen krijg je een duidelijke offerte: wat we inbouwen en waarom. Ook gratis." },
-      { "title": "Inbouw", "text": "We bouwen alles in met de zorg van een installatie thuis: juiste kabeldiktes, goede beveiliging, nette afwerking." },
-      { "title": "Oplevering", "text": "We leggen in gewone taal uit hoe alles werkt, zodat je er zelf mee overweg kan." }
+      {
+        "title": "Gesprek",
+        "text": "We bekijken samen hoe je reist of werkt, welke toestellen je gebruikt en wat er nu in je wagen zit. Gratis."
+      },
+      {
+        "title": "Offerte",
+        "text": "Je krijgt een duidelijke offerte: wat we inbouwen en waarom. Ook gratis."
+      },
+      {
+        "title": "Inbouw",
+        "text": "We bouwen alles in met de zorg van een installatie thuis: juiste kabeldiktes, goede beveiliging, nette afwerking."
+      },
+      {
+        "title": "Oplevering",
+        "text": "We leggen in gewone taal uit hoe alles werkt, zodat je er zelf mee overweg kan."
+      }
     ],
     "doubt": "garantie-camper"
   },
-
   "warranty": {
     "title": "Garantie",
-    "text": "Op je batterij krijg je [TE BEVESTIGEN: aantal] jaar garantie, op de installatie [TE BEVESTIGEN: aantal] jaar. [TE BEVESTIGEN: voorwaarden garantie]"
+    "text": "Op je batterij krijg je [TE BEVESTIGEN: aantal] jaar garantie, op de installatie [TE BEVESTIGEN: aantal] jaar. [TE BEVESTIGEN: voorwaarden garantie]",
+    "enabled": false
   },
-
-  "faq": ["hoeveel-stroom", "prijs", "doorlooptijd", "zelfbouwer"]
+  "faq": [
+    "hoeveel-stroom",
+    "prijs",
+    "doorlooptijd",
+    "zelfbouwer"
+  ]
 }

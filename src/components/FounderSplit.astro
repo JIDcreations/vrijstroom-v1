@@ -19,9 +19,9 @@ const { title, name, paragraphs, quote, image, imageAlt, imageNote = 'Voorbeeldb
     </figure>
     <div class="founder__copy" data-reveal>
       <h2 id="founder-title">{title}</h2>
-      <p class="founder__name"><Text text={name} /></p>
+      {name && <p class="founder__name"><Text text={name} /></p>}
       {paragraphs.map((p) => <p class="founder__p"><Text text={p} /></p>)}
-      <blockquote><Text text={quote} /></blockquote>
+      {quote && <blockquote><Text text={quote} /></blockquote>}
       {link && <a class="link-arrow" href={link.href}>{link.label}<Icon name="arrow-right" size={20} /></a>}
     </div>
   </div>

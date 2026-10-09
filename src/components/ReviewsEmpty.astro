@@ -11,7 +11,7 @@ const { title, empty, note } = home.reviews;
     <div class="reviews__empty">
       <Icon name="quotes" size={40} />
       <p class="reviews__lead">{empty}</p>
-      <p><Text text={note} /></p>
+      {note && <p><Text text={note} /></p>}
     </div>
   </div>
 </section>

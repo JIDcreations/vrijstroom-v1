@@ -3,38 +3,55 @@
     "title": "Contact | Plan je gratis kennismaking met Vrijstroom",
     "description": "Kies zelf een moment voor een gratis kennismaking, stuur een bericht of een foto van je installatie via WhatsApp."
   },
-
   "hero": {
     "title": "Vrij staan begint met een gesprek.",
     "text": "Kies zelf een moment. De kennismaking is gratis.",
     "image": "zonnepaneel-woestijn",
     "imageAlt": "Vrouw poetst een zonnepaneel op het dak van haar van, bij zonsondergang"
   },
-
   "agenda": {
     "title": "Kies zelf je moment",
     "text": "In de agenda zie je wanneer we vrij zijn. Je kiest een moment en krijgt meteen een bevestiging.",
     "button": "Toon de agenda",
-    "consent": "De agenda wordt geladen van [TE BEVESTIGEN: agendadienst, bv. Calendly]. Die dienst kan cookies plaatsen.",
-    "missing": "[TE BEVESTIGEN: link naar de online agenda]"
+    "consent": "De agenda wordt geladen van een externe dienst. Die kan cookies plaatsen.",
+    "missing": "Liever meteen een bericht sturen? Gebruik het formulier hieronder of stuur ons een WhatsApp."
   },
-
   "form": {
     "title": "Liever een bericht sturen?",
-    "text": "Laat je naam en een telefoonnummer of e-mailadres achter. We nemen contact met je op binnen [TE BEVESTIGEN: aantal] werkdagen.",
-    "vehicleOptions": ["Camper", "Van of buscamper", "Zelfbouw", "Servicebus", "Food truck", "Paardentrailer of -camion", "Iets anders"],
-    "wishOptions": ["Lithiumbatterij of upgrade", "Zonnepanelen", "Omvormer 230V", "Volledig off-grid systeem", "Ventilatie of airco", "Fietsdrager", "Ik weet het nog niet"],
-    "budgetOptions": ["Tot € [X]", "€ [X] tot € [Y]", "€ [Y] tot € [Z]", "Meer dan € [Z]", "Ik weet het nog niet"],
-    "budgetNote": "[TE BEVESTIGEN: bedragen voor de budgetkeuzes]",
+    "text": "Laat je naam en een telefoonnummer of e-mailadres achter. We nemen zo snel mogelijk contact met je op.",
+    "vehicleOptions": [
+      "Camper",
+      "Van of buscamper",
+      "Zelfbouw",
+      "Servicebus",
+      "Food truck",
+      "Paardentrailer of -camion",
+      "Iets anders"
+    ],
+    "wishOptions": [
+      "Lithiumbatterij of upgrade",
+      "Zonnepanelen",
+      "Omvormer 230V",
+      "Volledig off-grid systeem",
+      "Ventilatie of airco",
+      "Fietsdrager",
+      "Ik weet het nog niet"
+    ],
+    "budgetOptions": [
+      "Tot € 2.500",
+      "€ 2.500 tot € 5.000",
+      "€ 5.000 tot € 10.000",
+      "Meer dan € 10.000",
+      "Ik weet het nog niet"
+    ],
+    "budgetNote": "",
     "success": "Bedankt, je bericht is goed aangekomen. We nemen zo snel mogelijk contact met je op.",
     "error": "Er ging iets mis bij het versturen. Probeer het opnieuw of stuur ons een bericht via WhatsApp."
   },
-
   "direct": {
     "title": "Of neem rechtstreeks contact op",
     "whatsapp": "Stuur een foto van je installatie via WhatsApp",
-    "hours": "[TE BEVESTIGEN: openingsuren]"
+    "hours": ""
   },
-
   "faqTitle": "Alle vragen"
 }

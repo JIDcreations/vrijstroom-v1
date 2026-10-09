@@ -54,7 +54,7 @@
       {
         "title": "Campers & vans",
         "quote": "Ik heb alles gekocht, maar durf het niet zelf aan te sluiten.",
-        "quoteNote": "[TE BEVESTIGEN: klantzin reizen]",
+        "quoteNote": "",
         "text": "Voor je bestaande camper of van, en voor zelfbouwers die het aansluiten liever aan een vakman overlaten.",
         "mood": "Koffie aan het meer. Laptop in de bergen. Geen camping nodig.",
         "href": "/campers-en-vans",
@@ -63,7 +63,7 @@
       {
         "title": "Bedrijfswagens",
         "quote": "Ik wil mijn gereedschap laden zonder aggregaat.",
-        "quoteNote": "[TE BEVESTIGEN: klantzin werken]",
+        "quoteNote": "",
         "text": "Servicebussen, food trucks en paardentrailers. Stroom waar je werkt, zonder lawaai van een aggregaat.",
         "mood": "Je kantoor is overal.",
         "href": "/bedrijfswagens",
@@ -98,9 +98,9 @@
   },
   "founder": {
     "title": "De elektricien achter Vrijstroom",
-    "name": "[TE BEVESTIGEN: naam ondernemer]",
+    "name": "",
     "text": "Als ervaren elektricien weet hij hoe een goede installatie thuis eruitziet. Die zorg brengt hij naar de camper, de bus en de bedrijfswagen.",
-    "quote": "[TE BEVESTIGEN: citaat ondernemer, bv. ik gebruik het zelf elke dag]",
+    "quote": "",
     "image": "werkplaats-elektricien",
     "imageAlt": "Elektricien in Vrijstroom-shirt sluit een batterij aan in de werkplaats",
     "link": {
@@ -111,7 +111,7 @@
   "reviews": {
     "title": "Wat klanten zeggen",
     "empty": "Hier komen binnenkort echte Google-reviews van klanten.",
-    "note": "[TE BEVESTIGEN: link naar Google-bedrijfsprofiel]"
+    "note": ""
   },
   "faq": {
     "title": "Vragen die vaak terugkomen",

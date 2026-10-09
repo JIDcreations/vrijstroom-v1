@@ -32,7 +32,7 @@ import c from '../content/diensten.json';
             <h3>{s.title}</h3>
             <p class="service__benefit">{s.benefit}</p>
             <p class="service__text"><Text text={s.text} /></p>
-            <p class="service__price"><Text text={s.price} /></p>
+            {s.price && <p class="service__price"><Text text={s.price} /></p>}
             {s.link && <a class="link-arrow" href={s.link.href}>{s.link.label}<Icon name="arrow-right" size={20} /></a>}
             {s.doubt && <DoubtNote id={s.doubt} />}
           </article>
@@ -101,8 +101,8 @@ import c from '../content/diensten.json';
     </div>
   </section>
 
-  <!-- Warranty -->
-  <section class="warranty on-sand" aria-labelledby="warranty-title">
+  <!-- Warranty (switch on in diensten.json once the terms are known) -->
+  {c.warranty.enabled && (<section class="warranty on-sand" aria-labelledby="warranty-title">
     <div class="container">
       <div class="warranty__inner" data-reveal>
         <Icon name="shield-check" size={40} />
@@ -112,7 +112,7 @@ import c from '../content/diensten.json';
         </div>
       </div>
     </div>
-  </section>
+  </section>)}
 
   <FaqSection ids={c.faq} />
 </Base>

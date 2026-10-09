@@ -3,51 +3,50 @@
     "title": "Over Vrijstroom | Een ervaren elektricien voor je camper of bedrijfswagen",
     "description": "Vrijstroom brengt de zorg van een goede installatie thuis naar de camper, de bus en de bedrijfswagen. Maak kennis met de elektricien achter Vrijstroom."
   },
-
   "hero": {
     "title": "Veilig zoals thuis, vrij zoals onderweg.",
     "text": "Elke off-grid installatie onderweg moet even veilig en doordacht zijn als een goede installatie thuis.",
     "image": "ochtend-zee-van",
     "imageAlt": "Uitzicht vanuit het bed achterin een van, met de zon die opkomt boven zee"
   },
-
   "mission": {
     "title": "Staan waar je wil, zonder walstroom.",
     "text": "Wij geven je de vrijheid om te staan waar je wil, met een energiesysteem op maat van hoe jij reist of werkt, gebouwd met de zorg van een ervaren elektricien en zo uitgelegd dat je er zelf mee overweg kan."
   },
-
   "founder": {
     "title": "De elektricien achter Vrijstroom",
-    "name": "[TE BEVESTIGEN: naam ondernemer]",
+    "name": "",
     "paragraphs": [
-      "Als ervaren elektricien weet hij hoe een goede installatie thuis eruitziet: juiste kabeldiktes, goede beveiliging, nette afwerking. Die zorg brengt hij naar de camper, de bus en de bedrijfswagen.",
-      "[TE BEVESTIGEN: korte achtergrond van de ondernemer, bv. hoe lang hij elektricien is en waarom hij Vrijstroom startte]"
+      "Als ervaren elektricien weet hij hoe een goede installatie thuis eruitziet: juiste kabeldiktes, goede beveiliging, nette afwerking. Die zorg brengt hij naar de camper, de bus en de bedrijfswagen."
     ],
-    "quote": "[TE BEVESTIGEN: citaat ondernemer, bv. ik gebruik het zelf elke dag]",
+    "quote": "",
     "image": "werkplaats-elektricien",
     "imageAlt": "Elektricien in Vrijstroom-shirt sluit een batterij aan in de werkplaats",
     "imageNote": "Voorbeeldbeeld, geen foto van de ondernemer"
   },
-
   "approach": {
     "title": "Onze aanpak"
   },
-
   "projects": {
     "title": "Projecten",
     "intro": "Elk project tonen we zoals het ging: waar de klant stond, wat we deden en wat het opleverde.",
     "empty": "Binnenkort: projecten uit de werkplaats.",
     "items": []
   },
-
   "brands": {
     "_uitleg": "Zet enabled op true zodra merklogo's en certificaten bevestigd zijn. Logo's horen in public/brand/partners.",
     "enabled": false,
     "title": "Merken en certificaten",
     "items": [
-      { "name": "Victron Energy", "logo": "/brand/partners/victron.svg" }
+      {
+        "name": "Victron Energy",
+        "logo": "/brand/partners/victron.svg"
+      }
     ]
   },
-
-  "faq": ["uitleg", "merken", "waar"]
+  "faq": [
+    "uitleg",
+    "merken",
+    "doorlooptijd"
+  ]
 }

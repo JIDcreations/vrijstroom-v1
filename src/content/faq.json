@@ -4,7 +4,7 @@
     {
       "id": "kennismaking-kost",
       "q": "Wat kost een kennismaking?",
-      "a": "Niets. De kennismaking en de offerte zijn gratis. Je krijgt je offerte binnen [TE BEVESTIGEN: aantal] werkdagen."
+      "a": "Niets. De kennismaking en de offerte zijn gratis."
     },
     {
       "id": "hoeveel-stroom",
@@ -14,37 +14,32 @@
     {
       "id": "batterij-veilig",
       "q": "Een zelfgebouwde batterij, is dat veilig?",
-      "a": "We bouwen met EVE A+-cellen en een BMS (Battery Management System): een elektronische bewaker die de cellen beschermt tegen overladen, te diep ontladen en te hoge temperaturen. [TE BEVESTIGEN: keuring en garantie op de batterij]"
+      "a": "We bouwen met EVE A+-cellen en een BMS (Battery Management System): een elektronische bewaker die de cellen beschermt tegen overladen, te diep ontladen en te hoge temperaturen."
     },
     {
       "id": "garantie-camper",
       "q": "Wat met de garantie van mijn camper?",
-      "a": "[TE BEVESTIGEN: hoe Vrijstroom omgaat met de fabrieksgarantie van het voertuig]"
+      "a": "Een goede vraag om meteen in het kennismakingsgesprek te stellen. We bekijken samen wat de garantievoorwaarden van je voertuig zeggen, nog voor we iets inbouwen."
     },
     {
       "id": "prijs",
       "q": "Wat kost een installatie?",
-      "a": "Dat hangt af van wat je nodig hebt. Op de pagina Diensten zie je per dienst een vanaf-prijs en wat gratis is. Je offerte is gratis."
+      "a": "Dat hangt af van wat je nodig hebt. Elke installatie is op maat. Je offerte is gratis en toont wat je precies betaalt, voor je beslist."
     },
     {
       "id": "doorlooptijd",
       "q": "Hoe lang staat mijn wagen bij jullie?",
-      "a": "Dat hangt af van de installatie. Een batterijwissel duurt [TE BEVESTIGEN: doorlooptijd batterijwissel], een volledig off-grid systeem [TE BEVESTIGEN: doorlooptijd volledig systeem]."
+      "a": "Dat hangt af van de installatie. Een batterijwissel gaat sneller dan een volledig off-grid systeem. In je offerte staat hoe lang je wagen bij ons blijft."
     },
     {
       "id": "zelfbouwer",
       "q": "Ik heb de onderdelen al gekocht. Kunnen jullie die aansluiten?",
-      "a": "Daar zijn zelfbouwers net voor bij ons. We kijken eerst of je onderdelen bij elkaar passen en veilig zijn, en sluiten ze dan aan. [TE BEVESTIGEN: voorwaarden en garantie bij eigen onderdelen]"
+      "a": "Daar zijn zelfbouwers net voor bij ons. We kijken eerst of je onderdelen bij elkaar passen en veilig zijn, en sluiten ze dan aan."
     },
     {
       "id": "merken",
       "q": "Met welke merken werken jullie?",
-      "a": "We werken met Victron en bouwen onze lithiumbatterijen zelf met EVE A+-cellen. [TE BEVESTIGEN: andere merken waarmee Vrijstroom werkt]"
-    },
-    {
-      "id": "waar",
-      "q": "Waar gebeurt de inbouw?",
-      "a": "[TE BEVESTIGEN: inbouw in de werkplaats of ter plaatse, en in welke regio]"
+      "a": "We werken met Victron en bouwen onze lithiumbatterijen zelf met EVE A+-cellen."
     },
     {
       "id": "gereedschap",
@@ -54,7 +49,7 @@
     {
       "id": "foodtruck",
       "q": "Werkt dit ook voor een food truck op een event?",
-      "a": "Ja, we bouwen systemen voor food trucks. Wat haalbaar is, hangt sterk af van je toestellen: een koelkast vraagt veel minder dan een frietketel. [TE BEVESTIGEN: grenzen voor food trucks]"
+      "a": "Ja, we bouwen systemen voor food trucks. Wat haalbaar is, hangt sterk af van je toestellen: een koelkast vraagt veel minder dan een frietketel. Dat rekenen we samen uit."
     },
     {
       "id": "uitleg",
