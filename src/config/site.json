@@ -57,7 +57,7 @@
     "searchConsoleVerification": ""
   },
   "seasonBar": {
-    "enabled": true,
+    "enabled": false,
     "text": "Laat je camper deze winter ombouwen, dan sta je in het voorjaar klaar om te vertrekken."
   },
   "showPlaceholderMarks": false,
