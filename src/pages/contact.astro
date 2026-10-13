@@ -10,12 +10,18 @@ import site from '../config/site.json';
 import c from '../content/contact.json';
 import { allFaq } from '../lib/faq';
 
+const tel = `tel:${site.contact.phone.replace(/[^\d+]/g, '')}`;
 const wa = `https://wa.me/${site.whatsapp.number.replace(/\D/g, '')}?text=${encodeURIComponent(site.whatsapp.message)}`;
 ---
-<Base title={c.seo.title} description={c.seo.description} headerTone="dark">
-  <VHero title={c.hero.title} text={c.hero.text} image={c.hero.image} imageAlt={c.hero.imageAlt} ctaHref="#agenda" />
+<Base title={c.seo.title} description={c.seo.description} headerTone="dark" closing={false}>
+  <VHero
+    title={c.hero.title} text={c.hero.text} image={c.hero.image} imageAlt={c.hero.imageAlt}
+    ctaHref={site.agenda.url ? '#agenda' : tel} ctaLabel={site.agenda.url ? site.cta.label : `Bel ${site.founderName}`} ctaIcon={site.agenda.url ? undefined : 'phone'}
+    secondary={{ label: 'Stuur een WhatsApp', href: wa, icon: 'whatsapp-logo' }}
+  />
 
-  <!-- Agenda: loads only after a click, so no third-party request before consent -->
+  <!-- Agenda: only once a booking link is set. Loads after a click, so no third-party request before consent -->
+  {site.agenda.url && (
   <section class="agenda on-sand" id="agenda" aria-labelledby="agenda-title">
     <div class="container">
       <div class="agenda__box" data-agenda-url={site.agenda.url}>
@@ -23,19 +29,14 @@ const wa = `https://wa.me/${site.whatsapp.number.replace(/\D/g, '')}?text=${enco
           <Icon name="calendar-check" size={40} />
           <h2 id="agenda-title">{c.agenda.title}</h2>
           <p>{c.agenda.text}</p>
-          {site.agenda.url ? (
-            <>
-              <button type="button" class="btn btn--primary btn--lg" data-agenda-load>{c.agenda.button}</button>
-              <p class="agenda__consent"><Text text={c.agenda.consent} /></p>
-            </>
-          ) : (
-            <p><Text text={c.agenda.missing} /></p>
-          )}
+          <button type="button" class="btn btn--primary btn--lg" data-agenda-load>{c.agenda.button}</button>
+          <p class="agenda__consent"><Text text={c.agenda.consent} /></p>
         </div>
         <div class="agenda__frame" hidden></div>
       </div>
     </div>
   </section>
+  )}
 
   <!-- Form + direct contact -->
   <section class="reach on-sand" aria-labelledby="form-title">

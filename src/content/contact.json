@@ -5,7 +5,7 @@
   },
   "hero": {
     "title": "Vrij staan begint met een gesprek.",
-    "text": "Plan een gratis ontwerpgesprek, of stuur ons een bericht of foto.",
+    "text": "Bel, stuur een WhatsApp of laat hieronder een bericht achter. Dan plannen we samen je gratis kennismaking.",
     "image": "zonnepaneel-woestijn",
     "imageAlt": "Vrouw poetst een zonnepaneel op het dak van haar van, bij zonsondergang"
   },
@@ -13,11 +13,10 @@
     "title": "Kies zelf je moment",
     "text": "We bespreken hoe je reist of werkt, welke toestellen je gebruikt en wat je van je systeem verwacht. Kies zelf een moment.",
     "button": "Toon de agenda",
-    "consent": "De agenda wordt geladen van een externe dienst. Die kan cookies plaatsen.",
-    "missing": "Liever meteen een bericht sturen? Gebruik het formulier hieronder of stuur ons een WhatsApp."
+    "consent": "De agenda wordt geladen van een externe dienst. Die kan cookies plaatsen."
   },
   "form": {
-    "title": "Liever een bericht sturen?",
+    "title": "Stuur een bericht",
     "text": "Laat je naam en een telefoonnummer of e-mailadres achter. We nemen zo snel mogelijk contact met je op, in het Nederlands of het Engels.",
     "vehicleOptions": [
       "Camper",
@@ -49,7 +48,7 @@
     "error": "Er ging iets mis bij het versturen. Probeer het opnieuw of stuur ons een bericht via WhatsApp."
   },
   "direct": {
-    "title": "Of neem rechtstreeks contact op",
+    "title": "Rechtstreeks contact",
     "whatsapp": "Stuur een foto van je installatie via WhatsApp",
     "hours": ""
   },

@@ -5,9 +5,9 @@
   },
   "hero": {
     "title": "Vrijheid begint bij goede stroom.",
-    "text": "Staan waar je wil, zonder walstroom. Een energiesysteem op maat, gebouwd met de zorg van een ervaren elektricien.",
+    "text": "Staan waar je wil, zonder walstroom. Als ervaren elektricien bouw ik een energiesysteem op maat, inclusief een lithiumbatterij en laadinstallatie die perfect zijn afgestemd op de ruimte die je hebt.",
     "secondary": {
-      "label": "Bereken je stroom",
+      "label": "Bereken wat je nodig hebt",
       "href": "#rekentool",
       "icon": "calculator"
     },
@@ -59,7 +59,12 @@
         "text": "Voor je bestaande camper of van, en voor zelfbouwers die het aansluiten liever aan een vakman overlaten.",
         "mood": "Koffie aan het meer. Laptop in de bergen. Geen camping nodig.",
         "href": "/campers-en-vans",
-        "icon": "van"
+        "icon": "van",
+        "projects": [
+          "Campers",
+          "Campervans",
+          "Zelfbouwers"
+        ]
       },
       {
         "title": "Bedrijfswagens",
@@ -68,7 +73,13 @@
         "text": "Servicebussen, mobiele werkplaatsen, food trucks en paardentrailers. Stroom waar je werkt, zonder lawaai van een aggregaat.",
         "mood": "Je kantoor is overal.",
         "href": "/bedrijfswagens",
-        "icon": "truck"
+        "icon": "truck",
+        "projects": [
+          "Servicebussen",
+          "Mobiele werkplaatsen",
+          "Food trucks",
+          "Paardentrailers"
+        ]
       }
     ]
   },
@@ -77,7 +88,7 @@
     "items": [
       {
         "icon": "shield-check",
-        "title": "Gebouwd door een elektricien",
+        "title": "Erkend elektricien",
         "text": "We werken in een voertuig even zorgvuldig als in een woning: juiste kabeldiktes, goede beveiliging en nette afwerking."
       },
       {
@@ -136,8 +147,12 @@
   },
   "trust": [
     {
+      "icon": "lightning",
+      "text": "Erkend elektricien"
+    },
+    {
       "icon": "seal-check",
-      "text": "Victron Certified Installer"
+      "text": "AREI-conform"
     },
     {
       "icon": "shield-check",
@@ -146,15 +161,11 @@
     {
       "icon": "map-pin",
       "text": "Werkplaats in Lokeren"
-    },
-    {
-      "icon": "lightning",
-      "text": "Gebouwd door een elektricien"
     }
   ],
   "brands": {
     "title": "Merken waarmee we werken",
-    "badge": "Victron Certified Installer",
+    "badge": "",
     "items": [
       "Victron Energy",
       "MaxxFan",

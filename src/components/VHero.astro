@@ -16,8 +16,10 @@ interface Props {
   secondary?: { label: string; href: string; icon?: string };
   showCta?: boolean;
   ctaHref?: string;
+  ctaLabel?: string;
+  ctaIcon?: string;
 }
-const { title, text, image, imageAlt, imageNote = 'Sfeerbeeld (stock)', size = 'page', secondary, showCta = true, ctaHref = site.cta.href } = Astro.props;
+const { title, text, image, imageAlt, imageNote = 'Sfeerbeeld (stock)', size = 'page', secondary, showCta = true, ctaHref = site.cta.href, ctaLabel = site.cta.label, ctaIcon } = Astro.props;
 ---
 <section class:list={['vhero', `vhero--${size}`, 'on-dark']}>
   <div class="container vhero__grid">
@@ -27,7 +29,7 @@ const { title, text, image, imageAlt, imageNote = 'Sfeerbeeld (stock)', size = '
       <p class="vhero__text">{text}</p>
       {showCta && (
         <div class="vhero__actions">
-          <a class="btn btn--primary btn--lg" href={ctaHref}>{site.cta.label}</a>
+          <a class="btn btn--primary btn--lg" href={ctaHref}>{ctaIcon && <Icon name={ctaIcon} size={22} />}{ctaLabel}</a>
           {secondary && <a class="btn btn--ghost btn--lg" href={secondary.href}>{secondary.icon && <Icon name={secondary.icon} size={22} />}{secondary.label}</a>}
         </div>
       )}

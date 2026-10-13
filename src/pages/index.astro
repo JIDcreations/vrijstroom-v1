@@ -2,7 +2,6 @@
 // Homepage (direction B). Texts: src/content/home.json
 import Base from '../layouts/Base.astro';
 import VHero from '../components/VHero.astro';
-import PitchBand from '../components/PitchBand.astro';
 import Calculator from '../components/Calculator.astro';
 import MoodImage from '../components/MoodImage.astro';
 import WhyList from '../components/WhyList.astro';
@@ -20,11 +19,31 @@ import c from '../content/home.json';
 
   <TrustStrip />
 
-  <PitchBand title={c.offer.title} text={c.offer.text} />
+  <!-- For whom + what we build -->
+  <section class="who on-dark" aria-labelledby="who-title">
+    <div class="container">
+      <h2 id="who-title" class="who__title" data-reveal>{c.audiences.title}</h2>
+      <div class="who__grid">
+        {c.audiences.items.map((a) => (
+          <article class="who__col" data-reveal>
+            <Icon name={a.icon} size={36} class="who__icon" />
+            <p class="who__quote">“{a.quote}”</p>
+            {a.quoteNote && <p><Text text={a.quoteNote} /></p>}
+            <h3>{a.title}</h3>
+            <p class="who__text">{a.text}</p>
+            {a.projects && (
+              <ul class="who__projects" aria-label={`Projecten: ${a.title}`}>
+                {a.projects.map((p) => <li>{p}</li>)}
+              </ul>
+            )}
+            <p class="who__mood">{a.mood}</p>
+            <a class="btn btn--ghost" href={a.href}>Meer over {a.title.toLowerCase()}</a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
 
-  <Calculator />
-
-  <!-- Short offer -->
   <section class="offer on-sand" aria-labelledby="offer-title">
     <div class="container">
       <h2 id="offer-title" data-reveal>Wat we inbouwen</h2>
@@ -45,27 +64,9 @@ import c from '../content/home.json';
     </div>
   </section>
 
-  <MoodImage line={c.mood.title} image={c.mood.image} imageAlt={c.mood.imageAlt} />
+  <Calculator />
 
-  <!-- For whom -->
-  <section class="who on-dark" aria-labelledby="who-title">
-    <div class="container">
-      <h2 id="who-title" class="who__title" data-reveal>{c.audiences.title}</h2>
-      <div class="who__grid">
-        {c.audiences.items.map((a) => (
-          <article class="who__col" data-reveal>
-            <Icon name={a.icon} size={36} class="who__icon" />
-            <p class="who__quote">“{a.quote}”</p>
-            {a.quoteNote && <p><Text text={a.quoteNote} /></p>}
-            <h3>{a.title}</h3>
-            <p class="who__text">{a.text}</p>
-            <p class="who__mood">{a.mood}</p>
-            <a class="btn btn--ghost" href={a.href}>Meer over {a.title.toLowerCase()}</a>
-          </article>
-        ))}
-      </div>
-    </div>
-  </section>
+  <MoodImage line={c.mood.title} image={c.mood.image} imageAlt={c.mood.imageAlt} />
 
   <WhyList />
 
@@ -116,6 +117,8 @@ import c from '../content/home.json';
   .who__quote { font-family: var(--font-display); color: var(--green); font-size: clamp(1.375rem, 2.4vw, 2rem); line-height: 1.2; }
   .who__col h3 { font-size: 1.25rem; margin-top: 16px; }
   .who__text { color: var(--muted-on-dark); max-width: 44ch; }
+  .who__projects { list-style: none; margin: 4px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .who__projects li { padding: 6px 14px; border: 1px solid var(--line-on-dark); border-radius: var(--pill); font-size: .9375rem; font-weight: 600; }
   .who__mood { font-style: italic; margin-bottom: 12px; }
   @media (max-width: 859px) {
     .who__grid { grid-template-columns: 1fr; }

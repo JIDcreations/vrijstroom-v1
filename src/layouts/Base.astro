@@ -13,8 +13,9 @@ interface Props {
   headerTone?: 'sand' | 'dark';
   noindex?: boolean;
   bodyClass?: string;
+  closing?: boolean;
 }
-const { title, description, headerTone = 'sand', noindex = false, bodyClass } = Astro.props;
+const { title, description, headerTone = 'sand', noindex = false, bodyClass, closing = true } = Astro.props;
 const canonical = new URL(Astro.url.pathname, site.url).href;
 ---
 <!doctype html>
@@ -45,7 +46,7 @@ const canonical = new URL(Astro.url.pathname, site.url).href;
     <main id="inhoud">
       <slot />
     </main>
-    <ClosingCta />
+    {closing && <ClosingCta />}
     <SiteFooter />
     <WhatsAppFab />
 

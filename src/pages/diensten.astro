@@ -12,9 +12,7 @@ import ProblemList from '../components/ProblemList.astro';
 import c from '../content/diensten.json';
 ---
 <Base title={c.seo.title} description={c.seo.description} headerTone="dark">
-  <VHero title={c.hero.title} text={c.hero.text} image={c.hero.image} imageAlt={c.hero.imageAlt} secondary={{ label: 'Bereken je stroom', href: '#rekentool', icon: 'calculator' }} />
-
-  <ProblemList title={c.problems.title} intro={c.problems.intro} items={c.problems.items} />
+  <VHero title={c.hero.title} text={c.hero.text} image={c.hero.image} imageAlt={c.hero.imageAlt} secondary={{ label: 'Bereken wat je nodig hebt', href: '#rekentool', icon: 'calculator' }} />
 
   <!-- Services -->
   <section class="services on-sand" aria-labelledby="services-title">
@@ -46,6 +44,8 @@ import c from '../content/diensten.json';
   </section>
 
   <Calculator />
+
+  <ProblemList title={c.problems.title} intro={c.problems.intro} items={c.problems.items} />
 
   <!-- Packages -->
   {c.packages.enabled && (

@@ -10,7 +10,7 @@ const { title, badge, items } = home.brands;
   <div class="container brands__inner" data-reveal>
     <div class="brands__head">
       <h2 id="brands-title">{title}</h2>
-      <p class="brands__badge"><Icon name="seal-check" size={20} />{badge}</p>
+      {badge && <p class="brands__badge"><Icon name="seal-check" size={20} />{badge}</p>}
     </div>
     <ul class="brands__list">
       {items.map((name) => <li>{name}</li>)}

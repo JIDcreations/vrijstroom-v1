@@ -27,7 +27,7 @@ const services = c.services.ids.map((id: string) => {
 });
 ---
 <Base title={c.seo.title} description={c.seo.description} headerTone="dark">
-  <VHero title={c.hero.title} text={c.hero.text} image={c.hero.image} imageAlt={c.hero.imageAlt} imageNote={c.hero.imageNote} secondary={c.calculator ? { label: 'Bereken je stroom', href: '#rekentool', icon: 'calculator' } : undefined} />
+  <VHero title={c.hero.title} text={c.hero.text} image={c.hero.image} imageAlt={c.hero.imageAlt} imageNote={c.hero.imageNote} secondary={c.calculator ? { label: 'Bereken wat je nodig hebt', href: '#rekentool', icon: 'calculator' } : undefined} />
 
   <!-- Problem -> solution, starting with what the customer says -->
   <section class="segments on-sand" aria-labelledby="segments-title">
@@ -63,25 +63,6 @@ const services = c.services.ids.map((id: string) => {
     </div>
   </section>
 
-  {c.calculator && <Calculator />}
-
-  <!-- What you notice -->
-  <section class="benefits" aria-labelledby="benefits-title">
-    <div class="container">
-      <p class="benefits__mood" data-reveal>{c.mood}</p>
-      <h2 id="benefits-title" class="sr-only">{c.benefits.title}</h2>
-      <ul class="benefits__list">
-        {c.benefits.items.map((b: any) => (
-          <li data-reveal>
-            <Icon name={b.icon} size={32} />
-            <h3>{b.title}</h3>
-            <p>{b.text}</p>
-          </li>
-        ))}
-      </ul>
-    </div>
-  </section>
-
   <!-- Relevant services -->
   <section class="svc on-sand" aria-labelledby="svc-title">
     <div class="container">
@@ -103,8 +84,26 @@ const services = c.services.ids.map((id: string) => {
     </div>
   </section>
 
+  <!-- What you notice -->
+  <section class="benefits" aria-labelledby="benefits-title">
+    <div class="container">
+      <p class="benefits__mood" data-reveal>{c.mood}</p>
+      <h2 id="benefits-title" class="sr-only">{c.benefits.title}</h2>
+      <ul class="benefits__list">
+        {c.benefits.items.map((b: any) => (
+          <li data-reveal>
+            <Icon name={b.icon} size={32} />
+            <h3>{b.title}</h3>
+            <p>{b.text}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
 
   <FaqSection ids={c.faq} />
+
+  {c.calculator && <Calculator />}
 </Base>
 
 <style>

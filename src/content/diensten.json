@@ -4,7 +4,7 @@
     "description": "Lithiumbatterijen op maat, zonnepanelen, omvormers en complete off-grid systemen voor campers, vans en bedrijfswagens. Met eerlijke prijsinfo en een rekentool."
   },
   "hero": {
-    "title": "Elke zonnestraal telt.",
+    "title": "Stroom op maat van jouw route",
     "text": "Alles wat je nodig hebt om vrij te staan, uitgelegd in gewone taal.",
     "image": "zonnepaneel-woestijn",
     "imageAlt": "Vrouw poetst een zonnepaneel op het dak van haar van, op een zandweg bij zonsondergang"
@@ -51,7 +51,7 @@
         "icon": "plugs-connected",
         "title": "Complete off-grid systemen",
         "benefit": "Batterij, laden en beveiliging als één geheel, zonder verrassingen.",
-        "text": "Batterij, zonnepanelen, omvormer, zekeringen en een DC/DC-lader, ontworpen als één systeem. Die DC/DC-lader laadt je batterij op terwijl je rijdt, zonder je startaccu leeg te trekken. We zijn Victron Certified Installer, en je systeem kan je later nog uitbreiden.",
+        "text": "Batterij, zonnepanelen, omvormer, zekeringen en een DC/DC-lader, ontworpen als één systeem. Die DC/DC-lader laadt je batterij op terwijl je rijdt, zonder je startaccu leeg te trekken. We werken met Victron, en je systeem kan je later nog uitbreiden.",
         "price": ""
       },
       {
@@ -177,8 +177,8 @@
       },
       {
         "icon": "seal-check",
-        "title": "Victron Certified Installer",
-        "text": "erkend door Victron Energy voor de installatie van hun systemen."
+        "title": "Erkend elektricien",
+        "text": "elke installatie AREI-conform, met de zorg van een installatie thuis."
       },
       {
         "icon": "certificate",
