@@ -44,12 +44,12 @@
       {
         "icon": "sun-horizon",
         "title": "Dagen vrij staan",
-        "text": "Staan waar je wil, zonder walstroom en zonder camping."
+        "text": "Staan waar je wil: zonder walstroom, zonder camping of camperplaats, en zonder te betalen voor stroom."
       },
       {
         "icon": "coffee",
         "title": "Thuiscomfort onderweg",
-        "text": "Koffie, koelkast, laptop en licht werken gewoon."
+        "text": "Koffie, koelkast, laptop en licht werken gewoon, en je e-bike laadt bij."
       },
       {
         "icon": "shield-check",
@@ -64,6 +64,7 @@
       "lithiumbatterij",
       "lithium-upgrade",
       "zonnepanelen",
+      "dc-dc-lader",
       "omvormer",
       "off-grid",
       "comfort",

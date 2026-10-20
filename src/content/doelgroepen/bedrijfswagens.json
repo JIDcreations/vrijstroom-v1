@@ -6,7 +6,7 @@
     "description": "Gereedschap laden zonder aggregaat, stroom op events, licht en koeling in je trailer. Vrijstroom bouwt off-grid systemen op maat voor servicebussen, mobiele werkplaatsen, food trucks en paardentrailers."
   },
   "hero": {
-    "title": "Je kantoor is overal.",
+    "title": "Je werkplaats is overal.",
     "text": "Stroom waar je werkt, zonder het lawaai van een aggregaat.",
     "image": "werkplaats-elektricien",
     "imageAlt": "Elektricien in Vrijstroom-shirt sluit een batterij aan in de werkplaats",
@@ -29,7 +29,7 @@
         "quote": "Op een event wil ik niet afhangen van een stopcontact.",
         "quoteNote": "",
         "problem": "Op een event is er niet altijd stroom, of je deelt een overbelaste kabel met tien andere standen.",
-        "solution": "We berekenen wat je toestellen vragen en bouwen een systeem dat je koeling en kassa draaiende houdt."
+        "solution": "We berekenen wat je toestellen vragen en bouwen een systeem dat je koeling en kassa draaiende houdt. Uiteraard volgens het AREI, de regelgeving die voor food trucks geldt."
       },
       {
         "icon": "horse",
@@ -66,6 +66,7 @@
     "ids": [
       "lithiumbatterij",
       "zonnepanelen",
+      "dc-dc-lader",
       "omvormer",
       "off-grid",
       "comfort"

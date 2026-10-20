@@ -1,16 +1,25 @@
 {
-  "_uitleg": "Verbruik per toestel in wattuur (Wh) per dag, inclusief verlies van de omvormer waar nodig. Pas de getallen aan als de klant andere vuistregels gebruikt.",
+  "_uitleg": "Verbruik per toestel in wattuur (Wh) per dag, inclusief verlies van de omvormer waar nodig. driveWh is wat de DC/DC-lader bijlaadt per dag dat je rijdt (30A, ongeveer een uur rijden). Bij drive is every het aantal dagen tussen twee ritten (0 = je rijdt niet). Pas de getallen aan als de klant andere vuistregels gebruikt.",
   "title": "Hoeveel stroom heb ik nodig?",
-  "intro": "Kies wat je meeneemt en hoe lang je los van het net wil staan. Je krijgt meteen een indicatie.",
+  "intro": "Kies wat je meeneemt, hoe lang je los van het net wil staan en hoe vaak je rijdt. Je krijgt meteen een indicatie.",
   "devicesLabel": "Wat neem je mee?",
   "daysLabel": "Hoeveel dagen wil je los van het net staan?",
   "daysMin": 1,
   "daysMax": 7,
   "daysDefault": 3,
+  "driveLabel": "Hoe vaak rij je tussendoor?",
+  "driveWh": 350,
+  "driveDefault": "soms",
+  "drive": [
+    { "id": "dagelijks", "label": "Elke dag", "every": 1 },
+    { "id": "soms", "label": "Om de paar dagen", "every": 3 },
+    { "id": "nooit", "label": "Ik sta stil", "every": 0 }
+  ],
+  "chargedLabel": "Bijgeladen tijdens het rijden",
   "batteryVoltage": 12.8,
   "usableShare": 0.9,
   "roundTo": 50,
-  "note": "Dit is een indicatie. Zonnepanelen en laden tijdens het rijden kunnen je batterij kleiner maken. In het gesprek bepalen we samen het exacte systeem.",
+  "note": "Dit is een indicatie. Laden tijdens het rijden rekenen we met een DC/DC-lader en ongeveer een uur rijden. Zonnepanelen kunnen je batterij nog kleiner maken. In het gesprek bepalen we samen het exacte systeem.",
   "basisIntro": "Gemiddeld verbruik per dag, inclusief het verlies van de omvormer waar nodig. Jouw toestellen kunnen meer of minder verbruiken.",
   "resultLabel": "Aanbevolen batterij",
   "gaugeMax": 600,
@@ -38,6 +47,14 @@
       "wh": 30,
       "default": true,
       "icon": "device-mobile"
+    },
+    {
+      "id": "ebike",
+      "label": "E-bike laden",
+      "detail": "één batterij, van leeg tot vol",
+      "wh": 600,
+      "default": false,
+      "icon": "bicycle"
     },
     {
       "id": "waterpomp",

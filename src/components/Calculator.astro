@@ -12,6 +12,8 @@ const settings = {
   usable: calc.usableShare,
   roundTo: calc.roundTo,
   gaugeMax: calc.gaugeMax,
+  driveWh: calc.driveWh,
+  drive: Object.fromEntries(calc.drive.map((d) => [d.id, d.every])),
   devices: Object.fromEntries(calc.devices.map((d) => [d.id, d.wh])),
 };
 const days = Array.from({ length: calc.daysMax - calc.daysMin + 1 }, (_, i) => calc.daysMin + i);
@@ -55,6 +57,21 @@ const fmt = (n: number) => n.toLocaleString('nl-BE');
           </div>
         </fieldset>
 
+        <fieldset class="calc__step">
+          <legend><span class="calc__num" aria-hidden="true">3</span>{calc.driveLabel}</legend>
+          <div class="calc__pills">
+            {calc.drive.map((d) => (
+              <label class="pill">
+                <input type="radio" name="drive" value={d.id} checked={d.id === calc.driveDefault} />
+                <span class="pill__box">
+                  <span>{d.label}</span>
+                  <Icon name="check" size={16} class="pill__check" />
+                </span>
+              </label>
+            ))}
+          </div>
+        </fieldset>
+
         <details class="calc__basis">
           <summary>Waarmee rekenen we?<Icon name="caret-down" size={18} /></summary>
           <p>{calc.basisIntro}</p>
@@ -81,6 +98,7 @@ const fmt = (n: number) => n.toLocaleString('nl-BE');
         <dl class="calc__facts">
           <div><dt>Verbruik per dag</dt><dd data-out="daily">…</dd></div>
           <div><dt>Totaal voor <span data-out="days">…</span></dt><dd data-out="total">…</dd></div>
+          <div><dt>{calc.chargedLabel}</dt><dd data-out="charged">…</dd></div>
         </dl>
         <p class="calc__empty" data-out="empty" hidden>Kies minstens één toestel.</p>
         <p class="calc__note">{calc.note}</p>
@@ -122,13 +140,20 @@ const fmt = (n: number) => n.toLocaleString('nl-BE');
       const daily = chosen.reduce((sum, el) => sum + (s.devices[el.value] ?? 0), 0);
       const n = Number(root.querySelector<HTMLInputElement>('input[name="days"]:checked')?.value ?? 1);
       const total = daily * n;
-      const ah = daily ? Math.max(s.roundTo, Math.ceil(total / (s.voltage * s.usable) / s.roundTo) * s.roundTo) : 0;
+      // Each driving day the DC/DC charger tops the battery up, but it still has to bridge the days between two drives.
+      const every = s.drive[root.querySelector<HTMLInputElement>('input[name="drive"]:checked')?.value ?? ''] ?? 0;
+      // A drive on the last day no longer helps, so only count drives before that.
+      const drives = every ? Math.floor((n - 1) / every) : 0;
+      const need = Math.max(daily * (every ? Math.min(n, every) : n), total - drives * s.driveWh);
+      const ah = daily ? Math.max(s.roundTo, Math.ceil(need / (s.voltage * s.usable) / s.roundTo) * s.roundTo) : 0;
+      const wh = (v: number) => (v >= 1000 ? `${fmt(v / 1000, 1)} kWh` : `${fmt(v)} Wh`);
 
       countTo(ah);
       out('ah-mini').textContent = daily ? `± ${fmt(ah)} Ah` : '0 Ah';
       out('daily').textContent = `${fmt(daily)} Wh`;
       out('days').textContent = dayLabel(n);
-      out('total').textContent = total >= 1000 ? `${fmt(total / 1000, 1)} kWh` : `${fmt(total)} Wh`;
+      out('total').textContent = wh(total);
+      out('charged').textContent = wh(total - need);
       out('empty').hidden = daily > 0;
       const filled = ah ? Math.max(1, Math.min(cells.length, Math.round((ah / s.gaugeMax) * cells.length))) : 0;
       cells.forEach((c, i) => c.classList.toggle('is-on', i < filled));
@@ -214,9 +239,10 @@ const fmt = (n: number) => n.toLocaleString('nl-BE');
   .gauge__cell:nth-child(8) { transition-delay: .14s; } .gauge__cell:nth-child(9) { transition-delay: .16s; }
   .gauge__cell:nth-child(10) { transition-delay: .18s; }
 
-  .calc__facts { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 0; padding-top: 20px; border-top: 1px solid var(--line-on-dark); }
+  .calc__facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 0; padding-top: 20px; border-top: 1px solid var(--line-on-dark); }
+  .calc__facts > div { display: flex; flex-direction: column; }
   .calc__facts dt { font-size: .875rem; color: var(--muted-on-dark); }
-  .calc__facts dd { margin: 4px 0 0; font-weight: 600; font-size: 1.1875rem; }
+  .calc__facts dd { margin: auto 0 0; padding-top: 4px; font-weight: 600; font-size: 1.1875rem; }
   .calc__empty { font-weight: 600; color: var(--green); }
   .calc__note { font-size: .9375rem; color: var(--muted-on-dark); }
   .calc__cta { justify-self: start; margin-top: 4px; }

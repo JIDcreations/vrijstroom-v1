@@ -30,7 +30,7 @@
       },
       {
         "title": "230V onderweg",
-        "text": "Een omvormer, zodat je laptop, koffiezet of gereedschap gewoon werkt.",
+        "text": "Een omvormer, zodat je laptop, koffiezet of gereedschap gewoon werkt. En je e-bike laadt onderweg op.",
         "icon": "plug"
       },
       {
@@ -71,7 +71,7 @@
         "quote": "Ik wil mijn gereedschap laden zonder aggregaat.",
         "quoteNote": "",
         "text": "Servicebussen, mobiele werkplaatsen, food trucks en paardentrailers. Stroom waar je werkt, zonder lawaai van een aggregaat.",
-        "mood": "Je kantoor is overal.",
+        "mood": "Je werkplaats is overal.",
         "href": "/bedrijfswagens",
         "icon": "truck",
         "projects": [
@@ -151,8 +151,8 @@
       "text": "Erkend elektricien"
     },
     {
-      "icon": "seal-check",
-      "text": "AREI-conform"
+      "icon": "battery-charging",
+      "text": "Batterijen zelf gebouwd"
     },
     {
       "icon": "shield-check",
@@ -172,7 +172,8 @@
       "Truma",
       "WattCycle",
       "EVE",
-      "VanNBike"
+      "VanNBike",
+      "Thule"
     ]
   }
 }

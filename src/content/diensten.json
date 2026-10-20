@@ -39,6 +39,14 @@
         "price": ""
       },
       {
+        "id": "dc-dc-lader",
+        "icon": "car-battery",
+        "title": "DC/DC-lader",
+        "benefit": "Je batterij laadt op terwijl je rijdt. Onmisbaar bij een recente motor (Euro 6).",
+        "text": "Een DC/DC-lader laadt je woonaccu op tijdens het rijden, zonder je startaccu leeg te trekken. Bij een motor met Euro 6 is hij een noodzaak: de slimme dynamo levert dan te weinig spanning om je batterij vol te krijgen. Met de lader laad je wel volledig bij.",
+        "price": ""
+      },
+      {
         "id": "omvormer",
         "icon": "plug",
         "title": "Omvormer 230V",
@@ -51,7 +59,7 @@
         "icon": "plugs-connected",
         "title": "Complete off-grid systemen",
         "benefit": "Batterij, laden en beveiliging als één geheel, zonder verrassingen.",
-        "text": "Batterij, zonnepanelen, omvormer, zekeringen en een DC/DC-lader, ontworpen als één systeem. Die DC/DC-lader laadt je batterij op terwijl je rijdt, zonder je startaccu leeg te trekken. We werken met Victron, en je systeem kan je later nog uitbreiden.",
+        "text": "Batterij, zonnepanelen, omvormer, zekeringen en DC/DC-lader, ontworpen als één systeem. Zo laad je bij terwijl je rijdt, zonder dat je startaccu leegloopt. We werken met Victron, en je kan later altijd uitbreiden.",
         "price": ""
       },
       {
@@ -67,7 +75,7 @@
         "icon": "bicycle",
         "title": "Fietsdragers",
         "benefit": "Je fietsen mee, stevig en veilig vast.",
-        "text": "We monteren fietsdragers van VanNBike netjes en stevig op je camper of van.",
+        "text": "We monteren je fietsdragers netjes en stevig: van VanNBike op een campervan, van Thule op een camper.",
         "price": ""
       },
       {
@@ -178,7 +186,7 @@
       {
         "icon": "seal-check",
         "title": "Erkend elektricien",
-        "text": "elke installatie AREI-conform, met de zorg van een installatie thuis."
+        "text": "elke installatie met de zorg van een installatie thuis: juiste kabeldiktes en elke lijn afgezekerd."
       },
       {
         "icon": "certificate",
